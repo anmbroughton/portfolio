@@ -564,7 +564,7 @@ margin-bottom: 2rem;
 
 /* ========== FOOTER CALLOUT ========== */
 .footer-callout-wrap{padding:4rem 0 2rem}
-.footer-callout{display:block; position:relative; width:100%; height:clamp(120px,20vh,220px); overflow:hidden; color:inherit}
+.footer-callout{display:block; position:relative; width:100%; height:clamp(160px,20vw,360px); overflow:hidden; color:inherit}
 .slot{position:absolute; inset:0; display:flex; align-items:center; padding-left:0; transform:translateY(0); transition:transform .6s cubic-bezier(.22,.61,.36,1)}
 .from-top{transform:translateY(-120%)} .out-bottom{transform:translateY(120%)}
 .chip{font-weight:900; font-size:clamp(2.4rem,9vw,6.2rem); line-height:1; text-align:left}
