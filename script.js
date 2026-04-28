@@ -18,7 +18,7 @@ function injectPartial(key, html){
 async function loadSection(url){
   const key=keyFromUrl(url);
   const bust=url.includes('?')?`${url}&_=${Date.now()}`:`${url}?_=${Date.now()}`;
-  const res=await fetch(`sections/${bust}`, {cache:'no-store'});
+  const res=await fetch(bust, {cache:'no-store'});
   if(!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   const html=await res.text(); injectPartial(key, html);
 }
