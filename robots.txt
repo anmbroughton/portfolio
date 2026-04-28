@@ -1,0 +1,58 @@
+# robots.txt for broughton.com.au
+# Allow all search engines to crawl and index
+
+User-agent: *
+Allow: /
+Disallow: /GT-Standard/
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.png$
+Disallow: /*.avif$
+Disallow: /*.woff2$
+
+# Allow specific important images
+Allow: /AndrewBroughton_TritoneDots_Big.png
+
+# Sitemap location
+Sitemap: https://broughton.com.au/sitemap.xml
+
+# Crawl-delay for bots (optional, be respectful)
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+

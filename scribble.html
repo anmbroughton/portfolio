@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Scribble → Morph</title>
+<!-- Flubber (UMD) for robust path morphing between arbitrary shapes -->
+<script src="https://unpkg.com/flubber@0.4.2/dist/flubber.min.js"></script>
+<style>
+  :root{
+    --primary:#39FF14;   /* toxic green */
+    --accent:#E90068;    /* toxic pink/magenta */
+    --bg:#2E2E2E;        /* dark grey */
+    --ink:#FAFAFA;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    display:flex; flex-direction:column; gap:12px;
+  }
+  header{
+    padding:12px 16px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .left, .right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  h1{font-size:16px; margin:0; letter-spacing:.3px; color:var(--primary)}
+  select, button, input[type="range"]{
+    background:#1f1f1f; color:var(--ink); border:1px solid rgba(255,255,255,.15);
+    border-radius:10px; padding:10px 12px; font-size:14px; outline:none;
+  }
+  select:focus, button:focus, input[type="range"]:focus{outline:2px solid var(--accent)}
+  button{
+    cursor:pointer; transition:transform .06s ease, background .2s ease, border-color .2s ease;
+  }
+  button:hover{transform:translateY(-1px)}
+  button.primary{background:var(--primary); color:#111; border-color:transparent; font-weight:700}
+  button.accent{background:var(--accent); color:#fff; border-color:transparent; font-weight:700}
+  .hint{opacity:.75; font-size:13px}
+  main{flex:1; min-height:0; padding:0 12px 12px}
+  .stage{
+    height:calc(100vh - 96px);
+    max-height:100%;
+    border:1px dashed rgba(255,255,255,.15);
+    border-radius:14px; overflow:hidden; position:relative; background:#1a1a1a;
+  }
+  svg{width:100%; height:100%; display:block; touch-action:none; background:
+      radial-gradient(transparent 0 14px, rgba(255,255,255,.05) 14px 15px) 0 0/28px 28px,
+      linear-gradient(to bottom, rgba(255,255,255,.02), transparent 160px);
+  }
+  .live-stroke{fill:none; stroke:var(--accent); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 8px rgba(233,0,104,.5))}
+  .closed-shape{fill:rgba(57,255,20,.18); stroke:var(--primary); stroke-width:3; filter:drop-shadow(0 0 10px rgba(57,255,20,.5))}
+  .target-shape{fill:rgba(233,0,104,.14); stroke:var(--accent); stroke-width:2; vector-effect:non-scaling-stroke; stroke-dasharray:6 6}
+  .badge{position:absolute; right:10px; bottom:8px; font-size:12px; opacity:.7}
+  .controls-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  .range-wrap{display:flex; align-items:center; gap:6px; opacity:.9}
+  .range-wrap label{font-size:12px; opacity:.8}
+  .pill{padding:6px 10px; border:1px solid rgba(255,255,255,.12); border-radius:999px; font-size:12px; opacity:.85}
+</style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <h1>Scribble → Morph</h1>
+      <span class="pill">Draw freehand, then morph it into a chosen shape</span>
+    </div>
+    <div class="right controls-row">
+      <label class="hint">Morph to:</label>
+      <select id="shapeSelect" aria-label="Target shape">
+        <option value="heart">Heart ♥</option>
+        <option value="star">Star ★</option>
+        <option value="boat">Boat ⛵︎</option>
+        <option value="penguin">Penguin 🐧</option>
+      </select>
+      <div class="range-wrap">
+        <label for="stroke">Stroke</label>
+        <input type="range" id="stroke" min="2" max="16" step="1" value="4" />
+      </div>
+      <div class="range-wrap">
+        <label for="smooth">Smooth</label>
+        <input type="range" id="smooth" min="0" max="24" step="1" value="8" />
+      </div>
+      <button id="btnMorph" class="primary">Morph</button>
+      <button id="btnClose" title="Close your scribble into a filled shape">Close</button>
+      <button id="btnUndo" title="Undo last segment">Undo</button>
+      <button id="btnClear" class="accent">Clear</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="stage" id="stage">
+      <svg id="board" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" aria-label="Drawing board">
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path id="target" class="target-shape" d=""></path>
+        <path id="closed" class="closed-shape" d="" visibility="hidden"></path>
+        <polyline id="live" class="live-stroke" points=""></polyline>
+      </svg>
+      <div class="badge hint">Tip: long-press (mobile) or click-drag (desktop) to draw</div>
+    </div>
+  </main>
+
+<script>
+(function(){
+  const svg = document.getElementById('board');
+  const live = document.getElementById('live');
+  const closed = document.getElementById('closed');
+  const target = document.getElementById('target');
+  const btnClear = document.getElementById('btnClear');
+  const btnUndo = document.getElementById('btnUndo');
+  const btnClose = document.getElementById('btnClose');
+  const btnMorph = document.getElementById('btnMorph');
+  const stroke = document.getElementById('stroke');
+  const smooth = document.getElementById('smooth');
+  const shapeSelect = document.getElementById('shapeSelect');
+
+  let drawing = false;
+  let points = [];
+  let polylinePointsStr = "";
+
+  // Utility: convert client coords to SVG coords
+  function svgPoint(evt){
+    const pt = svg.createSVGPoint();
+    pt.x = (evt.touches ? evt.touches[0].clientX : evt.clientX);
+    pt.y = (evt.touches ? evt.touches[0].clientY : evt.clientY);
+    const out = pt.matrixTransform(svg.getScreenCTM().inverse());
+    return out;
+  }
+
+  // Simple path smoothing with Chaikin corner cutting
+  function chaikin(pts, iterations=1){
+    if(pts.length < 3) return pts;
+    let res = pts.slice();
+    for(let k=0;k<iterations;k++){
+      const newPts = [];
+      for (let i=0;i<res.length-1;i++){
+        const p0 = res[i], p1 = res[i+1];
+        const Q = {x: 0.75*p0.x + 0.25*p1.x, y: 0.75*p0.y + 0.25*p1.y};
+        const R = {x: 0.25*p0.x + 0.75*p1.x, y: 0.25*p0.y + 0.75*p1.y};
+        newPts.push(Q, R);
+      }
+      res = [res[0], ...newPts, res[res.length-1]];
+    }
+    return res;
+  }
+
+  function polyToPath(pts, close=false){
+    if(!pts || pts.length === 0) return "";
+    let d = `M ${pts[0].x.toFixed(2)} ${pts[0].y.toFixed(2)} `;
+    for(let i=1;i<pts.length;i++){
+      d += `L ${pts[i].x.toFixed(2)} ${pts[i].y.toFixed(2)} `;
+    }
+    if(close) d += 'Z';
+    return d;
+  }
+
+  // Target shapes (in the same 1200x800 viewBox)
+  const SHAPES = {
+    heart: `M600,560 C520,520 420,460 420,350 C420,290 470,240 530,240 C570,240 600,265 600,265 C600,265 630,240 670,240 C730,240 780,290 780,350 C780,460 680,520 600,560 Z`,
+    star: `M600,170 L653,320 L812,320 L683,415 L732,570 L600,475 L468,570 L517,415 L388,320 L547,320 Z`,
+    boat: `M300,560 L900,560 L820,620 L380,620 Z M480,560 L720,560 L690,520 L510,520 Z M690,520 L730,430 L760,520 Z`,
+    penguin: `M600,220 C500,220 460,300 460,380 C460,520 520,620 600,620 C680,620 740,520 740,380 C740,300 700,220 600,220 Z
+               M560,360 C590,340 610,340 640,360 C665,380 665,420 640,440 C610,460 590,460 560,440 C535,420 535,380 560,360 Z
+               M550,620 C540,660 520,690 500,705 C540,705 660,705 700,705 C680,690 660,660 650,620 Z`
+  };
+
+  function setTargetPath(){
+    target.setAttribute('d', SHAPES[shapeSelect.value]);
+  }
+  setTargetPath();
+  shapeSelect.addEventListener('change', setTargetPath);
+
+  // Drawing handlers
+  function startDraw(evt){
+    drawing = true;
+    points = [];
+    polylinePointsStr = "";
+    closed.setAttribute('visibility','hidden');
+    const p = svgPoint(evt);
+    points.push(p);
+    polylinePointsStr = `${p.x},${p.y}`;
+    live.setAttribute('points', polylinePointsStr);
+    live.setAttribute('stroke-width', stroke.value);
+    evt.preventDefault();
+  }
+  function moveDraw(evt){
+    if(!drawing) return;
+    const p = svgPoint(evt);
+    points.push(p);
+    polylinePointsStr += ` ${p.x},${p.y}`;
+    live.setAttribute('points', polylinePointsStr);
+    evt.preventDefault();
+  }
+  function endDraw(){
+    drawing = false;
+  }
+
+  svg.addEventListener('pointerdown', startDraw);
+  svg.addEventListener('pointermove', moveDraw);
+  window.addEventListener('pointerup', endDraw);
+  svg.addEventListener('touchstart', startDraw, {passive:false});
+  svg.addEventListener('touchmove', moveDraw, {passive:false});
+  window.addEventListener('touchend', endDraw);
+
+  // Buttons
+  btnClear.addEventListener('click', ()=>{
+    points = [];
+    live.setAttribute('points', '');
+    closed.setAttribute('d','');
+    closed.setAttribute('visibility','hidden');
+  });
+
+  btnUndo.addEventListener('click', ()=>{
+    if(points.length>1){
+      points.pop();
+      live.setAttribute('points', points.map(p=>`${p.x},${p.y}`).join(' '));
+    }
+  });
+
+  btnClose.addEventListener('click', ()=>{
+    if(points.length < 3) return;
+    const sm = parseInt(smooth.value,10);
+    const smoothPts = chaikin(points, Math.floor(sm/4));
+    const d = polyToPath(smoothPts, true);
+    closed.setAttribute('d', d);
+    closed.setAttribute('visibility','visible');
+  });
+
+  // Morph
+  btnMorph.addEventListener('click', ()=>{
+    // Ensure we have a closed path
+    if(points.length < 3 && !closed.getAttribute('d')) return;
+    if(!closed.getAttribute('d')) {
+      // auto-close if user hasn't yet
+      btnClose.click();
+    }
+    const from = closed.getAttribute('d');
+    const to = SHAPES[shapeSelect.value];
+
+    // Build an interpolator with Flubber (handles different path topologies)
+    let interp;
+    try{
+      interp = flubber.interpolate(from, to, { maxSegmentLength: 4 });
+    }catch(e){
+      // fallback: attempt to simplify by smoothing and try again
+      const sm = chaikin(points, 6);
+      const d2 = polyToPath(sm, true);
+      closed.setAttribute('d', d2);
+      try{
+        interp = flubber.interpolate(d2, to, { maxSegmentLength: 4 });
+      }catch(e2){
+        console.warn('Could not interpolate paths.', e2);
+        return;
+      }
+    }
+
+    // Animate over 900ms
+    const start = performance.now();
+    const dur = 900;
+    function tick(now){
+      const t = Math.min(1, (now - start)/dur);
+      const eased = t < 0.5 ? 2*t*t : -1+(4-2*t)*t; // easeInOutQuad
+      closed.setAttribute('d', interp(eased));
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+
+  // Live stroke width updates
+  stroke.addEventListener('input', ()=> live.setAttribute('stroke-width', stroke.value));
+
+  // Resize handling: keep drawing crisp in the viewBox, no extra code required.
+})();
+</script>
+</body>
+</html>
