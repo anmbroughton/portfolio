@@ -217,10 +217,22 @@ nav a:hover::after{width:100%}
 .logo-strip img:hover,
 .logo-strip svg:hover{ opacity:1; filter:none; }
 
+/* portrait photo on the right */
+.hero-portrait{
+  display:block;
+  width:100%;
+  max-width:520px;
+  height:auto;
+  margin-left:auto;
+  border-radius:8px;
+  object-fit:cover;
+}
+
 @media (max-width: 900px) {
   #hero { align-items: end; }
   .hero-grid { grid-template-columns: 1fr; text-align: left; gap: 2rem; }
   .hero-right { margin-top:.5rem; }
+  .hero-portrait { max-width: 100%; }
 }
 
 /* ========== CASE STUDIES ========== */
