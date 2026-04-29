@@ -590,10 +590,11 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 
 /* ========== Ticker ========== */
 .ticker{position:fixed; left:0; right:0; bottom:0; height:var(--ticker-h); background:var(--white); color:var(--accent); overflow:hidden; z-index:9999; cursor:pointer;}
-.ticker__track{display:flex; align-items:center; height:100%; gap:40px; white-space:nowrap; will-change:transform; animation:ticker-scroll 15s linear infinite}
+.ticker__track{display:flex; align-items:center; height:100%; white-space:nowrap; will-change:transform; animation:ticker-scroll 60s linear infinite}
 .ticker:hover .ticker__track, .ticker:focus-within .ticker__track{animation-play-state:paused}
-.ticker__item{font-weight:800; font-size:.95rem; letter-spacing:.02em; display:inline-flex; align-items:center; gap:.6rem}
-.sep{display:inline-block; padding:0 .8rem; font-weight:900}
+.ticker__chunk{display:flex; align-items:center; flex-shrink:0;}
+.ticker__item{font-weight:800; font-size:.95rem; letter-spacing:.02em; display:inline-flex; align-items:center;}
+.ticker__item::after{content:"\2192"; padding:0 1.4rem; font-weight:900; display:inline-block;}
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.ticker__track{animation:none}}
 
