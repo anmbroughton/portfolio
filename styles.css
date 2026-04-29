@@ -391,6 +391,7 @@ body.no-scroll{overflow:hidden}
 }
 
 /* ===== Overlay Layers ===== */
+.case-card{ cursor:pointer; }
 .case-card > a.overlay{
   position:absolute;
   inset:0;
@@ -398,7 +399,8 @@ body.no-scroll{overflow:hidden}
   opacity:0;
   transition:opacity .35s ease, background .35s ease;
   background:var(--primary);
-  pointer-events:none;
+  pointer-events:auto;       /* this is the click target */
+  text-indent:-9999px;        /* anchor is empty; hide any phantom text */
 }
 
 .overlay-inner{
@@ -416,6 +418,7 @@ body.no-scroll{overflow:hidden}
   opacity:0;
   transform:translateY(-10px);
   transition:opacity .35s ease, transform .35s ease;
+  pointer-events:none;        /* let clicks pass through to the anchor below */
 }
 
 .case-card:hover img{ filter:var(--accent); }
