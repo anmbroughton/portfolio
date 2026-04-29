@@ -55,9 +55,7 @@
         <button type="button" class="ai-andrew-modal__close" id="aiAndrewClose" aria-label="Close">&times;</button>
       </header>
       <div class="ai-andrew-modal__body" id="aiAndrewBody">
-        <!-- placeholder content; replace with chat embed or launch CTA -->
-        <p>An AI version of Andrew, trained on his work, thinking and writing. Ask it anything you'd ask Andrew.</p>
-        <p><em>Coming soon.</em></p>
+        <div id="aiAndrewMount" style="height:100%; display:flex;"></div>
       </div>
     </div>
   </div>
@@ -106,8 +104,43 @@
       const openBtn = document.getElementById('aiAndrewOpen');
       const dialog  = document.getElementById('aiAndrewDialog');
       const closeBtn= document.getElementById('aiAndrewClose');
-      if (!openBtn || !dialog || !closeBtn) return;
+      const mount   = document.getElementById('aiAndrewMount');
+      if (!openBtn || !dialog || !closeBtn || !mount) return;
       let lastFocus = null;
+      let mounted = false;
+
+      // Lazy-load React + Babel + the agent JSX only the first time the modal opens
+      function loadScript(src, attrs){
+        return new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = src; s.crossOrigin = 'anonymous';
+          if (attrs) Object.entries(attrs).forEach(([k,v]) => s.setAttribute(k, v));
+          s.onload = resolve; s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+      async function ensureAgent(){
+        if (mounted) return;
+        mount.innerHTML = '<p style="padding:1.5rem; color:var(--white); margin:0;">Loading…</p>';
+        try {
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js');
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js');
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.25.6/babel.min.js');
+          // Fetch the JSX, compile in-browser via Babel, evaluate
+          const res = await fetch('andrew-agent.jsx', { cache: 'no-store' });
+          if (!res.ok) throw new Error('agent script HTTP ' + res.status);
+          const src = await res.text();
+          const compiled = Babel.transform(src, { presets: ['react', 'env'] }).code;
+          (new Function(compiled))();
+          mount.innerHTML = '';
+          ReactDOM.createRoot(mount).render(React.createElement(window.AndrewAgent));
+          mounted = true;
+        } catch (err) {
+          console.error('AI Andrew failed to load:', err);
+          mount.innerHTML = '<p style="padding:1.5rem; color:var(--white); margin:0;">Sorry — chat couldn’t load. Email <a style="color:var(--primary)" href="mailto:andrew.n.broughton@gmail.com">andrew.n.broughton@gmail.com</a> instead.</p>';
+        }
+      }
+
       function open(){
         lastFocus = document.activeElement;
         dialog.setAttribute('aria-hidden','false');
@@ -115,6 +148,7 @@
         document.body.classList.add('no-scroll');
         closeBtn.focus();
         document.addEventListener('keydown', escClose);
+        ensureAgent();
       }
       function close(){
         dialog.setAttribute('aria-hidden','true');
