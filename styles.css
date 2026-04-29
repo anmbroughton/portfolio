@@ -144,13 +144,55 @@ nav a::after{
   background:var(--accent); transition:width .25s ease;
 }
 nav a:hover::after{width:100%}
+/* "Chat with AI Andrew" button — same shape language as nav links but pill-cased to read as a CTA */
+.nav-chat-btn{
+  margin-left:1.5rem; font:inherit; font-weight:800; cursor:pointer;
+  display:inline-flex; align-items:center; gap:.45rem;
+  padding:.5rem 1rem; border-radius:999px;
+  background:var(--primary); color:var(--accent); border:0;
+  transition:opacity .2s ease, transform .15s ease;
+}
+.nav-chat-btn:hover{opacity:.9; transform:translateY(-1px)}
+.nav-chat-btn:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+
 @media (max-width:640px){
   .brand .full{display:none}
   .brand .abbr{display:inline}
   nav a span.text{display:none}
   nav a svg{display:inline;vertical-align:-2px}
   nav a{margin-left:1rem}
+  .nav-chat-btn{margin-left:1rem; padding:.4rem .7rem}
+  .nav-chat-btn span.text{display:none}
 }
+
+/* ========== AI Andrew popup ========== */
+.ai-andrew-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.6);
+  display:none; align-items:center; justify-content:center;
+  z-index:10000; padding:1rem;
+}
+.ai-andrew-backdrop[aria-hidden="false"]{display:flex}
+.ai-andrew-modal{
+  background:var(--accent); color:var(--white);
+  width:min(720px, 96vw); max-height:88vh; overflow:auto;
+  border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.ai-andrew-modal__header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.25rem 1.5rem; border-bottom:1px solid rgba(255,255,255,.1);
+}
+.ai-andrew-modal__header h2{margin:0; color:var(--white); font-size:1.4rem;}
+.ai-andrew-modal__close{
+  background:transparent; border:0; color:var(--white);
+  font-size:1.8rem; line-height:1; cursor:pointer; padding:.25rem .5rem;
+  border-radius:6px;
+}
+.ai-andrew-modal__close:hover{background:rgba(255,255,255,.1)}
+.ai-andrew-modal__body{padding:1.5rem}
+.ai-andrew-modal__body p{color:var(--white); margin-bottom:1rem;}
+.ai-andrew-modal__body iframe{width:100%; min-height:520px; border:0; border-radius:8px;}
+body.no-scroll{overflow:hidden}
 
 /* ========== HERO ========== */
 #hero{
