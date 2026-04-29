@@ -728,9 +728,9 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 .footer-callout-wrap .slot {
   grid-column: 1 / 2;
   position: absolute;
-  left: clamp(16px, 4vw, 40px);
-  right: clamp(16px, 4vw, 40px);
-  top: 0;
+  inset: 0;             /* anchor to .container, not the full-bleed wrap */
+  display: flex;
+  align-items: center;
   transform: translateY(100%);
   opacity: 0;
   transition: transform .32s ease, opacity .32s ease;
@@ -750,7 +750,7 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   word-break: break-word;
   max-width: 100%;
 }
-.footer-callout-wrap .cta-panel { grid-column: 2 / 3; justify-self: end; position: relative; }
+.footer-callout-wrap .cta-panel { grid-column: 2 / 3; justify-self: end; position: relative; background: transparent; inset: auto; transform: none; overflow: hidden; }
 .footer-callout-wrap .cta-inner { transform: translateX(120%); transition: transform .28s ease; will-change: transform; }
 .footer-callout-wrap:hover .cta-inner,
 .footer-callout-wrap:focus-within .cta-inner,
