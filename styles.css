@@ -801,20 +801,20 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 .footer-callout-wrap:hover .cta-inner,
 .footer-callout-wrap:focus-within .cta-inner,
 .footer-callout-wrap.cta-open .cta-inner { transform: translateX(0%); }
+.footer-callout-wrap .cta-panel { color: var(--primary); }
 .footer-callout-wrap .cta-inner a {
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  padding: .55rem 1.1rem;
-  border-radius: 999px;
+  padding: 0;
   background: transparent;
-  color: currentColor;
-  border: 2px solid currentColor;
+  color: var(--primary);
+  border: 0;
   text-decoration: none;
   font-weight: 800;
   line-height: 1;
 }
-.footer-callout-wrap .cta-inner a:hover { background: currentColor; color: var(--accent, var(--primary)); }
+.footer-callout-wrap .cta-inner a:hover { color: var(--white); }
 @media (prefers-reduced-motion: reduce) {
   .footer-callout-wrap .slot,
   .footer-callout-wrap .cta-inner { transition: none !important; }
