@@ -328,7 +328,7 @@ function AndrewAgent() {
   };
 
   return (
-    <div style={{ fontFamily: "'Outfit', sans-serif", height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#5B4FD6", maxWidth: 520, margin: "0 auto", overflow: "hidden", borderRadius: 12 }}>
+    <div style={{ fontFamily: "'Outfit', sans-serif", height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#5B4FD6", overflow: "hidden", borderRadius: 12 }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
