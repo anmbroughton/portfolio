@@ -28,9 +28,9 @@
    --white   = type colour on dark sections  (currently cream)
    ============================================ */
 :root{
-  --accent:  #6A50CC;   /* purple */
-  --primary: #E8A7B4;   /* pink   */
-  --white:   #f5f5f5;   /* cream  */
+  --accent:  #262626;   /* charcoal */
+  --primary: #6A50CC;   /* purple   */
+  --white:   #f5f5f5;   /* light grey */
 
   /* ---- Alternative palettes (uncomment one block to try) ---- */
 
