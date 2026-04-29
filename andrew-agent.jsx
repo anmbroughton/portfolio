@@ -14,7 +14,7 @@ function inferPersona(messages) {
   return Object.keys(sc).find(k => sc[k] === max);
 }
 const TOPICS = {
-  background: ["background","experience","career","journey","history","tell me about you","who are you","your story","where have you worked","previous roles","what have you done","walk me through"],
+  background: ["background","experience","career","journey","history","tell me about you","who are you","who is andrew","who is broughton","your story","where have you worked","previous roles","what have you done","walk me through"],
   leadership: ["leadership","leader","manage","team","style","how do you lead","people management","direct reports","culture","enps"],
   roles: ["role","targeting","looking for","next move","available","hire","open to","sweet spot","ideal role","type of work"],
   innovation: ["innovati","pilot","prototype","speculative","new product","new service","experiment","exploration","weak signal"],
@@ -22,7 +22,7 @@ const TOPICS = {
   futures: ["futures lab","2025 strategy","threats and opportunities","return to work","future of data","robotics safety","mental health injuries"],
   emergingfutures: ["emerging futures","foresight","environmental scan","future of work","scenario model","future trends","systemic change"],
   enterprise: ["enterprise design","design practice","design function","1.8m","dual track","gels","program extensions"],
-  designprocess: ["design process","methodology","how do you work","double diamond","discovery","execution","dvf","desirability","feasibility","viability","how does design work","clarify","immerse","scope"],
+  designprocess: ["design process","methodology","how do you work","how do you approach","approach design","approach to design","double diamond","discovery","execution","dvf","desirability","feasibility","viability","how does design work","clarify","immerse","scope"],
   ai: ["ai policy","artificial intelligence","ai governance","enterprise ai"],
   community: ["community innov","social innov","equitable","lived experience","co-design","codesign","multicultural","safety cards","safe support","worker safety","culturally diverse","eccv"],
   neighbourhood: ["neighbourhood welcome","welcome service","welcome pack","welcome space","community connector","footscray","nws"],
@@ -33,7 +33,7 @@ const TOPICS = {
   geelong: ["geelong","where do you live","where are you based","where are you located","commute"],
   storytelling: ["storytelling","narrative","storytell","how do you communicate"],
   podcast: ["podcast","company road","chris hudson"],
-  philosophy: ["philosophy","approach","believe","values","principles","what drives you","manifesto","mindset"],
+  philosophy: ["philosophy","believe","values","principles","what drives you","passionate","what are you passionate","manifesto","mindset"],
   evolutionofdesign: ["evolution of design","how has design changed","design evolved","design as a discipline","stages of design","civic design","social innovation design"],
   designautonomy: ["autonomy","ownership","trust","empower","agency","self-directed","how do you give autonomy"],
   contact: ["contact","email","phone","reach","linkedin","get in touch","connect with you","your details","cv","resume"],
@@ -46,7 +46,7 @@ const TOPICS = {
   retail: ["retail","coles","flybuys","seek","shopping","point of sale","pos"],
   finance: ["finance","financial","bank","banking","me bank","cash","fintech"],
   tech: ["technology","tech","software","digital","programmatic","ecommerce","platform"],
-  clients: ["clients","who have you worked with","who have you worked for","companies","brands","organisations"],
+  clients: ["clients","who have you worked with","who have you worked for","what have you worked on","what have you built","companies","brands","organisations"],
 };
 const THRESHOLD = 1.5;
 function scoreTopics(input) {
@@ -162,7 +162,49 @@ const Bubble = ({ text, isUser }) => (
 const Chip = ({ label, onClick }) => (
   <button onClick={onClick} style={{ background: "rgba(232,164,184,0.15)", border: "1px solid rgba(232,164,184,0.3)", borderRadius: 100, padding: "8px 16px", fontSize: 13, fontFamily: "'Outfit'", fontWeight: 500, color: "#EDE2D4", cursor: "pointer", margin: "2px" }}>{label}</button>
 );
-const SUGGESTIONS = ["What's your design background?", "What can you help with?", "Tell me about your leadership style", "Walk me through the Futures Lab"];
+const SUGGESTIONS = ["Who is Andrew Broughton?", "What have you worked on?", "How do you approach design?", "What are you passionate about?"];
+
+// Map each topic to 3 contextually related topics for follow-up chips
+const RELATED = {
+  background: ["enterprise","clients","designprocess"],
+  leadership: ["enterprise","designautonomy","philosophy"],
+  roles: ["whatcanido","background","contact"],
+  innovation: ["futures","innovationcentre","emergingfutures"],
+  innovationcentre: ["futures","emergingfutures","community"],
+  futures: ["emergingfutures","innovationcentre","enterprise"],
+  emergingfutures: ["futures","philosophy","innovation"],
+  enterprise: ["leadership","designprocess","ai"],
+  designprocess: ["philosophy","designautonomy","enterprise"],
+  ai: ["enterprise","futures","philosophy"],
+  community: ["neighbourhood","philosophy","auspost"],
+  neighbourhood: ["auspost","community","awards"],
+  auspost: ["neighbourhood","craig","community"],
+  meta: ["craig","auspost","philosophy"],
+  education: ["background","philosophy","evolutionofdesign"],
+  personal: ["geelong","podcast","philosophy"],
+  geelong: ["personal","background","contact"],
+  storytelling: ["leadership","podcast","philosophy"],
+  podcast: ["philosophy","leadership","storytelling"],
+  philosophy: ["evolutionofdesign","designautonomy","designprocess"],
+  evolutionofdesign: ["philosophy","background","designprocess"],
+  designautonomy: ["leadership","philosophy","designprocess"],
+  contact: ["roles","whatcanido","personal"],
+  pub: ["craig","philosophy","community"],
+  craig: ["auspost","meta","neighbourhood"],
+  mycash: ["craig","finance","auspost"],
+  awards: ["enterprise","neighbourhood","philosophy"],
+  whatcanido: ["roles","background","contact"],
+  government: ["enterprise","futures","community"],
+  retail: ["auspost","clients","background"],
+  finance: ["mycash","clients","background"],
+  tech: ["ai","background","designprocess"],
+  clients: ["background","whatcanido","auspost"],
+  default: ["background","designprocess","philosophy"],
+};
+function relatedChipsFor(topic) {
+  const arr = RELATED[topic] || RELATED.default;
+  return arr.map(t => ({ topic: t, label: LABELS[t] || t }));
+}
 function AndrewAgent() {
   const [msgs, setMsgs] = useState([]);
   const [input, setInput] = useState("");
@@ -173,15 +215,15 @@ function AndrewAgent() {
   const endRef = useRef(null);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, typing, chips]);
   const reply = (topic, allMsgs) => { const persona = inferPersona(allMsgs); const data = R[topic] || R.default; return data[persona] || data.general; };
-  const pickTopic = (topic) => { setChips(null); setLastTopic(topic); setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: reply(topic, msgs), isUser: false }]); setTyping(false); }, 700 + Math.random() * 800); };
+  const pickTopic = (topic) => { setChips(null); setLastTopic(topic); setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: reply(topic, msgs), isUser: false }]); setTyping(false); setChips(relatedChipsFor(topic)); }, 700 + Math.random() * 800); };
   const send = (text) => {
     const msg = text || input.trim();
     if (!msg || typing) return;
     setWelcome(false); setChips(null);
     const next = [...msgs, { text: msg, isUser: true }];
     setMsgs(next); setInput("");
-    if (isCorrection(msg)) { setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: "No worries \u2014 what were you after? I can talk about my career, specific projects, leadership approach, design philosophy, industry experience, personal interests, or how to get in touch.", isUser: false }]); setTyping(false); setLastTopic(null); }, 500); return; }
-    if (isFollowUp(msg) && lastTopic) { setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: "That covers the main points on that one. But I\u2019m happy to go in a different direction \u2014 ask me about a specific project, my approach to something, or anything else you\u2019re curious about.", isUser: false }]); setTyping(false); }, 600); return; }
+    if (isCorrection(msg)) { setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: "No worries \u2014 what were you after? Pick whatever\u2019s closest to what you\u2019re curious about:", isUser: false }]); setTyping(false); setLastTopic(null); setChips([{topic:"background",label:"Career background"},{topic:"designprocess",label:"How I work"},{topic:"clients",label:"Clients"},{topic:"personal",label:"Personal"},{topic:"contact",label:"Get in touch"}]); }, 500); return; }
+    if (isFollowUp(msg) && lastTopic) { setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: "That covers the main points. Want to keep exploring? Try one of these related topics:", isUser: false }]); setTyping(false); setChips(relatedChipsFor(lastTopic)); }, 600); return; }
     const scores = scoreTopics(msg);
     const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
     const top = ranked.length > 0 ? ranked[0] : null;
