@@ -349,10 +349,6 @@ function AndrewAgent() {
               <div style={{ fontSize: 12, color: "rgba(237,226,212,0.6)", fontWeight: 500, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: "#E8A4B8", animation: "subtlePulse 2.5s infinite" }} />Design & Innovation</div>
             </div>
           </div>
-          <div style={{ display: "flex", gap: 12 }}>
-            <a href="mailto:andrew.n.broughton@gmail.com" style={{ color: "rgba(237,226,212,0.6)", display: "flex" }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg></a>
-            <a href="https://www.linkedin.com/in/anmbroughton/" target="_blank" rel="noopener" style={{ color: "rgba(237,226,212,0.6)", display: "flex" }}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          </div>
         </div>
       </div>
       <div style={{ flex: 1, overflowY: "auto", padding: "8px 0", display: "flex", flexDirection: "column" }}>
@@ -375,12 +371,7 @@ function AndrewAgent() {
         )}
         <div ref={endRef} />
       </div>
-      <div style={{ overflow: "hidden", borderTop: "1.5px solid rgba(232,164,184,0.3)", borderBottom: "1.5px solid rgba(232,164,184,0.3)", padding: "8px 0", background: "rgba(232,164,184,0.08)" }}>
-        <div style={{ display: "flex", whiteSpace: "nowrap", animation: "marquee 20s linear infinite", fontSize: 12, fontWeight: 600, color: "rgba(237,226,212,0.45)" }}>
-          {[0, 1].map(i => (<span key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}><span style={{ padding: "0 16px" }}>Making the unreal real</span><span style={{ color: "#E8A4B8" }}>{"\u2192"}</span><span style={{ padding: "0 16px" }}>Design everything</span><span style={{ color: "#E8A4B8" }}>{"\u2192"}</span><span style={{ padding: "0 16px" }}>Design is our mindset</span><span style={{ color: "#E8A4B8" }}>{"\u2192"}</span></span>))}
-        </div>
-      </div>
-      <div style={{ padding: "12px 16px 28px" }}>
+      <div style={{ padding: "12px 16px 28px", borderTop: "1.5px solid rgba(232,164,184,0.3)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(237,226,212,0.1)", borderRadius: 28, padding: "6px 6px 6px 20px", border: "1.5px solid rgba(237,226,212,0.12)" }}>
           <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }}} placeholder="Ask Andrew something..." style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: 15, fontFamily: "'Outfit'", color: "#EDE2D4", padding: "10px 0" }} />
           <button onClick={() => send()} disabled={!input.trim() || typing} style={{ width: 44, height: 44, borderRadius: "50%", border: "none", background: input.trim() && !typing ? "#E8A4B8" : "rgba(237,226,212,0.1)", color: input.trim() && !typing ? "#5B4FD6" : "rgba(237,226,212,0.3)", cursor: input.trim() && !typing ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.25s ease", flexShrink: 0 }}>
