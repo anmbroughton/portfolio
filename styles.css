@@ -627,7 +627,7 @@ margin-bottom: 2rem;
 .chip{font-weight:900; font-size:clamp(1.6rem,4.4vw,3.6rem); line-height:1.05; text-align:left; white-space:nowrap}
 .cta-panel{position:absolute; inset:0; display:flex; align-items:center; background:var(--primary); color:#000; transform:translateX(120%); transition:transform .6s cubic-bezier(.22,.61,.36,1)}
 .footer-callout:hover .cta-panel, .footer-callout:focus .cta-panel{transform:translateX(0)}
-.cta-inner{padding-left:0; font-weight:800; font-size:clamp(.95rem,1.2vw,1.1rem); line-height:1; text-align:left; white-space:nowrap}
+.cta-inner{padding-left:0; font-weight:900; font-size:clamp(1.6rem,4.4vw,3.6rem); line-height:1.05; text-align:left; white-space:nowrap}
 
 /* ========== Footer ========== */
 footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
