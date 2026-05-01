@@ -21,63 +21,38 @@
 }
 
 /* ============================================
-   THEME COLOURS — edit these three to recolour the whole site
+   THEME COLOURS
    ============================================
-   --accent  = the dominant section colour  (currently purple)
-   --primary = the secondary / pop colour    (currently pink)
-   --white   = type colour on dark sections  (currently cream)
+   Four accent colours:
+   --accent  = BG / Accent 1 / hazy blue-violet river light
+   --primary = P  / Accent 2 / teal
+   --gold    = A  / Accent 3 / gold
+   --forest  = T  / Accent 4 / dark forest
+
+   Two base colours:
+   --grey     = GR / Base 1 / light neutral
+   --charcoal = CH / Base 2 / deep neutral
    ============================================ */
 :root{
-  --accent:  #CECAD4;   /* light grey  (section background) */
-  --primary: #d5d5d5;   /* teal        (accent / pop)       */
-  --white:   #f5f5f5;   /* dark forest (type)               */
+  /* accents */
+  --accent:  #CECAD4;
+  --primary: #2A5A6E;
+  --gold:    #C8A96E;
+  --forest:  #1A2818;
 
-  /* ---- Alternative palettes (uncomment one block to try) ---- */
+  /* bases */
+  --grey:    #F5F5F5;
+  --charcoal:#1F1F1F;
 
-  /* Forest + clay
-  --accent:  #2D4A3E;
-  --primary: #E8B59A;
-  --white:   #F4EFE6;
-  */
-
-  /* Navy + coral
-  --accent:  #1B2A4E;
-  --primary: #FF7A6B;
-  --white:   #F2EDE3;
-  */
-
-  /* Charcoal + lime
-  --accent:  #1F1F1F;
-  --primary: #D4F26A;
-  --white:   #F5F5F0;
-  */
-
-  /* Burgundy + blush
-  --accent:  #5A1F2C;
-  --primary: #F2C9B8;
-  --white:   #FAF5EE;
-  */
-
-  /* Teal + butter
-  --accent:  #0C4A50;
-  --primary: #F2D680;
-  --white:   #F8F2E2;
-  */
-
-  /* Slate + peach
-  --accent:  #3D4350;
-  --primary: #F5B097;
-  --white:   #F0EDE7;
-  */
-
-  /* ---- Supporting tokens (rarely need editing) ---- */
-  --bg:#C8A96E;                       /* gold — deepest accent / occasional highlight */
-  --ink:#1A2818;
+  /* legacy aliases / system colours */
+  --bg:var(--grey);
+  --white:var(--grey);
+  --ink:var(--forest);
   --ink-70:rgba(26,40,24,.75);
   --ink-50:rgba(26,40,24,.55);
 
   --container:max(56px,min(1240px,92vw));
-  --radius:5px;               /* <- 5px corners */
+  --radius:5px;
   --ticker-h:48px;
   --blue-tint:hue-rotate(-0.25turn) saturate(.9) brightness(.8);
 
@@ -107,17 +82,17 @@ h1,h2,h3{
 }
 h2{font-size:clamp(1.6rem,3.2vw,2.2rem)}
 h3{font-size:clamp(1.1rem,1.8vw,1.3rem)}
-p{color:var(--white)}
+p{color:var(--ink)}
 a{color:var(--primary);text-decoration:none}
 .container{width:var(--container);margin:auto}
 
 /* ========== Sections ========== */
 .section{padding:min(14vh,3rem) 0}
-.alt-0{background:var(--accent);color:var(--white)}
-.alt-1{background:var(--primary);color:#0a0a0a}
-.alt-1 h1,.alt-1 h2,.alt-1 h3{color:var(--bg)}
-.alt-1 p{color:rgba(0,0,0,.8)}
-.alt-1 a{color:var(--primary)}
+.alt-0{background:var(--accent);color:var(--ink)}
+.alt-1{background:var(--primary);color:var(--charcoal)}
+.alt-1 h1,.alt-1 h2,.alt-1 h3{color:var(--grey)}
+.alt-1 p{color:rgba(245,245,245,.82)}
+.alt-1 a{color:var(--accent)}
 .alt-2{background:var(--accent);color:var(--accent)}
 
 /* ========== Header ========== */
@@ -141,7 +116,7 @@ nav a{
 }
 nav a::after{
   content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0;
-  background:var(--accent); transition:width .25s ease;
+  background:var(--gold); transition:width .25s ease;
 }
 nav a:hover::after{width:100%}
 /* "Chat with AI Andrew" button — same shape language as nav links but pill-cased to read as a CTA */
@@ -149,10 +124,10 @@ nav a:hover::after{width:100%}
   margin-left:1.5rem; font:inherit; font-weight:800; cursor:pointer;
   display:inline-flex; align-items:center; gap:.45rem;
   padding:.5rem 1rem; border-radius:999px;
-  background:var(--primary); color:var(--accent); border:0;
-  transition:opacity .2s ease, transform .15s ease;
+  background:var(--charcoal); color:var(--grey); border:0;
+  transition:opacity .2s ease, transform .15s ease, background .2s ease, color .2s ease;
 }
-.nav-chat-btn:hover{opacity:.9; transform:translateY(-1px)}
+.nav-chat-btn:hover{background:var(--forest); color:var(--gold); opacity:.95; transform:translateY(-1px)}
 .nav-chat-btn:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
 
 @media (max-width:640px){
@@ -217,8 +192,8 @@ body.no-scroll{overflow:hidden}
 /* translucent color wash (set to 0 so the photo shows) */
 #hero::before{
   content:""; position:absolute; inset:0;
-  background-color: var(--primary);
-  opacity:0;
+  background:linear-gradient(180deg, rgba(31,31,31,.25) 0%, rgba(31,31,31,.55) 70%, rgba(31,31,31,.72) 100%);
+  opacity:1;
   pointer-events:none;
 }
 
@@ -233,12 +208,12 @@ body.no-scroll{overflow:hidden}
 }
 #hero h2{margin-bottom: 2rem;}
 #hero .lede{
-  margin-top:2rem; max-width:36ch; color:var(--white);
+  margin-top:2rem; max-width:36ch; color:var(--forest);
   font-size:clamp(1.1rem,2.2vh,1.25rem);
   text-align:left;
   display:inline;
-  background: linear-gradient(180deg, var(--accent) 80%, var(--accent) 80%);
-  box-shadow: inset 0 -0.8em 0 var(--accent);
+  background: linear-gradient(180deg, var(--grey) 80%, var(--grey) 80%);
+  box-shadow: inset 0 -0.8em 0 var(--grey);
 }
 
 /* hero layout — single column, hero-left holds all content */
@@ -283,8 +258,8 @@ body.no-scroll{overflow:hidden}
   transition:color .2s ease, text-decoration-color .2s ease, opacity .2s ease;
 }
 .link-cta:hover{
-  color:#fff;
-  text-decoration-color:#fff;
+  color:var(--charcoal);
+  text-decoration-color:var(--charcoal);
   opacity:.95;
 }
 
@@ -295,17 +270,17 @@ body.no-scroll{overflow:hidden}
 /* LOGO STRIP — 4 logos on one line, bigger, no tint, always 100% opacity */
 .logo-strip{
   display:grid;
-  grid-template-columns: repeat(4, max-content); /* force 4 in one row */
+  grid-template-columns: repeat(4, max-content);
   align-items:end;
   gap:1.4rem;
 }
 .logo-strip img,
 .logo-strip svg{
-  height:44px;             /* bigger than before */
+  height:44px;
   width:auto;
-  opacity:1 !important;    /* force full opacity */
-  filter:none !important;  /* remove grayscale/other filters */
-  mix-blend-mode:normal;   /* avoid blending tints */
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal;
 }
 /* remove hover fade behaviour */
 .logo-strip img:hover,
@@ -355,7 +330,7 @@ body.no-scroll{overflow:hidden}
 }
 
 /* ========== CASE STUDIES ========== */
-#work h2 {color: var(--white);}
+#work h2 {color: var(--ink);}
 #cases, #case-studies { background:var(--accent); }
 
 .case-grid {
@@ -371,7 +346,7 @@ body.no-scroll{overflow:hidden}
   overflow:hidden;
   border-radius:var(--radius);
   cursor:pointer;
-  background:#111;
+  background:var(--charcoal);
   isolation:isolate;
 }
 @media (max-width:960px){
@@ -398,9 +373,9 @@ body.no-scroll{overflow:hidden}
   z-index:5;
   opacity:0;
   transition:opacity .35s ease, background .35s ease;
-  background:var(--primary);
-  pointer-events:auto;       /* this is the click target */
-  text-indent:-9999px;        /* anchor is empty; hide any phantom text */
+  background:var(--charcoal);
+  pointer-events:auto;
+  text-indent:-9999px;
 }
 
 .overlay-inner{
@@ -409,7 +384,7 @@ body.no-scroll{overflow:hidden}
   padding:2rem;
   max-width:min(90ch,66%);
   z-index:20;
-  color:#fff;
+  color:var(--grey);
   text-align:left;
   display:flex;
   flex-direction:column;
@@ -418,11 +393,11 @@ body.no-scroll{overflow:hidden}
   opacity:0;
   transform:translateY(-10px);
   transition:opacity .35s ease, transform .35s ease;
-  pointer-events:none;        /* let clicks pass through to the anchor below */
+  pointer-events:none;
 }
 
-.case-card:hover img{ filter:var(--accent); }
-.case-card:hover > a.overlay{ opacity:1; }
+.case-card:hover img{ filter:saturate(.85) contrast(.9) brightness(.55); }
+.case-card:hover > a.overlay{ opacity:.92; }
 .case-card:hover .overlay-inner{
   opacity:1;
   transform:translateY(0);
@@ -434,7 +409,7 @@ body.no-scroll{overflow:hidden}
   margin:0 0 .35rem 0;
   color:var(--accent);
 }
-.case-card p{ color:var(--accent); }
+.case-card p{ color:var(--grey); }
 
 /* Links inside overlay text */
 .case-card .overlay-inner a{
@@ -451,8 +426,8 @@ body.no-scroll{overflow:hidden}
   left:12px;
   bottom:12px;
   z-index:25;
-  background:var(--accent);
-  color:#fff;
+  background:var(--gold);
+  color:var(--charcoal);
   border-radius:999px;
   padding:6px 10px;
   font-weight:800;
@@ -489,9 +464,9 @@ body.no-scroll{overflow:hidden}
   flex:0 0 calc((100% - (var(--carousel-gap) * 2)) / 3);
   border-radius:var(--radius);
   overflow:hidden;
-  background:#111;
+  background:var(--charcoal);
   isolation:isolate;
-  --carousel-tint: var(--primary);
+  --carousel-tint: var(--charcoal);
 }
 @media (max-width:980px){ .carousel-card{flex:0 0 calc((100% - var(--carousel-gap)) / 2);} }
 @media (max-width:640px){ .carousel-card{flex:0 0 100%;} }
@@ -505,15 +480,15 @@ body.no-scroll{overflow:hidden}
   content:"";
   position:absolute; inset:0;
   z-index:5;
-  background:var(--carousel-tint);
-  opacity:.1;
+  background:var(--charcoal);
+  opacity:.08;
   transition:opacity .35s ease, background .35s ease;
   pointer-events:none;
 }
 .carousel-card:hover::before{
-  opacity:1;
-  background:var(--accent);
-  color: var(--white);
+  opacity:.9;
+  background:var(--charcoal);
+  color: var(--grey);
 }
 
 .carousel-card .overlay-inner{
@@ -521,21 +496,21 @@ body.no-scroll{overflow:hidden}
   padding:1.25rem 1.5rem;
   max-width:min(90ch,66%);
   z-index:20;
-  color:var(--white); text-align:left;
+  color:var(--grey); text-align:left;
   display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
   gap:.35rem;
   opacity:0; transform:translateY(-8px);
   transition:opacity .35s ease, transform .35s ease;
 }
 
-.carousel-card:hover img{ filter:var(--primary); }
+.carousel-card:hover img{ filter:saturate(.85) contrast(.9) brightness(.55); }
 .carousel-card:hover .overlay-inner{ opacity:1; transform:translateY(0); }
 
 .carousel-card h3{
   font-size:clamp(1.1rem,1.8vw,1.3rem);
   margin:0 0 .2rem 0; color:var(--accent);
 }
-.carousel-card p{ color:var(--accent); margin:0; }
+.carousel-card p{ color:var(--grey); margin:0; }
 .carousel-card .overlay-inner a{
   color:inherit; text-decoration:none; pointer-events:auto;
 }
@@ -572,15 +547,17 @@ body.no-scroll{overflow:hidden}
   outline: none !important;
 }
 
-/* ========== SPEAKING & THOUGHTS use the same look as alt-1 ========== */
+/* ========== SPEAKING & THOUGHTS ========== */
 #speaking, #thoughts{
-  background:var(--primary); color:#0a0a0a;
+  background:var(--primary);
+  color:var(--charcoal);
 }
-#speaking h1,#speaking h2 {color:var(--accent); }
-#speaking h3 {color:var(--primary); }
-#thoughts h1,#thoughts h2 {color:var(--accent); }
-#thoughts h3{color: var(--primary);}
-#speaking p,#speaking a,#thoughts p,#thoughts a{ color:var(--primary); }
+#speaking h1,#speaking h2 {color:var(--grey); }
+#speaking h3 {color:var(--accent); }
+#thoughts h1,#thoughts h2 {color:var(--grey); }
+#thoughts h3{color: var(--accent);}
+#speaking p,#thoughts p{ color:rgba(245,245,245,.82); }
+#speaking a,#thoughts a{ color:var(--accent); }
 
 /* Safety — if something inside overlay-inner has class="overlay" */
 .carousel-card .overlay-inner .overlay{
@@ -596,7 +573,7 @@ body.no-scroll{overflow:hidden}
 /* ========== ABOUT + EXPERIENCE ========== */
 #about-experience h4 {font-size: 1.8rem; font-weight: 100; margin-bottom: 1rem;}
 #about-experience li {list-style: none; margin-bottom: 1rem;}
-#about-experience h2, h4, ul {color:var(--white)}
+#about-experience h2, #about-experience h4, #about-experience ul {color:var(--ink)}
 
 .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:28px}
 .span-6{grid-column:span 6}
@@ -609,7 +586,7 @@ body.no-scroll{overflow:hidden}
   display:inline-block; margin-top:1rem; font-weight:800;
   border-bottom:2px solid var(--primary); padding-bottom:4px; color:var(--primary);
 }
-.view-more:hover{color:#fff; border-color:#fff}
+.view-more:hover{color:var(--charcoal); border-color:var(--charcoal)}
 
 /* Make role cards visually identical to other carousel cards */
 #about-experience .carousel-card{
@@ -622,7 +599,7 @@ body.no-scroll{overflow:hidden}
   border-radius: 5px;
   padding: 16px;
 }
-#about-experience .carousel-card ul{color: var(--accent);}
+#about-experience .carousel-card ul{color: var(--ink);}
 #about-experience .carousel-card li+li{ margin-block-start: 0rem; }
 
 #about-experience .carousel-card li:last-child {
@@ -711,12 +688,12 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 .slot {color: var(--primary);}
 
 /* ========== Ticker ========== */
-.ticker{position:fixed; left:0; right:0; bottom:0; height:var(--ticker-h); background:var(--white); color:var(--accent); overflow:hidden; z-index:9999; cursor:pointer;}
+.ticker{position:fixed; left:0; right:0; bottom:0; height:var(--ticker-h); background:var(--charcoal); color:var(--grey); overflow:hidden; z-index:9999; cursor:pointer;}
 .ticker__track{display:flex; align-items:center; height:100%; white-space:nowrap; will-change:transform; animation:ticker-scroll 60s linear infinite}
 .ticker:hover .ticker__track, .ticker:focus-within .ticker__track{animation-play-state:paused}
 .ticker__chunk{display:flex; align-items:center; flex-shrink:0;}
 .ticker__item{font-weight:800; font-size:.95rem; letter-spacing:.02em; display:inline-flex; align-items:center;}
-.ticker__item::after{content:"\2192"; padding:0 1.4rem; font-weight:900; display:inline-block;}
+.ticker__item::after{content:"\2192"; padding:0 1.4rem; font-weight:900; display:inline-block; color:var(--gold);}
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.ticker__track{animation:none}}
 
@@ -851,7 +828,7 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 .footer-callout-wrap .slot {
   grid-column: 1 / 2;
   position: absolute;
-  inset: 0;             /* anchor to .container, not the full-bleed wrap */
+  inset: 0;
   display: flex;
   align-items: center;
   transform: translateY(100%);
@@ -891,8 +868,317 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   font-weight: 800;
   line-height: 1;
 }
-.footer-callout-wrap .cta-inner a:hover { color: var(--white); }
+.footer-callout-wrap .cta-inner a:hover { color: var(--charcoal); }
 @media (prefers-reduced-motion: reduce) {
   .footer-callout-wrap .slot,
   .footer-callout-wrap .cta-inner { transition: none !important; }
+}
+
+
+/* ========== WCAG AA contrast overrides ========== */
+:where(.alt-0, #cases, #case-studies, #portfolio) :where(p, li, h1, h2, h3, h4){ color:var(--ink); }
+:where(.alt-0, #cases, #case-studies, #portfolio) a{ color:var(--primary); }
+
+:where(#speaking, #thoughts, .alt-1) :where(p, li){ color:var(--grey); }
+:where(#speaking, #thoughts, .alt-1) :where(h1, h2){ color:var(--grey); }
+:where(#speaking, #thoughts, .alt-1) a{ color:var(--accent); text-decoration-thickness:2px; text-underline-offset:3px; }
+
+.case-card .overlay-inner :where(p, li){ color:var(--grey); }
+.case-card .overlay-inner h3{ color:var(--accent); }
+.carousel-card .overlay-inner :where(p, li){ color:var(--grey); }
+.carousel-card .overlay-inner h3{ color:var(--accent); }
+
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{
+  color:var(--ink) !important;
+  background:var(--grey) !important;
+}
+#about-experience .carousel-card :where(p, li, h3, h4, ul){
+  color:var(--ink) !important;
+}
+
+.link-cta:hover,
+.view-more:hover,
+.footer-callout-wrap .cta-inner a:hover{
+  color:var(--charcoal);
+  border-color:var(--charcoal);
+  text-decoration-color:var(--charcoal);
+}
+
+:focus-visible{
+  outline:3px solid var(--charcoal);
+  outline-offset:3px;
+}
+:where(#speaking, #thoughts, .alt-1) :focus-visible,
+:where(.case-card, .carousel-card) :focus-visible{
+  outline-color:var(--grey);
+}
+
+
+
+/* =========================================================
+   AA VISIBILITY FIX — keeps the palette, fixes washed-out UI
+   ========================================================= */
+
+/* Global section defaults */
+body{
+  background:var(--grey);
+  color:var(--forest);
+}
+
+p,
+li,
+td,
+th{
+  color:var(--forest);
+}
+
+/* Header */
+header{
+  background:var(--accent);
+}
+
+.brand,
+.brand .name,
+.brand .role,
+nav a{
+  color:var(--forest);
+}
+
+.nav-chat-btn{
+  background:var(--forest);
+  color:var(--grey);
+}
+
+.nav-chat-btn:hover{
+  background:var(--charcoal);
+  color:var(--gold);
+}
+
+/* Hero — keep white text only because it sits over darkened photo */
+#hero h1,
+#hero .lede,
+.hero-proof,
+.hero-meta p{
+  color:var(--grey);
+}
+
+/* Case studies / Work */
+#cases,
+#case-studies,
+#work{
+  background:var(--accent);
+  color:var(--forest);
+}
+
+#work h2,
+#cases h2,
+#case-studies h2{
+  color:var(--forest);
+}
+
+.case-card{
+  background:var(--charcoal);
+}
+
+.case-card > a.overlay{
+  background:var(--charcoal);
+}
+
+.case-card:hover > a.overlay{
+  opacity:.9;
+}
+
+.case-card h3{
+  color:var(--grey);
+}
+
+.case-card p{
+  color:var(--grey);
+}
+
+.logo-badge{
+  background:var(--grey);
+  color:var(--forest);
+}
+
+/* Speaking / Thoughts — use light neutral section, not teal with pale text */
+#speaking,
+#thoughts{
+  background:var(--grey);
+  color:var(--forest);
+}
+
+#speaking h1,
+#speaking h2,
+#speaking h3,
+#thoughts h1,
+#thoughts h2,
+#thoughts h3{
+  color:var(--forest);
+}
+
+#speaking p,
+#thoughts p{
+  color:var(--forest);
+}
+
+#speaking a,
+#thoughts a{
+  color:var(--primary);
+}
+
+/* Carousel cards: readable default + strong readable hover */
+.carousel-card{
+  background:var(--charcoal);
+}
+
+.carousel-card::before{
+  background:transparent;
+  opacity:0;
+}
+
+.carousel-card:hover::before{
+  background:var(--charcoal);
+  opacity:.86;
+}
+
+.carousel-card h3{
+  color:var(--grey);
+}
+
+.carousel-card p{
+  color:var(--grey);
+}
+
+.carousel-card .overlay-inner{
+  color:var(--grey);
+}
+
+/* About & Experience */
+#about,
+#about-experience{
+  background:var(--accent);
+  color:var(--forest);
+}
+
+#about h1,
+#about h2,
+#about h3,
+#about h4,
+#about p,
+#about li,
+#about-experience h1,
+#about-experience h2,
+#about-experience h3,
+#about-experience h4,
+#about-experience p,
+#about-experience li,
+#about-experience ul{
+  color:var(--forest);
+}
+
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{
+  background:var(--grey) !important;
+  color:var(--forest) !important;
+}
+
+#about-experience .carousel-card h3,
+#about-experience .carousel-card p,
+#about-experience .carousel-card li,
+#about-experience .carousel-card ul{
+  color:var(--forest) !important;
+}
+
+/* Portfolio */
+#portfolio{
+  background:var(--accent);
+  color:var(--forest);
+}
+
+#portfolio h1,
+#portfolio h2,
+#portfolio h3,
+#portfolio p,
+#portfolio td,
+#portfolio th{
+  color:var(--forest);
+}
+
+.table thead th{
+  border-bottom-color:var(--forest);
+}
+
+.table tbody td{
+  border-bottom-color:rgba(26,40,24,.22);
+}
+
+.pill{
+  color:var(--forest);
+  border-color:var(--forest);
+  background:transparent;
+}
+
+/* Footer callout */
+.footer-callout-wrap,
+footer{
+  background:var(--accent);
+  color:var(--forest);
+}
+
+.footer-callout-wrap .chip,
+.slot{
+  color:var(--forest);
+}
+
+.footer-callout-wrap .cta-inner a{
+  color:var(--primary);
+}
+
+.footer-callout-wrap .cta-inner a:hover{
+  color:var(--forest);
+}
+
+/* Ticker */
+.ticker{
+  background:var(--grey);
+  color:var(--forest);
+  border-top:1px solid rgba(26,40,24,.18);
+}
+
+.ticker__item{
+  color:var(--forest);
+}
+
+.ticker__item::after{
+  color:var(--primary);
+}
+
+/* Text links */
+.link-cta,
+.view-more{
+  color:var(--forest);
+  border-color:var(--forest);
+  text-decoration-color:var(--forest);
+}
+
+.link-cta:hover,
+.view-more:hover{
+  color:var(--primary);
+  border-color:var(--primary);
+  text-decoration-color:var(--primary);
+}
+
+/* Carousel controls */
+.carousel-controls .carousel-btn,
+.xp-nav{
+  color:var(--forest);
+}
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible{
+  outline:3px solid var(--primary);
+  outline-offset:3px;
 }
