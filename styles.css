@@ -1182,3 +1182,259 @@ button:focus-visible{
   outline:3px solid var(--primary);
   outline-offset:3px;
 }
+
+
+
+/* =========================================================
+   FINAL AA CONTRAST PATCH
+   Fixes remaining non-AA / low-visibility areas from review:
+   - hero proof text and links over image
+   - hero lede highlight bars
+   - carousel overlay text on dark overlays
+   - pills/badges on image cards
+   - footer ticker overlap/readability
+   ========================================================= */
+
+/* HERO: light text over the darkened image */
+#hero h1,
+#hero h2,
+#hero .lede,
+#hero .lede *,
+#hero .hero-proof,
+#hero .hero-proof li,
+#hero .hero-meta,
+#hero .hero-meta p,
+#hero .cta,
+#hero .cta a,
+#hero .link-cta{
+  color:var(--grey) !important;
+}
+
+/* Replace the pale underline block that was turning into white bars */
+#hero .lede{
+  display:block;
+  width:fit-content;
+  max-width:min(68ch, 100%);
+  background:rgba(31,31,31,.72) !important;
+  box-shadow:none !important;
+  padding:.18em .28em .22em;
+  border-radius:var(--radius);
+  line-height:1.35;
+}
+
+#hero .hero-proof li{
+  text-shadow:0 1px 2px rgba(0,0,0,.65);
+}
+
+#hero .link-cta{
+  text-decoration-color:var(--grey) !important;
+}
+
+#hero .link-cta:hover{
+  color:var(--gold) !important;
+  text-decoration-color:var(--gold) !important;
+}
+
+/* CASE / CAROUSEL OVERLAYS: force light text on dark overlay */
+.case-card:hover .overlay-inner,
+.case-card:hover .overlay-inner *,
+.carousel-card:hover .overlay-inner,
+.carousel-card:hover .overlay-inner *,
+.case-card:hover h3,
+.case-card:hover p,
+.carousel-card:hover h3,
+.carousel-card:hover p{
+  color:var(--grey) !important;
+}
+
+/* Make overlay titles readable before/after hover too */
+.case-card .overlay-inner h1,
+.case-card .overlay-inner h2,
+.case-card .overlay-inner h3,
+.case-card .overlay-inner p,
+.case-card .overlay-inner a,
+.carousel-card .overlay-inner h1,
+.carousel-card .overlay-inner h2,
+.carousel-card .overlay-inner h3,
+.carousel-card .overlay-inner p,
+.carousel-card .overlay-inner a{
+  color:var(--grey) !important;
+}
+
+/* Dark overlay, not crushed-black image */
+.case-card:hover > a.overlay{
+  background:rgba(31,31,31,.86) !important;
+  opacity:1 !important;
+}
+
+.carousel-card:hover::before{
+  background:rgba(31,31,31,.86) !important;
+  opacity:1 !important;
+}
+
+.case-card:hover img,
+.carousel-card:hover img{
+  filter:saturate(.95) contrast(.95) brightness(.72) !important;
+}
+
+/* Buttons/badges over image cards */
+.logo-badge,
+.carousel-card .overlay-inner a,
+.case-card .overlay-inner a{
+  background:var(--grey) !important;
+  color:var(--forest) !important;
+  border-radius:999px;
+  padding:.32rem .6rem;
+  font-weight:800;
+}
+
+.logo-badge:hover,
+.carousel-card .overlay-inner a:hover,
+.case-card .overlay-inner a:hover{
+  background:var(--gold) !important;
+  color:var(--charcoal) !important;
+}
+
+/* Section headings and body on pale sections */
+#speaking h1,
+#speaking h2,
+#thoughts h1,
+#thoughts h2,
+#portfolio h1,
+#portfolio h2,
+#about-experience h1,
+#about-experience h2{
+  color:var(--forest) !important;
+}
+
+#speaking p,
+#thoughts p,
+#portfolio p,
+#about-experience p,
+#about-experience li{
+  color:var(--forest) !important;
+}
+
+/* About cards: readable, not pale-on-pale */
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{
+  background:var(--grey) !important;
+  color:var(--forest) !important;
+}
+
+#about-experience .carousel-card *,
+#about-experience .carousel-card:hover *{
+  color:var(--forest) !important;
+}
+
+/* Portfolio status pills */
+.pill{
+  color:var(--forest) !important;
+  border-color:var(--forest) !important;
+  background:rgba(255,255,255,.35);
+}
+
+/* Header CTA */
+.nav-chat-btn,
+.nav-chat-btn *{
+  color:var(--grey) !important;
+}
+
+.nav-chat-btn:hover,
+.nav-chat-btn:hover *{
+  color:var(--gold) !important;
+}
+
+/* Ticker: readable and above browser/status overlap */
+.ticker{
+  background:var(--grey) !important;
+  color:var(--forest) !important;
+  border-top:1px solid rgba(26,40,24,.25);
+}
+
+.ticker__item,
+.ticker__item *{
+  color:var(--forest) !important;
+}
+
+.ticker__item::after{
+  color:var(--primary) !important;
+}
+
+/* Footer/nav links on pale backgrounds */
+footer a,
+.footer-callout-wrap a{
+  color:var(--forest) !important;
+  text-decoration-color:var(--forest);
+}
+
+footer a:hover,
+.footer-callout-wrap a:hover{
+  color:var(--primary) !important;
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible{
+  outline:3px solid var(--primary) !important;
+  outline-offset:3px !important;
+}
+
+
+
+/* =========================================================
+   ROLLOVER TEXT AA FIX
+   The first carousel/card rollover had dark text sitting on a
+   dark overlay. Force all rollover copy to light text and keep
+   the CTA pill dark-on-light.
+   ========================================================= */
+
+.case-card:hover .overlay-inner,
+.case-card:hover .overlay-inner h1,
+.case-card:hover .overlay-inner h2,
+.case-card:hover .overlay-inner h3,
+.case-card:hover .overlay-inner h4,
+.case-card:hover .overlay-inner p,
+.case-card:hover .overlay-inner span,
+.case-card:hover .overlay-inner li,
+.carousel-card:hover .overlay-inner,
+.carousel-card:hover .overlay-inner h1,
+.carousel-card:hover .overlay-inner h2,
+.carousel-card:hover .overlay-inner h3,
+.carousel-card:hover .overlay-inner h4,
+.carousel-card:hover .overlay-inner p,
+.carousel-card:hover .overlay-inner span,
+.carousel-card:hover .overlay-inner li{
+  color:#F5F5F5 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.7);
+}
+
+.case-card:hover .overlay-inner a,
+.carousel-card:hover .overlay-inner a{
+  background:#F5F5F5 !important;
+  color:#1A2818 !important;
+  text-shadow:none !important;
+}
+
+.case-card:hover .overlay-inner a:hover,
+.carousel-card:hover .overlay-inner a:hover{
+  background:#C8A96E !important;
+  color:#1F1F1F !important;
+}
+
+/* Keep the overlay dark enough for white text but not so dark it crushes the image */
+.case-card:hover > a.overlay{
+  background:rgba(31,31,31,.82) !important;
+  opacity:1 !important;
+}
+
+.carousel-card:hover::before{
+  background:rgba(31,31,31,.82) !important;
+  opacity:1 !important;
+}
+
+.case-card:hover img,
+.carousel-card:hover img{
+  filter:saturate(.95) contrast(.95) brightness(.82) !important;
+}
