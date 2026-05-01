@@ -28,9 +28,9 @@
    --white   = type colour on dark sections  (currently cream)
    ============================================ */
 :root{
-  --accent:  #2A5A6E;   /* teal      (section background) */
-  --primary: #C8A96E;   /* gold      (accent / pop)       */
-  --white:   #CECAD4;   /* light grey (type on dark)      */
+  --accent:  #CECAD4;   /* light grey  (section background) */
+  --primary: #2A5A6E;   /* teal        (accent / pop)       */
+  --white:   #1A2818;   /* dark forest (type)               */
 
   /* ---- Alternative palettes (uncomment one block to try) ---- */
 
@@ -71,10 +71,10 @@
   */
 
   /* ---- Supporting tokens (rarely need editing) ---- */
-  --bg:#1A2818;                       /* dark forest — deepest tone */
-  --ink:#CECAD4;
-  --ink-70:rgba(206,202,212,.75);
-  --ink-50:rgba(206,202,212,.55);
+  --bg:#C8A96E;                       /* gold — deepest accent / occasional highlight */
+  --ink:#1A2818;
+  --ink-70:rgba(26,40,24,.75);
+  --ink-50:rgba(26,40,24,.55);
 
   --container:max(56px,min(1240px,92vw));
   --radius:5px;               /* <- 5px corners */
