@@ -82,17 +82,17 @@ h1,h2,h3{
 }
 h2{font-size:clamp(1.6rem,3.2vw,2.2rem)}
 h3{font-size:clamp(1.1rem,1.8vw,1.3rem)}
-p{color:var(--white)}
+p{color:var(--ink)}
 a{color:var(--primary);text-decoration:none}
 .container{width:var(--container);margin:auto}
 
 /* ========== Sections ========== */
 .section{padding:min(14vh,3rem) 0}
-.alt-0{background:var(--accent);color:var(--white)}
+.alt-0{background:var(--accent);color:var(--ink)}
 .alt-1{background:var(--primary);color:var(--charcoal)}
 .alt-1 h1,.alt-1 h2,.alt-1 h3{color:var(--grey)}
 .alt-1 p{color:rgba(245,245,245,.82)}
-.alt-1 a{color:var(--gold)}
+.alt-1 a{color:var(--accent)}
 .alt-2{background:var(--accent);color:var(--accent)}
 
 /* ========== Header ========== */
@@ -192,8 +192,8 @@ body.no-scroll{overflow:hidden}
 /* translucent color wash (set to 0 so the photo shows) */
 #hero::before{
   content:""; position:absolute; inset:0;
-  background-color: var(--primary);
-  opacity:0;
+  background:linear-gradient(180deg, rgba(31,31,31,.25) 0%, rgba(31,31,31,.55) 70%, rgba(31,31,31,.72) 100%);
+  opacity:1;
   pointer-events:none;
 }
 
@@ -208,12 +208,12 @@ body.no-scroll{overflow:hidden}
 }
 #hero h2{margin-bottom: 2rem;}
 #hero .lede{
-  margin-top:2rem; max-width:36ch; color:var(--white);
+  margin-top:2rem; max-width:36ch; color:var(--forest);
   font-size:clamp(1.1rem,2.2vh,1.25rem);
   text-align:left;
   display:inline;
-  background: linear-gradient(180deg, var(--accent) 80%, var(--accent) 80%);
-  box-shadow: inset 0 -0.8em 0 var(--accent);
+  background: linear-gradient(180deg, var(--grey) 80%, var(--grey) 80%);
+  box-shadow: inset 0 -0.8em 0 var(--grey);
 }
 
 /* hero layout — single column, hero-left holds all content */
@@ -258,8 +258,8 @@ body.no-scroll{overflow:hidden}
   transition:color .2s ease, text-decoration-color .2s ease, opacity .2s ease;
 }
 .link-cta:hover{
-  color:var(--gold);
-  text-decoration-color:var(--gold);
+  color:var(--charcoal);
+  text-decoration-color:var(--charcoal);
   opacity:.95;
 }
 
@@ -330,7 +330,7 @@ body.no-scroll{overflow:hidden}
 }
 
 /* ========== CASE STUDIES ========== */
-#work h2 {color: var(--white);}
+#work h2 {color: var(--ink);}
 #cases, #case-studies { background:var(--accent); }
 
 .case-grid {
@@ -557,7 +557,7 @@ body.no-scroll{overflow:hidden}
 #thoughts h1,#thoughts h2 {color:var(--grey); }
 #thoughts h3{color: var(--accent);}
 #speaking p,#thoughts p{ color:rgba(245,245,245,.82); }
-#speaking a,#thoughts a{ color:var(--gold); }
+#speaking a,#thoughts a{ color:var(--accent); }
 
 /* Safety — if something inside overlay-inner has class="overlay" */
 .carousel-card .overlay-inner .overlay{
@@ -573,7 +573,7 @@ body.no-scroll{overflow:hidden}
 /* ========== ABOUT + EXPERIENCE ========== */
 #about-experience h4 {font-size: 1.8rem; font-weight: 100; margin-bottom: 1rem;}
 #about-experience li {list-style: none; margin-bottom: 1rem;}
-#about-experience h2, h4, ul {color:var(--white)}
+#about-experience h2, #about-experience h4, #about-experience ul {color:var(--ink)}
 
 .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:28px}
 .span-6{grid-column:span 6}
@@ -586,7 +586,7 @@ body.no-scroll{overflow:hidden}
   display:inline-block; margin-top:1rem; font-weight:800;
   border-bottom:2px solid var(--primary); padding-bottom:4px; color:var(--primary);
 }
-.view-more:hover{color:var(--gold); border-color:var(--gold)}
+.view-more:hover{color:var(--charcoal); border-color:var(--charcoal)}
 
 /* Make role cards visually identical to other carousel cards */
 #about-experience .carousel-card{
@@ -599,7 +599,7 @@ body.no-scroll{overflow:hidden}
   border-radius: 5px;
   padding: 16px;
 }
-#about-experience .carousel-card ul{color: var(--accent);}
+#about-experience .carousel-card ul{color: var(--ink);}
 #about-experience .carousel-card li+li{ margin-block-start: 0rem; }
 
 #about-experience .carousel-card li:last-child {
@@ -868,8 +868,48 @@ footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   font-weight: 800;
   line-height: 1;
 }
-.footer-callout-wrap .cta-inner a:hover { color: var(--gold); }
+.footer-callout-wrap .cta-inner a:hover { color: var(--charcoal); }
 @media (prefers-reduced-motion: reduce) {
   .footer-callout-wrap .slot,
   .footer-callout-wrap .cta-inner { transition: none !important; }
+}
+
+
+/* ========== WCAG AA contrast overrides ========== */
+:where(.alt-0, #cases, #case-studies, #portfolio) :where(p, li, h1, h2, h3, h4){ color:var(--ink); }
+:where(.alt-0, #cases, #case-studies, #portfolio) a{ color:var(--primary); }
+
+:where(#speaking, #thoughts, .alt-1) :where(p, li){ color:var(--grey); }
+:where(#speaking, #thoughts, .alt-1) :where(h1, h2){ color:var(--grey); }
+:where(#speaking, #thoughts, .alt-1) a{ color:var(--accent); text-decoration-thickness:2px; text-underline-offset:3px; }
+
+.case-card .overlay-inner :where(p, li){ color:var(--grey); }
+.case-card .overlay-inner h3{ color:var(--accent); }
+.carousel-card .overlay-inner :where(p, li){ color:var(--grey); }
+.carousel-card .overlay-inner h3{ color:var(--accent); }
+
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{
+  color:var(--ink) !important;
+  background:var(--grey) !important;
+}
+#about-experience .carousel-card :where(p, li, h3, h4, ul){
+  color:var(--ink) !important;
+}
+
+.link-cta:hover,
+.view-more:hover,
+.footer-callout-wrap .cta-inner a:hover{
+  color:var(--charcoal);
+  border-color:var(--charcoal);
+  text-decoration-color:var(--charcoal);
+}
+
+:focus-visible{
+  outline:3px solid var(--charcoal);
+  outline-offset:3px;
+}
+:where(#speaking, #thoughts, .alt-1) :focus-visible,
+:where(.case-card, .carousel-card) :focus-visible{
+  outline-color:var(--grey);
 }
