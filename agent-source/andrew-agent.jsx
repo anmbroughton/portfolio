@@ -12,7 +12,7 @@ function inferPersona(messages) {
   s("colleague", ["your team","engage with design","my project","my program","help with","request design","sprint","what does design do"]);
   var max = Math.max.apply(null, Object.values(sc));
   if (max === 0) return "general";
-  return Object.keys(sc).find(function(k) { return sc[k] === max; }); 
+  return Object.keys(sc).find(function(k) { return sc[k] === max; });
 }
 
 var TOPICS = {
