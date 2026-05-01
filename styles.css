@@ -1438,3 +1438,45 @@ button:focus-visible,
 .carousel-card:hover img{
   filter:saturate(.95) contrast(.95) brightness(.82) !important;
 }
+
+
+
+/* =========================================================
+   SUBTEXT AA FIX — carousel rollover descriptions
+   Some existing section rules were still overriding rollover
+   paragraph colour back to forest/dark. This targets the
+   description text with higher specificity.
+   ========================================================= */
+
+#speaking .carousel-card:hover .overlay-inner p,
+#speaking .carousel-card:hover .overlay-inner .subtitle,
+#speaking .carousel-card:hover .overlay-inner .sub,
+#speaking .carousel-card:hover .overlay-inner .description,
+#thoughts .carousel-card:hover .overlay-inner p,
+#thoughts .carousel-card:hover .overlay-inner .subtitle,
+#thoughts .carousel-card:hover .overlay-inner .sub,
+#thoughts .carousel-card:hover .overlay-inner .description,
+.carousel-card:hover .overlay-inner p,
+.carousel-card:hover .overlay-inner p *,
+.carousel-card:hover .overlay-inner small,
+.carousel-card:hover .overlay-inner div,
+.carousel-card:hover .overlay-inner span{
+  color:#F5F5F5 !important;
+  opacity:1 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.75);
+}
+
+/* Make the overlay slightly stronger so paragraph text clears AA */
+#speaking .carousel-card:hover::before,
+#thoughts .carousel-card:hover::before,
+.carousel-card:hover::before{
+  background:rgba(31,31,31,.9) !important;
+  opacity:1 !important;
+}
+
+/* Do not let image brightness reduce text contrast */
+#speaking .carousel-card:hover img,
+#thoughts .carousel-card:hover img,
+.carousel-card:hover img{
+  filter:saturate(.9) contrast(.9) brightness(.68) !important;
+}
