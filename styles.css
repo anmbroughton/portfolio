@@ -3337,3 +3337,113 @@ nav a span.text{ line-height:1; display:inline-block; }
 }
 .ticker__track{ height:100% !important; align-items:center; }
 body{ padding-bottom:72px !important; }
+
+
+/* ============================================================
+   HERO v3 — crimson band, top-aligned portrait,
+   proof items as individual white blocks, logos under the image
+   ============================================================ */
+
+#hero{
+  background:var(--primary) !important;
+  background-image:none !important;
+}
+
+.hero-grid{
+  align-items:start !important;          /* top-align both columns */
+}
+
+/* ---- type on crimson ---- */
+#hero h1{ color:#fff !important; }
+
+#hero .lede{
+  background:#FFFFFF !important;
+  color:var(--ink) !important;
+  border-radius:32px !important;
+  padding:1.3rem 1.5rem !important;
+  max-width:44ch !important;
+}
+
+/* ---- proof list: each li is its own white block ---- */
+#hero .hero-proof{
+  display:flex !important;
+  flex-direction:column;
+  gap:.6rem !important;
+  background:transparent !important;
+  padding:0 !important;
+  margin-top:.6rem !important;
+  max-width:44ch !important;
+  list-style:none !important;
+  width:auto;
+}
+#hero .hero-proof li{
+  background:#FFFFFF !important;
+  color:var(--ink) !important;
+  border-radius:32px !important;
+  padding:.95rem 1.5rem !important;
+  margin:0 !important;
+  font-size:clamp(.9rem,1.05vw,1rem) !important;
+  line-height:1.45 !important;
+  width:fit-content;
+  max-width:100%;
+}
+
+/* ---- CTAs on crimson ---- */
+#hero .link-cta{
+  background:#FFFFFF !important;
+  color:var(--ink) !important;
+  border:0 !important;
+}
+#hero .link-cta:hover{
+  background:var(--ink) !important;
+  color:#fff !important;
+}
+
+/* ---- portrait: top aligned, no stretch ---- */
+.hero-right{
+  display:flex !important;
+  flex-direction:column;
+  align-self:start !important;
+  gap:1.5rem;
+}
+.hero-portrait{
+  width:100%;
+  border-radius:32px;
+  overflow:hidden;
+  background:rgba(255,255,255,.12);
+  align-self:start;
+}
+.hero-portrait img{
+  display:block;
+  width:100%;
+  height:clamp(360px,52vh,560px);
+  object-fit:cover;
+  object-position:center 18%;
+}
+
+/* ---- trusted-by sits under the portrait ---- */
+#hero .hero-meta{
+  margin:0 !important;
+}
+#hero .hero-meta p{
+  color:rgba(255,255,255,.75) !important;
+  font-size:.72rem !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase;
+  margin-bottom:.9rem !important;
+}
+#hero .logo-strip{
+  display:flex !important;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1.5rem !important;
+  grid-template-columns:none !important;
+}
+#hero .logo-strip img{ height:28px !important; }
+
+@media (max-width:900px){
+  .hero-grid{ grid-template-columns:1fr !important; }
+  .hero-right{ order:-1; }
+  .hero-portrait img{ height:clamp(260px,38vh,400px); }
+  #hero .hero-proof li{ width:100%; }
+}
