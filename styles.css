@@ -1977,3 +1977,121 @@ footer.alt-0 a:hover{color:var(--primary);}
   color:var(--ink) !important;
   border:0;
 }
+
+
+/* ============================================================
+   CARD ROLLOVER — caption detaches into a solid colour panel
+   (Edenspiekermann-style)
+   ============================================================ */
+
+.case-card,
+.carousel-card{
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  background:var(--ink);
+  isolation:isolate;
+  transition:transform .45s cubic-bezier(.22,.61,.36,1);
+}
+.case-card:hover,
+.carousel-card:hover{transform:translateY(-4px);}
+
+.case-card img,
+.carousel-card img{
+  display:block;
+  width:100%;
+  border-radius:24px;
+  transform-origin:center top;
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),
+             filter .45s ease,
+             opacity .45s ease;
+}
+/* image settles back + dims slightly so the caption panel reads as foreground */
+.case-card:hover img,
+.carousel-card:hover img{
+  transform:scale(1.015);
+  filter:brightness(.72) saturate(.95);
+}
+
+/* ---- caption: translucent band by default ---- */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  position:absolute;
+  top:auto; bottom:0; left:0; right:0;
+  max-width:none;
+  opacity:1;
+  transform:none;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  gap:.3rem;
+  padding:1.6rem 1.6rem 1.5rem;
+  color:#fff;
+  pointer-events:none;
+  border-radius:0 0 24px 24px;
+  background:linear-gradient(180deg,
+              rgba(10,10,10,0)   0%,
+              rgba(10,10,10,.85) 55%,
+              rgba(10,10,10,.95) 100%);
+  transition:background .4s ease,
+             inset .45s cubic-bezier(.22,.61,.36,1),
+             border-radius .4s ease,
+             padding .4s ease;
+}
+
+/* ---- caption on hover: solid crimson panel, inset with its own radius ---- */
+.case-card:hover .overlay-inner,
+.carousel-card:hover .overlay-inner{
+  inset:auto .75rem .75rem .75rem;
+  background:var(--primary);
+  border-radius:18px;
+  padding:1.4rem 1.5rem;
+}
+
+.case-card .overlay-inner h3,
+.carousel-card .overlay-inner h3{
+  color:#fff;
+  margin:0;
+  font-size:clamp(1.1rem,1.5vw,1.4rem);
+  letter-spacing:-.02em;
+  transition:color .3s ease;
+}
+.case-card .overlay-inner p,
+.carousel-card .overlay-inner p{
+  color:rgba(255,255,255,.85);
+  margin:0;
+  font-size:.94rem;
+  line-height:1.45;
+  transition:color .3s ease;
+}
+.case-card:hover .overlay-inner h3,
+.carousel-card:hover .overlay-inner h3,
+.case-card:hover .overlay-inner p,
+.carousel-card:hover .overlay-inner p{color:#fff;}
+
+/* neutralise the old full-card wash + tint layers */
+.case-card > a.overlay{
+  position:absolute; inset:0; z-index:4;
+  background:transparent !important;
+  opacity:1 !important;
+  pointer-events:auto;
+}
+.carousel-card::before{display:none !important;}
+.case-card:hover img{filter:brightness(.72) saturate(.95) !important;}
+.carousel-card:hover img{filter:brightness(.72) saturate(.95) !important;}
+
+/* badge stays above everything */
+.logo-badge{z-index:5;}
+
+/* About & Experience cards are text panels — opt them out entirely */
+#about-experience .carousel-card{
+  transform:none !important;
+  background:var(--grey-soft) !important;
+}
+#about-experience .carousel-card:hover{transform:none !important;}
+
+@media (prefers-reduced-motion: reduce){
+  .case-card,.carousel-card,
+  .case-card img,.carousel-card img,
+  .case-card .overlay-inner,.carousel-card .overlay-inner{transition:none !important;}
+}
