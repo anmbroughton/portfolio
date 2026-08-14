@@ -156,7 +156,7 @@ const TypingIndicator = () => (
 );
 const Bubble = ({ text, isUser }) => (
   <div style={{ display: "flex", justifyContent: isUser ? "flex-end" : "flex-start", padding: "4px 20px", animation: "messageIn 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(206,202,212,0.15)" : "rgba(200,169,110,0.2)", color: "#CECAD4", fontSize: 15, lineHeight: 1.6, fontFamily: "'Outfit', sans-serif", border: isUser ? "1px solid rgba(206,202,212,0.15)" : "1px solid rgba(200,169,110,0.12)", whiteSpace: "pre-wrap" }}>{text}</div>
+    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(206,202,212,0.15)" : "rgba(200,169,110,0.2)", color: "#CECAD4", fontSize: 15, lineHeight: 1.6, fontFamily: "'Outfit', sans-serif", border: isUser ? "1px solid rgba(206,202,212,0.15)" : "1px solid rgba(200,169,110,0.12)", whiteSpace: "pre-wrap", wordBreak: "break-word", overflowWrap: "anywhere" }}>{text}</div>
   </div>
 );
 const Chip = ({ label, onClick }) => (

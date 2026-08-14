@@ -157,7 +157,11 @@ nav a:hover::after{width:100%}
   box-shadow:0 20px 60px rgba(0,0,0,.4);
   position:relative;
   display:flex;
+  flex-shrink:0;                  /* never let backdrop flex shrink it */
+  flex-grow:0;                    /* never let content grow it */
+  box-sizing:border-box;
 }
+.ai-andrew-modal__body{min-width:0;}   /* prevents long unbreakable content from expanding the modal */
 @media (max-width: 520px){
   .ai-andrew-backdrop{padding:0}
   .ai-andrew-modal{width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0;}
