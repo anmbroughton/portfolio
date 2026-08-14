@@ -3229,3 +3229,111 @@ nav a span.text{ line-height:1; display:inline-block; }
   background:var(--ink) !important;
   border-radius:32px !important;
 }
+
+
+/* ============================================================
+   HERO v2 — text left, portrait right, no background photo
+   ============================================================ */
+
+#hero{
+  background-image:none !important;
+  background-color:var(--grey) !important;
+  min-height:auto !important;
+  display:block !important;
+  padding:0 !important;
+}
+#hero::before{ display:none !important; content:none !important; }
+
+#hero .container{
+  padding-top:clamp(7.5rem,15vh,11rem) !important;
+  padding-bottom:clamp(4rem,9vh,7rem) !important;
+}
+
+.hero-grid{
+  display:grid !important;
+  grid-template-columns:1.05fr .95fr !important;
+  align-items:center !important;
+  gap:clamp(2rem,5vw,4rem) !important;
+}
+.hero-left{ max-width:none !important; }
+
+/* portrait block */
+.hero-right{ display:block !important; }
+.hero-portrait{
+  width:100%;
+  border-radius:32px;
+  overflow:hidden;
+  background:var(--grey-soft);
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1);
+}
+.hero-portrait:hover{ border-radius:64px; }
+.hero-portrait img{
+  display:block;
+  width:100%;
+  height:clamp(380px,58vh,620px);
+  object-fit:cover;
+  object-position:center 22%;
+  border-radius:inherit;
+}
+
+/* type now sits on white — recolour off the photo treatment */
+#hero h1{
+  color:var(--ink) !important;
+  font-size:clamp(2rem,3.6vw,3.5rem) !important;
+  line-height:1.02 !important;
+  letter-spacing:-.03em !important;
+  max-width:16ch !important;
+  margin-bottom:1.25rem !important;
+}
+#hero .lede{
+  background:var(--ink) !important;
+  color:#fff !important;
+  border-radius:32px !important;
+  padding:1.3rem 1.5rem !important;
+  max-width:42ch !important;
+  margin-top:0 !important;
+}
+#hero .hero-proof{
+  background:var(--primary) !important;
+  color:#fff !important;
+  border-radius:32px !important;
+  padding:1.2rem 1.5rem !important;
+  margin-top:.85rem !important;
+  max-width:42ch !important;
+}
+#hero .hero-proof li{ color:#fff !important; }
+
+#hero .link-cta{
+  background:transparent !important;
+  color:var(--ink) !important;
+  border:1px solid rgba(10,10,10,.25) !important;
+}
+#hero .link-cta:hover{
+  background:var(--ink) !important;
+  color:#fff !important;
+  border-color:var(--ink) !important;
+}
+#hero .hero-meta p{
+  color:rgba(10,10,10,.55) !important;
+  font-size:.72rem !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase;
+}
+.logo-strip img,.logo-strip svg{ height:30px !important; }
+
+@media (max-width:900px){
+  .hero-grid{ grid-template-columns:1fr !important; }
+  .hero-right{ order:-1; margin-bottom:1.5rem; }
+  .hero-portrait img{ height:clamp(280px,40vh,420px); }
+}
+
+/* ============================================================
+   TICKER — match the nav bar height exactly
+   ============================================================ */
+:root{ --ticker-h:72px; }
+.ticker{
+  height:72px !important;
+  display:flex; align-items:center;
+}
+.ticker__track{ height:100% !important; align-items:center; }
+body{ padding-bottom:72px !important; }
