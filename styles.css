@@ -172,13 +172,19 @@ nav a:hover::after{width:100%}
 }
 .ai-andrew-modal__header h2{position:absolute; left:-9999px;}
 .ai-andrew-modal__close{
-  background:rgba(0,0,0,.35); border:0; color:#fff;
-  font-size:1.4rem; line-height:1; cursor:pointer;
-  width:34px; height:34px; border-radius:999px;
+  background:#C8A96E;         /* gold */
+  border:0;
+  color:#1A2818;              /* dark forest icon for contrast on gold */
+  font-size:1.3rem;
+  line-height:1;
+  cursor:pointer;
+  width:34px; height:34px;
+  border-radius:50%;
+  padding:0;
   display:inline-flex; align-items:center; justify-content:center;
-  backdrop-filter:blur(4px);
+  transition:transform .15s ease, background .2s ease;
 }
-.ai-andrew-modal__close:hover{background:rgba(0,0,0,.55)}
+.ai-andrew-modal__close:hover{background:#CECAD4; transform:scale(1.05);}
 .ai-andrew-modal__body{padding:0; flex:1; min-height:0; display:flex;}
 body.no-scroll{overflow:hidden}
 
