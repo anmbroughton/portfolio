@@ -3447,3 +3447,57 @@ body{ padding-bottom:72px !important; }
   .hero-portrait img{ height:clamp(260px,38vh,400px); }
   #hero .hero-proof li{ width:100%; }
 }
+
+
+/* ============================================================
+   TWEAKS — close btn position, hero lede, CTA colour
+   ============================================================ */
+
+/* ---- 1. Chat close button floats to the right ---- */
+.ai-andrew-modal__header{
+  position:absolute !important;
+  top:14px !important;
+  right:14px !important;
+  left:auto !important;
+  bottom:auto !important;
+  width:auto !important;
+  display:flex !important;
+  justify-content:flex-end !important;
+  z-index:20 !important;
+}
+.ai-andrew-modal{ overflow:hidden !important; }
+.ai-andrew-modal__close{
+  margin-left:auto !important;
+  width:38px !important; height:38px !important;
+  border-radius:50% !important;
+  background:var(--primary) !important;
+  color:#fff !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+.ai-andrew-modal__close:hover{ background:var(--ink) !important; }
+
+/* ---- 2. Hero lede: plain white text, no block ---- */
+#hero .lede{
+  background:none !important;
+  background-color:transparent !important;
+  color:#fff !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  box-shadow:none !important;
+  display:block !important;
+  max-width:46ch !important;
+  margin-top:0 !important;
+  margin-bottom:1.25rem !important;
+}
+
+/* ---- 3. Hero CTAs: crimson text on white at rest ---- */
+#hero .link-cta{
+  background:#FFFFFF !important;
+  color:var(--primary) !important;
+  border:0 !important;
+}
+#hero .link-cta:hover{
+  background:var(--ink) !important;
+  color:#FFFFFF !important;
+}
