@@ -3108,3 +3108,124 @@ footer .footer-copy{
   footer .footer-nav{grid-column:1 / -1;}
   footer .footer-link{font-size:1rem !important;}
 }
+
+
+/* ============================================================
+   FIX PASS — close btn, About section, nav icons, hero proof
+   ============================================================ */
+
+/* ---- 1. Chat close button: stop the modal clipping it ---- */
+.ai-andrew-modal{ overflow:visible !important; }
+.ai-andrew-modal__body{
+  overflow:hidden !important;
+  border-radius:32px !important;
+}
+.ai-andrew-modal__header{
+  position:absolute !important;
+  top:-14px !important;
+  right:-14px !important;
+  z-index:20 !important;
+  overflow:visible !important;
+}
+.ai-andrew-modal__close{
+  -webkit-appearance:none; appearance:none;
+  width:40px !important; height:40px !important;
+  min-width:40px; min-height:40px;
+  border-radius:50% !important;
+  background:var(--primary) !important;
+  color:#fff !important;
+  border:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  display:inline-flex !important;
+  align-items:center; justify-content:center;
+  font-size:1.35rem; line-height:1; padding:0; margin:0;
+  flex-shrink:0;
+}
+.ai-andrew-modal__close:hover{background:var(--ink) !important;}
+@media (max-width:520px){
+  .ai-andrew-modal{overflow:hidden !important;}
+  .ai-andrew-modal__header{top:12px !important; right:12px !important;}
+}
+
+/* ---- 2. About & Experience: crimson section, white cards ---- */
+#about-experience{
+  background:var(--primary) !important;
+  color:#fff !important;
+}
+#about-experience :where(h2,h3,h4,p,li,span,strong){ color:#fff !important; }
+#about-experience h2{ color:#fff !important; }
+#about-experience .pill{
+  background:rgba(255,255,255,.18) !important;
+  color:#fff !important;
+  border:0 !important;
+}
+
+/* cards flip to white with black text */
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{
+  background:#FFFFFF !important;
+  border-radius:32px !important;
+  padding:1.6rem 1.7rem 1.7rem !important;
+}
+#about-experience .carousel-card:hover{ border-radius:64px !important; }
+#about-experience .carousel-card :where(h3,h4,p,li,span,strong,ul,em),
+#about-experience .carousel-card:hover :where(h3,h4,p,li,span,strong,ul,em){
+  color:var(--ink) !important;
+  opacity:1 !important;
+}
+#about-experience .carousel-card p,
+#about-experience .carousel-card li{ color:rgba(10,10,10,.78) !important; }
+#about-experience .carousel-card h3{ color:var(--ink) !important; }
+
+/* carousel arrows readable on crimson */
+#about-experience .carousel-btn,
+#about-experience .carousel-controls .carousel-btn{
+  color:#fff !important;
+}
+#about-experience .carousel-controls .carousel-btn:hover{ color:var(--ink) !important; }
+
+/* ---- 3. Nav icons align with their labels ---- */
+nav a{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:.4rem;
+}
+nav a svg{
+  display:block !important;
+  vertical-align:middle !important;
+  flex-shrink:0;
+  position:relative;
+  top:0 !important;
+}
+nav a span.text{ line-height:1; display:inline-block; }
+.nav-chat-btn{ align-items:center !important; }
+.nav-chat-btn svg{ display:block; flex-shrink:0; }
+
+/* ---- 4. Hero proof list: crimson block like the lede ---- */
+#hero .hero-proof{
+  display:inline-block !important;
+  background:var(--primary) !important;
+  color:#fff !important;
+  border-radius:32px !important;
+  padding:1.3rem 1.6rem !important;
+  margin:1rem 0 0 0 !important;
+  list-style:none !important;
+  max-width:46ch;
+  width:fit-content;
+}
+#hero .hero-proof li{
+  color:#fff !important;
+  display:block !important;
+  margin:.25rem 0 !important;
+  font-size:clamp(.9rem,1.05vw,1rem) !important;
+  line-height:1.55 !important;
+}
+#hero .hero-proof li:first-child{margin-top:0 !important;}
+#hero .hero-proof li:last-child{margin-bottom:0 !important;}
+
+/* lede keeps its own block, sits above the proof list */
+#hero .lede{
+  background:var(--ink) !important;
+  border-radius:32px !important;
+}
