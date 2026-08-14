@@ -2006,7 +2006,6 @@ footer.alt-0 a:hover{color:var(--primary);}
   margin:0;
   font-size:clamp(1.1rem,1.5vw,1.4rem);
   letter-spacing:-.02em;
-  transition:color .3s ease;
 }
 .case-card .overlay-inner p,
 .carousel-card .overlay-inner p{
@@ -2014,7 +2013,6 @@ footer.alt-0 a:hover{color:var(--primary);}
   margin:0;
   font-size:.94rem;
   line-height:1.45;
-  transition:color .3s ease;
 }
 .case-card:hover .overlay-inner h3,
 .carousel-card:hover .overlay-inner h3,
@@ -2826,4 +2824,66 @@ header{
 @media (max-width:640px){
   header{border-radius:0 0 20px 20px !important;}
   .brand{font-size:1.1rem !important;}
+}
+
+
+/* ============================================================
+   CARD TEXT — solid white, never animates colour
+   ============================================================ */
+.case-card .overlay-inner, .carousel-card .overlay-inner,
+.case-card:hover .overlay-inner, .carousel-card:hover .overlay-inner,
+.case-card .overlay-inner :where(h3,h4,p,li,span,strong,em,div),
+.carousel-card .overlay-inner :where(h3,h4,p,li,span,strong,em,div),
+.case-card:hover .overlay-inner :where(h3,h4,p,li,span,strong,em,div),
+.carousel-card:hover .overlay-inner :where(h3,h4,p,li,span,strong,em,div),
+#work .case-card .overlay-inner :where(h3,p,strong),
+#work .case-card:hover .overlay-inner :where(h3,p,strong),
+#speaking .carousel-card .overlay-inner :where(h3,p,strong),
+#speaking .carousel-card:hover .overlay-inner :where(h3,p,strong),
+#thoughts .carousel-card .overlay-inner :where(h3,p,strong),
+#thoughts .carousel-card:hover .overlay-inner :where(h3,p,strong),
+#about-experience .carousel-card :where(h3,h4,p,li,span,strong,em,ul),
+#about-experience .carousel-card:hover :where(h3,h4,p,li,span,strong,em,ul){
+  color:#FFFFFF !important;
+  opacity:1 !important;
+  transition:none !important;
+}
+/* keep the radius animation, just not on colour */
+.case-card img, .carousel-card img,
+.case-card .overlay-inner, .carousel-card .overlay-inner,
+.case-card:hover img, .carousel-card:hover img,
+.case-card:hover .overlay-inner, .carousel-card:hover .overlay-inner{
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+
+/* ============================================================
+   TICKER — mirrors the header, curve on the top
+   ============================================================ */
+.ticker{
+  position:fixed; left:0; right:0; bottom:0;
+  height:var(--ticker-h);
+  background:var(--cream) !important;
+  color:var(--ink) !important;
+  border:0 !important;
+  border-top:0 !important;
+  border-radius:32px 32px 0 0 !important;
+  overflow:hidden;
+  z-index:9999;
+  cursor:pointer;
+}
+.ticker__item{
+  color:var(--ink) !important;
+  font-family:"GT Standard L", system-ui, sans-serif;
+  font-weight:500;
+  font-size:.85rem;
+  letter-spacing:.02em;
+}
+.ticker__item::after{color:var(--primary) !important;}
+
+@media (max-width:640px){
+  .ticker{border-radius:20px 20px 0 0 !important;}
 }
