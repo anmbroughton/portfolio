@@ -29,15 +29,16 @@
    ============================================ */
 :root{
   /* core three */
-  --accent:  #F5F5F5;   /* off-white — section background */
-  --primary: #4B5320;   /* army green — accent / pop      */
-  --white:   #111111;   /* near-black — type              */
+  --accent:  #FFFFFF;   /* pure white — section background */
+  --primary: #E63946;   /* crimson    — accent / pop        */
+  --white:   #0A0A0A;   /* near-black — type                */
 
   /* greyscale ramp */
-  --grey:    #F5F5F5;
+  --grey:    #FFFFFF;
+  --grey-soft:#F5F5F5;
   --grey-mid:#8A8A8A;
-  --charcoal:#1F1F1F;
-  --black:   #111111;
+  --charcoal:#0A0A0A;
+  --black:   #0A0A0A;
 
   /* legacy aliases / system colours */
   --gold:   var(--primary);
@@ -1506,117 +1507,290 @@ button:focus-visible,
 }
 
 
-/* ============================================
-   EDITORIAL LAYER — big type, generous space,
-   text-led links. Type stays GT Standard (Grilli).
-   ============================================ */
 
-/* Hero lede: quiet, wide-set body copy under the display headline */
-#hero .lede{
-  margin-top:1.75rem;
-  max-width:46ch;
-  font-size:clamp(1.05rem,1.5vw,1.35rem);
+
+/* ============================================================
+   EDITORIAL LAYER — white canvas, crimson accent, soft cards
+   Type stays GT Standard (Grilli Type).
+   ============================================================ */
+
+body{background:var(--grey);}
+
+/* ---------- Header: white, sticky, plain nav + black pill CTA ---------- */
+header{
+  background:var(--grey);
+  backdrop-filter:none;
+  border-bottom:1px solid rgba(10,10,10,.08);
+}
+.header-inner{padding:1.25rem 0;}
+.brand .name{font-weight:900; letter-spacing:-.02em;}
+.brand .role{font-weight:400; opacity:.5;}
+nav{display:flex; align-items:center;}
+nav a{
+  margin-left:2rem;
+  font-weight:500;
+  font-size:.98rem;
+  color:var(--ink);
+  letter-spacing:0;
+}
+nav a::after{background:var(--primary); height:1px; bottom:-3px;}
+
+.nav-chat-btn{
+  margin-left:2rem;
+  background:var(--ink);
+  color:var(--grey);
+  border:0;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.98rem;
+  padding:.85rem 1.6rem;
+  letter-spacing:0;
+}
+.nav-chat-btn:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:none;
+  opacity:1;
+}
+
+/* ---------- Numbered section headings (01 / 02 / 03 …) ---------- */
+main{counter-reset:sec;}
+.section h2{
+  counter-increment:sec;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  align-items:start;
+  gap:clamp(1.25rem,3vw,2.5rem);
+  max-width:20ch;
+  font-size:clamp(2.4rem,6vw,5.25rem);
+  line-height:1;
+  letter-spacing:-.035em;
+  margin-bottom:clamp(2rem,5vh,3.5rem);
+}
+.section h2::before{
+  content:"0" counter(sec);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:clamp(56px,6vw,90px);
+  height:clamp(56px,6vw,90px);
+  border:1.5px solid var(--primary);
+  border-radius:50%;
+  color:var(--primary);
+  font-family:"GT Standard L",system-ui,sans-serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1rem,1.5vw,1.5rem);
+  letter-spacing:0;
+  flex-shrink:0;
+}
+#hero h1::before{content:none;}
+
+/* section intro paragraph sits under the heading, indented to the type column */
+.section > .container > p:first-of-type{
+  max-width:52ch;
+  font-size:clamp(1.05rem,1.35vw,1.25rem);
   line-height:1.5;
+  margin-bottom:clamp(2.5rem,6vh,4rem);
+}
+
+/* ---------- Cards: big radius, colour band with title always visible ---------- */
+.case-grid{gap:clamp(1.25rem,2.5vw,2rem);}
+.case-card,
+.carousel-card{
+  border-radius:24px;
+  overflow:hidden;
+  background:var(--ink);
+  isolation:isolate;
+}
+.case-card img,
+.carousel-card img{
+  border-radius:0;
+  display:block;
+  width:100%;
+  transition:transform .5s cubic-bezier(.22,.61,.36,1), filter .35s ease;
+  filter:none;
+}
+.case-card:hover img,
+.carousel-card:hover img{transform:scale(1.03); filter:none;}
+
+/* kill the old hover-wash + hidden-overlay behaviour */
+.case-card > a.overlay{background:transparent; opacity:0 !important;}
+.carousel-card::before{display:none;}
+
+/* title band pinned to the bottom, always visible */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  position:absolute;
+  top:auto; bottom:0; left:0; right:0;
+  max-width:none;
+  opacity:1;
+  transform:none;
+  padding:1.75rem 1.75rem 1.6rem;
+  background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,.88) 55%, rgba(10,10,10,.96) 100%);
+  color:#fff;
+  pointer-events:none;
+  gap:.35rem;
+}
+.case-card h3,
+.carousel-card h3{
+  color:#fff;
+  font-size:clamp(1.15rem,1.6vw,1.5rem);
+  letter-spacing:-.02em;
+  margin:0;
+}
+.case-card p,
+.carousel-card p{
+  color:rgba(255,255,255,.82);
+  font-size:.95rem;
+  line-height:1.45;
+  margin:0;
+}
+.case-card .overlay-inner p + p{margin-top:.3rem;}
+
+/* badge becomes a small pill top-left */
+.logo-badge{
+  top:1.1rem; left:1.1rem; bottom:auto;
+  background:rgba(255,255,255,.92);
+  color:var(--ink);
+  border-radius:999px;
+  padding:.4rem .85rem;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+/* ---------- Hero ---------- */
+#hero{min-height:92vh;}
+#hero::before{
+  background:linear-gradient(180deg, rgba(10,10,10,.25) 0%, rgba(10,10,10,.6) 65%, rgba(10,10,10,.8) 100%);
+}
+#hero h1{
+  font-size:clamp(2.6rem,7vw,7rem);
+  line-height:.98;
+  letter-spacing:-.035em;
+  max-width:17ch;
+  color:#fff;
+}
+#hero .lede{
+  display:block;
   background:none;
   box-shadow:none;
-  display:block;
-  color:var(--grey);
+  color:rgba(255,255,255,.9);
+  max-width:48ch;
+  font-size:clamp(1.05rem,1.4vw,1.3rem);
+  line-height:1.5;
+  margin-top:1.5rem;
 }
-
-/* Hero proof list — small, spaced, secondary */
 .hero-proof{
-  margin:2.5rem 0 0;
+  margin:2.25rem 0 0;
   font-size:.95rem;
-  line-height:1.9;
-  color:rgba(245,245,245,.78);
+  line-height:1.85;
+  color:rgba(255,255,255,.72);
 }
 .hero-proof li{margin:0;}
-
-/* Trusted-by strip sits low and quiet */
-.hero-meta{margin-top:3.5rem;}
+.hero-meta{margin-top:3rem;}
 .hero-meta p{
-  font-size:.8rem;
-  letter-spacing:.08em;
+  font-size:.72rem;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  opacity:.65;
-  margin-bottom:1rem;
+  color:rgba(255,255,255,.6);
+  margin-bottom:1.1rem;
 }
 
-/* Section headings get room to breathe */
-.section h2{margin-bottom:clamp(2.5rem,6vh,4.5rem);}
-
-/* Case cards: flat, no rounding, image-forward */
-.case-card{border-radius:0;}
-.case-card img{border-radius:0;}
-.carousel-card{border-radius:0;}
-.carousel-card img{border-radius:0;}
-
-/* Badges become plain small caps labels, not pills */
-.logo-badge{
-  background:transparent;
-  color:var(--grey);
-  border-radius:0;
-  padding:0;
-  left:1.25rem;
-  bottom:1.25rem;
-  font-size:.78rem;
-  font-weight:500;
-  letter-spacing:.06em;
-  text-transform:uppercase;
+/* ---------- Links / CTAs ---------- */
+.cta{gap:1rem; margin-top:2.5rem;}
+.link-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-weight:600;
+  font-size:.98rem;
+  color:var(--ink);
+  background:var(--grey);
+  border-radius:999px;
+  padding:.85rem 1.6rem;
+  text-decoration:none;
+  transition:background .2s ease, color .2s ease;
 }
+.link-cta:hover{background:var(--primary); color:#fff; opacity:1;}
+#hero .link-cta{background:#fff; color:var(--ink);}
+#hero .link-cta:hover{background:var(--primary); color:#fff;}
 
-/* Portfolio table — editorial ledger */
+/* ---------- Portfolio table: clean ledger ---------- */
 .table thead th{
   font-size:.72rem;
-  font-weight:500;
+  font-weight:600;
   letter-spacing:.1em;
   text-transform:uppercase;
-  border-bottom:1px solid var(--ink);
+  color:var(--grey-mid);
+  border-bottom:1px solid rgba(10,10,10,.15);
   padding-bottom:1rem;
 }
 .table tbody td{
   font-size:.95rem;
-  padding:1.1rem .4rem;
-  border-bottom:1px solid rgba(17,17,17,.12);
+  padding:1.15rem .4rem;
+  border-bottom:1px solid rgba(10,10,10,.08);
+  color:var(--ink);
 }
 .pill{
-  border:0;
-  border-radius:0;
-  padding:0;
-  font-weight:500;
-  font-size:.95rem;
+  border:0; border-radius:999px;
+  padding:.3rem .7rem;
+  background:rgba(10,10,10,.06);
   color:var(--ink);
-  opacity:.55;
+  font-weight:500;
+  font-size:.8rem;
+  letter-spacing:0;
+  text-transform:none;
 }
 
-/* Ticker: quiet monospaced-feeling rail */
-.ticker{
+/* ---------- Footer callout: black slab, big type ---------- */
+.footer-callout-wrap{
   background:var(--ink);
-  color:var(--grey);
-  border-top:0;
+  color:#fff;
+  border-radius:24px;
+  padding:clamp(3rem,8vh,6rem) clamp(1.5rem,4vw,3rem);
+  margin-bottom:clamp(3rem,8vh,5rem);
 }
-.ticker__item{
-  font-weight:500;
-  font-size:.82rem;
-  letter-spacing:.04em;
+.footer-callout-wrap .chip{color:#fff;}
+.footer-callout-wrap .cta-panel{color:#fff;}
+.footer-callout-wrap .cta-inner a{
+  color:var(--ink);
+  background:#fff;
+  border-radius:999px;
+  padding:.9rem 1.7rem;
+  font-size:1rem;
+  font-weight:600;
 }
+.footer-callout-wrap .cta-inner a:hover{background:var(--primary); color:#fff;}
+.chip{font-size:clamp(2rem,5.5vw,4.5rem); letter-spacing:-.035em;}
+.cta-inner{font-size:1rem; letter-spacing:0;}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid rgba(10,10,10,.1);}
+footer .container{font-size:.92rem;}
+footer a{color:var(--ink);}
+footer a:hover{color:var(--primary);}
+
+/* ---------- Ticker: black rail ---------- */
+.ticker{background:var(--ink); color:#fff; border:0;}
+.ticker__item{font-weight:500; font-size:.82rem; letter-spacing:.03em;}
 .ticker__item::after{color:var(--primary);}
 
-/* Nav: plain text, underline on hover only */
-.nav-chat-btn{
+/* ---------- Carousel controls ---------- */
+.carousel-btn{
+  border:1px solid rgba(10,10,10,.2);
   background:transparent;
   color:var(--ink);
-  border:1px solid var(--ink);
-  border-radius:0;
-  font-weight:500;
-  padding:.5rem 1rem;
+  border-radius:50%;
+  width:48px; height:48px;
 }
-.nav-chat-btn:hover{
-  background:var(--ink);
-  color:var(--grey);
-  transform:none;
-}
+.carousel-btn:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
 
-/* Footer: minimal */
-footer{border-top:1px solid rgba(17,17,17,.12);}
-footer .container{font-size:.9rem;}
+@media (max-width:720px){
+  .section h2{grid-template-columns:1fr; gap:1rem;}
+  .section h2::before{width:48px; height:48px; font-size:.9rem;}
+  .footer-callout-wrap{border-radius:16px;}
+  .case-card, .carousel-card{border-radius:16px;}
+}
