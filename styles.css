@@ -149,16 +149,18 @@ nav a:hover::after{width:100%}
 .ai-andrew-backdrop[aria-hidden="false"]{display:flex}
 .ai-andrew-modal{
   background:transparent; color:var(--white);
-  width:min(560px, calc(100vw - 24px));
-  height:min(720px, calc(100vh - 24px));
+  width:480px;
+  max-width:calc(100vw - 32px);
+  height:640px;
+  max-height:calc(100vh - 32px);
   border-radius:12px;
   box-shadow:0 20px 60px rgba(0,0,0,.4);
   position:relative;
   display:flex;
 }
-@media (max-width: 480px){
+@media (max-width: 520px){
   .ai-andrew-backdrop{padding:0}
-  .ai-andrew-modal{width:100vw; height:100vh; border-radius:0;}
+  .ai-andrew-modal{width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0;}
   .ai-andrew-modal__close{top:12px; right:12px;}
 }
 .ai-andrew-modal__header{
