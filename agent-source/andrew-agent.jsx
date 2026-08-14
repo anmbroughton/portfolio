@@ -156,11 +156,11 @@ const TypingIndicator = () => (
 );
 const Bubble = ({ text, isUser }) => (
   <div style={{ display: "flex", justifyContent: isUser ? "flex-end" : "flex-start", padding: "4px 20px", animation: "messageIn 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(206,202,212,0.15)" : "rgba(200,169,110,0.2)", color: "#CECAD4", fontSize: 15, lineHeight: 1.6, fontFamily: "'Outfit', sans-serif", border: isUser ? "1px solid rgba(206,202,212,0.15)" : "1px solid rgba(200,169,110,0.12)", whiteSpace: "pre-wrap", wordBreak: "break-word", overflowWrap: "anywhere" }}>{text}</div>
+    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(206,202,212,0.15)" : "rgba(200,169,110,0.2)", color: "#CECAD4", fontSize: 15, lineHeight: 1.6, fontFamily: "'GT Standard L', system-ui, sans-serif", border: isUser ? "1px solid rgba(206,202,212,0.15)" : "1px solid rgba(200,169,110,0.12)", whiteSpace: "pre-wrap", wordBreak: "break-word", overflowWrap: "anywhere" }}>{text}</div>
   </div>
 );
 const Chip = ({ label, onClick }) => (
-  <button onClick={onClick} style={{ background: "rgba(200,169,110,0.15)", border: "1px solid rgba(200,169,110,0.3)", borderRadius: 100, padding: "8px 16px", fontSize: 13, fontFamily: "'Outfit'", fontWeight: 500, color: "#CECAD4", cursor: "pointer", margin: "2px" }}>{label}</button>
+  <button onClick={onClick} style={{ background: "rgba(200,169,110,0.15)", border: "1px solid rgba(200,169,110,0.3)", borderRadius: 100, padding: "8px 16px", fontSize: 13, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#CECAD4", cursor: "pointer", margin: "2px" }}>{label}</button>
 );
 const SUGGESTIONS = ["Who is Andrew Broughton?", "What have you worked on?", "How do you approach design?", "What are you passionate about?"];
 
@@ -232,9 +232,9 @@ function AndrewAgent() {
     else { setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: "Hmm, I\u2019m not sure I\u2019ve got a specific answer for that one. Here are some things I can talk about though \u2014 pick whatever\u2019s closest:", isUser: false }]); setChips([{topic:"background",label:"Career background"},{topic:"enterprise",label:"WorkSafe projects"},{topic:"designprocess",label:"How I work"},{topic:"clients",label:"Clients"},{topic:"personal",label:"Personal stuff"},{topic:"contact",label:"Get in touch"}]); setTyping(false); }, 600); }
   };
   return (
-    <div style={{ fontFamily: "'Outfit', sans-serif", height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#2A5A6E", overflow: "hidden", borderRadius: 12 }}>
+    <div style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#2A5A6E", overflow: "hidden", borderRadius: 12 }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         @keyframes typingDot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 0.9; } }
         @keyframes messageIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -256,10 +256,10 @@ function AndrewAgent() {
         {welcome && (
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "40px 28px", animation: "fadeUp 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
             <div style={{ width: 80, height: 80, borderRadius: 24, background: "rgba(200,169,110,0.2)", border: "2px solid rgba(200,169,110,0.35)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}><span style={{ color: "#CECAD4", fontSize: 32, fontWeight: 800 }}>AB</span></div>
-            <h1 style={{ fontFamily: "'Outfit'", fontSize: 28, fontWeight: 800, color: "#CECAD4", textAlign: "center", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 12 }}>G'day, I'm Andrew.</h1>
+            <h1 style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", fontSize: 28, fontWeight: 800, color: "#CECAD4", textAlign: "center", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 12 }}>G'day, I'm Andrew.</h1>
             <p style={{ fontSize: 15, color: "rgba(206,202,212,0.65)", textAlign: "center", lineHeight: 1.6, maxWidth: 320, marginBottom: 36 }}>Design leadership that turns complexity into clarity and momentum.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", maxWidth: 360 }}>
-              {SUGGESTIONS.map((q, i) => (<button key={i} onClick={() => send(q)} style={{ background: "transparent", border: "1.5px solid rgba(206,202,212,0.35)", borderRadius: 100, padding: "10px 18px", fontSize: 13, fontFamily: "'Outfit'", fontWeight: 500, color: "#CECAD4", cursor: "pointer" }}>{q}</button>))}
+              {SUGGESTIONS.map((q, i) => (<button key={i} onClick={() => send(q)} style={{ background: "transparent", border: "1.5px solid rgba(206,202,212,0.35)", borderRadius: 100, padding: "10px 18px", fontSize: 13, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#CECAD4", cursor: "pointer" }}>{q}</button>))}
             </div>
           </div>
         )}
@@ -270,7 +270,7 @@ function AndrewAgent() {
       </div>
       <div style={{ padding: "12px 16px 28px", borderTop: "1.5px solid rgba(200,169,110,0.3)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(206,202,212,0.1)", borderRadius: 28, padding: "6px 6px 6px 20px", border: "1.5px solid rgba(206,202,212,0.12)" }}>
-          <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }}} placeholder="Ask Andrew something..." style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: 15, fontFamily: "'Outfit'", color: "#CECAD4", padding: "10px 0" }} />
+          <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }}} placeholder="Ask Andrew something..." style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: 15, fontFamily: "'GT Standard L', system-ui, sans-serif", color: "#CECAD4", padding: "10px 0" }} />
           <button onClick={() => send()} disabled={!input.trim() || typing} style={{ width: 44, height: 44, borderRadius: "50%", border: "none", background: input.trim() && !typing ? "#C8A96E" : "rgba(206,202,212,0.1)", color: input.trim() && !typing ? "#2A5A6E" : "rgba(206,202,212,0.3)", cursor: input.trim() && !typing ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.25s ease", flexShrink: 0 }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
           </button>
