@@ -2734,3 +2734,96 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
 #thoughts .carousel-card .overlay-inner, #thoughts .carousel-card:hover .overlay-inner{
   transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
 }
+
+
+/* ============================================================
+   FINAL PASS — carousel text, About cards, header
+   ============================================================ */
+
+/* ---- 1. Carousel cards: no colour swap, white text always ---- */
+.carousel-card .overlay-inner,
+.carousel-card:hover .overlay-inner,
+.carousel-card:focus-within .overlay-inner{
+  background:var(--primary) !important;
+  color:#fff !important;
+}
+.carousel-card .overlay-inner :where(h3,h4,p,li,span,strong),
+.carousel-card:hover .overlay-inner :where(h3,h4,p,li,span,strong){
+  color:#fff !important;
+  opacity:1 !important;
+}
+.carousel-card .overlay-inner p,
+.carousel-card:hover .overlay-inner p{color:rgba(255,255,255,.9) !important;}
+
+/* ---- 2. About & Experience cards match the other carousels ---- */
+#about-experience .carousel-card{
+  background:var(--primary) !important;
+  border-radius:32px !important;
+  padding:1.6rem 1.7rem 1.7rem !important;
+  overflow:hidden;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+#about-experience .carousel-card:hover,
+#about-experience .carousel-card:focus-within{
+  border-radius:64px !important;
+  background:var(--primary) !important;
+  transform:none !important;
+}
+#about-experience .carousel-card :where(h3,h4,p,li,span,strong,ul){
+  color:#fff !important;
+  opacity:1 !important;
+}
+#about-experience .carousel-card p{color:rgba(255,255,255,.9) !important;}
+#about-experience .carousel-card li{color:rgba(255,255,255,.9) !important;}
+#about-experience .carousel-card h3{
+  color:#fff !important;
+  margin-bottom:.4rem !important;
+  font-size:clamp(1.05rem,1.4vw,1.3rem);
+}
+#about-experience .carousel-card ul{padding-left:1.05rem; margin:0;}
+#about-experience .carousel-card li{margin:.3rem 0; font-size:.94rem; line-height:1.5;}
+#about-experience .carousel-card .overlay-inner,
+#about-experience .carousel-card:hover .overlay-inner{
+  background:none !important;
+  padding:0 !important;
+  margin:0 !important;
+  border-radius:0 !important;
+}
+
+/* ---- 3. Header: rounded bottom corners + bigger brand ---- */
+header{
+  background:var(--cream) !important;
+  border-bottom:0 !important;
+  border-radius:0 0 32px 32px !important;
+  overflow:hidden;
+  position:sticky; top:0; z-index:20;
+}
+.header-inner{padding:1.35rem 0 !important;}
+.brand{
+  font-family:"GT Standard M", system-ui, sans-serif !important;
+  font-size:clamp(1.15rem,1.9vw,1.6rem) !important;
+  letter-spacing:-.025em;
+  align-items:baseline;
+  gap:.45rem;
+}
+.brand .name{
+  font-family:"GT Standard M", system-ui, sans-serif !important;
+  font-weight:900 !important;
+  color:var(--ink) !important;
+}
+.brand .role{
+  font-family:"GT Standard M", system-ui, sans-serif !important;
+  font-weight:900 !important;
+  color:var(--ink) !important;
+  opacity:.42;
+}
+.brand .abbr{
+  font-family:"GT Standard M", system-ui, sans-serif !important;
+  font-weight:900 !important;
+  font-size:clamp(1.15rem,1.9vw,1.6rem) !important;
+}
+
+@media (max-width:640px){
+  header{border-radius:0 0 20px 20px !important;}
+  .brand{font-size:1.1rem !important;}
+}
