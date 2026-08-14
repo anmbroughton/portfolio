@@ -3005,3 +3005,28 @@ footer a:hover{color:var(--primary) !important;}
   font-family:"GT Standard L", system-ui, sans-serif !important;
   font-weight:400 !important;
 }
+
+
+/* ============================================================
+   FOOTER CALLOUT — chips match the site's h2 style
+   ============================================================ */
+.footer-callout-wrap .chip,
+.footer-callout-wrap .cta-inner{
+  font-family:"GT Standard M", system-ui, sans-serif !important;
+  font-weight:900 !important;
+  font-size:clamp(1.9rem,4vw,3.25rem) !important;
+  line-height:1.04 !important;
+  letter-spacing:-.025em !important;
+  color:#fff !important;
+}
+.footer-callout{
+  height:auto !important;
+  min-height:clamp(3.5rem,7vw,5rem);
+}
+.footer-callout-wrap .cta-inner a{
+  font-family:"GT Standard L", system-ui, sans-serif !important;
+  font-weight:500 !important;
+  font-size:1rem !important;
+  letter-spacing:0 !important;
+  line-height:1 !important;
+}
