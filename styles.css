@@ -3664,3 +3664,68 @@ footer.alt-0{
   }
   .hero-portrait img{ height:clamp(260px,38vh,400px) !important; }
 }
+
+
+/* ============================================================
+   HERO — "Trusted by" becomes an overlay-inner style block
+   joined beneath the portrait (black panel, white content)
+   ============================================================ */
+
+.hero-right{
+  display:flex !important;
+  flex-direction:column;
+  gap:0 !important;                 /* joined, like image + caption */
+  align-self:start !important;
+}
+
+/* portrait: rounded top, square bottom at rest */
+.hero-portrait{
+  border-radius:32px 32px 0 0 !important;
+  overflow:hidden;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+.hero-portrait img{
+  border-radius:inherit !important;
+  display:block;
+  width:100%;
+}
+
+/* trusted-by panel: rounded bottom, square top at rest */
+#hero .hero-meta{
+  background:var(--ink) !important;
+  color:#FFFFFF !important;
+  border-radius:0 0 32px 32px !important;
+  padding:1.5rem 1.7rem 1.6rem !important;
+  margin:0 !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+
+/* hover: both blocks round up to 64px, matching the cards */
+.hero-right:hover .hero-portrait,
+.hero-right:focus-within .hero-portrait,
+.hero-right:hover #hero .hero-meta{
+  border-radius:64px !important;
+}
+#hero .hero-right:hover .hero-meta,
+#hero .hero-right:focus-within .hero-meta{
+  border-radius:64px !important;
+}
+
+/* content inside the panel */
+#hero .hero-meta p{
+  color:rgba(255,255,255,.6) !important;
+  font-size:.72rem !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  margin:0 0 1rem 0 !important;
+}
+#hero .hero-meta .logo-strip{
+  display:flex !important;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1.5rem !important;
+}
+#hero .hero-meta .logo-strip img{
+  height:26px !important;
+  width:auto;
+}
