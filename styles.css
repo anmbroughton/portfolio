@@ -2176,7 +2176,7 @@ header{
   z-index:1;
   filter:none !important;
   transform:none !important;
-  transition:none !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
 }
 .case-card:hover img,
 .carousel-card:hover img{
@@ -2568,7 +2568,7 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
   opacity:1 !important;
   transform:none !important;
   mix-blend-mode:normal !important;
-  transition:none !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
 }
 
 /* CAPTION — crimson, flush; top corners round on hover */
@@ -2649,7 +2649,7 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
   -webkit-filter:none !important;
   opacity:1 !important;
   transform:none !important;
-  transition:none !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
 }
 
 
@@ -2714,3 +2714,23 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
 #about-experience .carousel-card:hover{border-radius:32px !important;}
 #about-experience .carousel-card .overlay-inner,
 #about-experience .carousel-card:hover .overlay-inner{border-radius:0 !important;}
+
+
+/* ============================================================
+   TIMING SYNC — image and caption share one transition in
+   BOTH directions (rest and hover states both declare it)
+   ============================================================ */
+.case-card img, .carousel-card img,
+.case-card:hover img, .carousel-card:hover img,
+.case-card:focus-within img, .carousel-card:focus-within img,
+.case-card .overlay-inner, .carousel-card .overlay-inner,
+.case-card:hover .overlay-inner, .carousel-card:hover .overlay-inner,
+.case-card:focus-within .overlay-inner, .carousel-card:focus-within .overlay-inner,
+#work .case-card img, #work .case-card:hover img,
+#speaking .carousel-card img, #speaking .carousel-card:hover img,
+#thoughts .carousel-card img, #thoughts .carousel-card:hover img,
+#work .case-card .overlay-inner, #work .case-card:hover .overlay-inner,
+#speaking .carousel-card .overlay-inner, #speaking .carousel-card:hover .overlay-inner,
+#thoughts .carousel-card .overlay-inner, #thoughts .carousel-card:hover .overlay-inner{
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
