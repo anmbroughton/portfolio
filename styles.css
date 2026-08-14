@@ -1248,7 +1248,6 @@ button:focus-visible{
 }
 
 #hero .hero-proof li{
-  text-shadow:0 1px 2px rgba(0,0,0,.65);
 }
 
 #hero .link-cta{
@@ -1432,7 +1431,6 @@ button:focus-visible,
 .carousel-card:hover .overlay-inner span,
 .carousel-card:hover .overlay-inner li{
   color:#F5F5F5 !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.7);
 }
 
 .case-card:hover .overlay-inner a,
@@ -1488,7 +1486,6 @@ button:focus-visible,
 .carousel-card:hover .overlay-inner span{
   color:#F5F5F5 !important;
   opacity:1 !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.75);
 }
 
 /* Make the overlay slightly stronger so paragraph text clears AA */
@@ -2344,3 +2341,7 @@ header{
   font-size:clamp(.98rem,1.15vw,1.15rem);
   line-height:1.5;
 }
+
+
+/* no text shadows anywhere — captions sit on solid blocks now */
+h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
