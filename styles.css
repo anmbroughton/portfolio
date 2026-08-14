@@ -2095,3 +2095,111 @@ footer.alt-0 a:hover{color:var(--primary);}
   .case-card img,.carousel-card img,
   .case-card .overlay-inner,.carousel-card .overlay-inner{transition:none !important;}
 }
+
+
+/* ============================================================
+   FINAL OVERRIDES — card layering, rollover, cream chrome
+   ============================================================ */
+
+:root{ --cream:#F6F2E9; }
+
+/* ---------- Cream nav + ticker ---------- */
+header{
+  background:var(--cream) !important;
+  backdrop-filter:none !important;
+  border-bottom:1px solid rgba(10,10,10,.08) !important;
+}
+.ticker{
+  background:var(--cream) !important;
+  color:var(--ink) !important;
+  border-top:1px solid rgba(10,10,10,.08) !important;
+}
+.ticker__item{color:var(--ink) !important;}
+.ticker__item::after{color:var(--primary) !important;}
+
+/* ---------- Card stacking order (this was the bug) ---------- */
+.case-card,
+.carousel-card{ position:relative; overflow:hidden; }
+
+.case-card img,
+.carousel-card img{ position:relative; z-index:1; }
+
+/* the invisible click target must sit BELOW the caption */
+.case-card > a.overlay,
+.carousel-card > a.overlay{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:2 !important;
+  background:none !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+  border-radius:24px;
+}
+
+/* caption sits on top of everything except the badge */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  z-index:6 !important;
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+.logo-badge{ z-index:7 !important; }
+
+/* ---------- Rest state: readable dark band ---------- */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  background:linear-gradient(180deg,
+              rgba(10,10,10,0)   0%,
+              rgba(10,10,10,.80) 45%,
+              rgba(10,10,10,.94) 100%) !important;
+}
+
+/* ---------- Hover: solid crimson panel, inset ---------- */
+.case-card:hover .overlay-inner,
+.case-card:focus-within .overlay-inner,
+.carousel-card:hover .overlay-inner,
+.carousel-card:focus-within .overlay-inner{
+  inset:auto .75rem .75rem .75rem !important;
+  background:var(--primary) !important;
+  border-radius:18px !important;
+  padding:1.4rem 1.5rem !important;
+}
+
+/* caption type always white and fully opaque */
+.case-card .overlay-inner h3,
+.carousel-card .overlay-inner h3{ color:#fff !important; opacity:1 !important; }
+.case-card .overlay-inner p,
+.carousel-card .overlay-inner p{ color:rgba(255,255,255,.9) !important; opacity:1 !important; }
+.case-card .overlay-inner strong,
+.carousel-card .overlay-inner strong{ color:#fff !important; }
+.case-card:hover .overlay-inner p,
+.carousel-card:hover .overlay-inner p{ color:rgba(255,255,255,.95) !important; }
+
+/* image dim only — never touch the caption */
+.case-card:hover img,
+.carousel-card:hover img{
+  filter:brightness(.65) saturate(.9) !important;
+  transform:scale(1.02) !important;
+}
+
+/* About & Experience opts out entirely */
+#about-experience .carousel-card{
+  background:var(--grey-soft) !important;
+  overflow:visible;
+}
+#about-experience .carousel-card .overlay-inner{
+  position:static !important;
+  background:none !important;
+  padding:0 !important;
+  border-radius:0 !important;
+}
+#about-experience .carousel-card :where(h3,h4,p,li,strong,span){ color:var(--ink) !important; }
+#about-experience .carousel-card:hover .overlay-inner{
+  inset:auto !important;
+  background:none !important;
+  padding:0 !important;
+}
