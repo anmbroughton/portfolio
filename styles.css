@@ -2459,3 +2459,130 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
   .case-card img,.carousel-card img,
   .case-card .overlay-inner,.carousel-card .overlay-inner{transition:none !important;}
 }
+
+
+/* ============================================================
+   CARD ROLLOVER v4 — FINAL
+   • image + caption always joined (no gap, ever)
+   • image never fades / dims / scales
+   • caption is crimson at rest and on hover
+   • only the corner radius animates
+   ============================================================ */
+
+.case-card,
+.carousel-card{
+  display:flex !important;
+  flex-direction:column !important;
+  background:transparent !important;
+  overflow:visible !important;
+  border-radius:0 !important;
+  transform:none !important;
+  opacity:1 !important;
+  position:relative;
+}
+.case-card:hover,
+.carousel-card:hover,
+.case-card:focus-within,
+.carousel-card:focus-within{transform:none !important; opacity:1 !important;}
+
+/* ---- IMAGE: never changes except its top corners ---- */
+.case-card img,
+.carousel-card img,
+.case-card:hover img,
+.carousel-card:hover img,
+.case-card:focus-within img,
+.carousel-card:focus-within img{
+  display:block;
+  width:100%;
+  position:relative;
+  z-index:1;
+  filter:none !important;
+  -webkit-filter:none !important;
+  opacity:1 !important;
+  transform:none !important;
+  mix-blend-mode:normal !important;
+}
+.case-card img,
+.carousel-card img{
+  border-radius:24px 24px 0 0 !important;
+  transition:border-radius .35s cubic-bezier(.22,.61,.36,1) !important;
+}
+.case-card:hover img,
+.case-card:focus-within img,
+.carousel-card:hover img,
+.carousel-card:focus-within img{
+  border-radius:8px 8px 0 0 !important;
+}
+
+/* ---- CAPTION: crimson always, flush to the image always ---- */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner,
+.case-card:hover .overlay-inner,
+.carousel-card:hover .overlay-inner,
+.case-card:focus-within .overlay-inner,
+.carousel-card:focus-within .overlay-inner{
+  position:static !important;
+  inset:auto !important;
+  display:flex !important;
+  flex-direction:column;
+  gap:.4rem;
+  margin:0 !important;
+  padding:1.5rem 1.6rem 1.6rem !important;
+  background:var(--primary) !important;
+  color:#fff !important;
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
+  max-width:none !important;
+  z-index:2;
+  pointer-events:none;
+}
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  border-radius:0 0 24px 24px !important;
+  transition:border-radius .35s cubic-bezier(.22,.61,.36,1) !important;
+}
+.case-card:hover .overlay-inner,
+.case-card:focus-within .overlay-inner,
+.carousel-card:hover .overlay-inner,
+.carousel-card:focus-within .overlay-inner{
+  border-radius:0 0 8px 8px !important;
+}
+
+/* ---- type constant ---- */
+.case-card .overlay-inner :where(h3,p,strong,span,li),
+.carousel-card .overlay-inner :where(h3,p,strong,span,li){
+  color:#fff !important;
+  opacity:1 !important;
+  margin:0 !important;
+}
+.case-card .overlay-inner p,
+.carousel-card .overlay-inner p{color:rgba(255,255,255,.9) !important;}
+
+/* ---- nothing paints over the card ---- */
+.case-card > a.overlay,
+.carousel-card > a.overlay{
+  background:none !important;
+  background-image:none !important;
+  opacity:1 !important;
+  z-index:5 !important;
+}
+.carousel-card::before,
+.case-card::before,
+.case-card::after,
+.carousel-card::after{display:none !important; content:none !important;}
+
+/* ---- About & Experience stays a plain grey text panel ---- */
+#about-experience .carousel-card .overlay-inner,
+#about-experience .carousel-card:hover .overlay-inner{
+  background:none !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+#about-experience .carousel-card :where(h3,h4,p,li,strong,span){color:var(--ink) !important;}
+
+@media (prefers-reduced-motion: reduce){
+  .case-card img,.carousel-card img,
+  .case-card .overlay-inner,.carousel-card .overlay-inner{transition:none !important;}
+}
