@@ -3599,3 +3599,19 @@ body #hero .cta a.link-cta:hover{
   background:var(--ink) !important;
   color:#FFFFFF !important;
 }
+
+
+/* Hero CTA — flipped: dark at rest, white pill with crimson text on hover */
+#hero .cta a.link-cta,
+#hero .hero-left .cta a.link-cta,
+body #hero .cta a.link-cta{
+  background:var(--ink) !important;
+  color:#FFFFFF !important;
+  border:0 !important;
+}
+#hero .cta a.link-cta:hover,
+#hero .hero-left .cta a.link-cta:hover,
+body #hero .cta a.link-cta:hover{
+  background:#FFFFFF !important;
+  color:var(--primary) !important;
+}
