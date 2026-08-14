@@ -2203,3 +2203,144 @@ header{
   background:none !important;
   padding:0 !important;
 }
+
+
+/* ============================================================
+   CARD STRUCTURE v2 — caption is a separate block BELOW the
+   image, not an overlay. Matches the reference exactly.
+   ============================================================ */
+
+.case-card,
+.carousel-card{
+  display:flex !important;
+  flex-direction:column !important;
+  background:transparent !important;
+  overflow:visible !important;
+  border-radius:0 !important;
+  transform:none !important;
+  transition:none !important;
+  position:relative;
+}
+
+/* image: its own rounded block */
+.case-card img,
+.carousel-card img{
+  display:block;
+  width:100%;
+  border-radius:24px !important;
+  position:relative;
+  z-index:1;
+  filter:none !important;
+  transform:none !important;
+  transition:none !important;
+}
+.case-card:hover img,
+.carousel-card:hover img{
+  filter:none !important;
+  transform:none !important;
+}
+
+/* click target covers image + caption */
+.case-card > a.overlay,
+.carousel-card > a.overlay{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:5 !important;
+  background:none !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+  border-radius:24px;
+}
+
+/* caption: separate solid block underneath, small gap */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  position:static !important;
+  inset:auto !important;
+  display:flex !important;
+  flex-direction:column;
+  gap:.4rem;
+  margin-top:.6rem !important;
+  padding:1.5rem 1.6rem 1.6rem !important;
+  background:var(--ink) !important;
+  border-radius:24px !important;
+  color:#fff !important;
+  opacity:1 !important;
+  transform:none !important;
+  max-width:none !important;
+  z-index:2;
+  pointer-events:none;
+  transition:background .35s ease !important;
+}
+
+/* hover: caption block switches to crimson */
+.case-card:hover .overlay-inner,
+.case-card:focus-within .overlay-inner,
+.carousel-card:hover .overlay-inner,
+.carousel-card:focus-within .overlay-inner{
+  background:var(--primary) !important;
+  inset:auto !important;
+  border-radius:24px !important;
+  padding:1.5rem 1.6rem 1.6rem !important;
+}
+
+.case-card .overlay-inner h3,
+.carousel-card .overlay-inner h3{
+  color:#fff !important;
+  margin:0 !important;
+  font-size:clamp(1.1rem,1.5vw,1.4rem);
+  letter-spacing:-.02em;
+}
+.case-card .overlay-inner p,
+.carousel-card .overlay-inner p{
+  color:rgba(255,255,255,.88) !important;
+  margin:0 !important;
+  font-size:.94rem;
+  line-height:1.45;
+}
+.case-card .overlay-inner strong,
+.carousel-card .overlay-inner strong{color:#fff !important;}
+
+/* badge pinned to the image, not the caption */
+.logo-badge{
+  position:absolute !important;
+  top:1.1rem !important;
+  left:1.1rem !important;
+  bottom:auto !important;
+  z-index:6 !important;
+}
+
+/* grid gap so separated blocks don't crowd */
+.case-grid{gap:clamp(1.5rem,3vw,2.5rem) !important;}
+
+/* About & Experience stays a plain text panel */
+#about-experience .carousel-card{
+  background:var(--grey-soft) !important;
+  border-radius:24px !important;
+  padding:1.75rem !important;
+}
+#about-experience .carousel-card .overlay-inner{
+  background:none !important;
+  padding:0 !important;
+  margin-top:0 !important;
+  border-radius:0 !important;
+}
+#about-experience .carousel-card :where(h3,h4,p,li,strong,span){color:var(--ink) !important;}
+#about-experience .carousel-card:hover .overlay-inner{background:none !important;}
+
+
+/* ============================================================
+   HERO LEDE — same block language as the cards
+   ============================================================ */
+#hero .lede{
+  display:inline-block !important;
+  background:var(--ink) !important;
+  color:#fff !important;
+  border-radius:24px !important;
+  padding:1.4rem 1.6rem !important;
+  box-shadow:none !important;
+  max-width:46ch;
+  margin-top:1.25rem;
+  font-size:clamp(.98rem,1.15vw,1.15rem);
+  line-height:1.5;
+}
