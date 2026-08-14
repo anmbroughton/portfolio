@@ -21,16 +21,16 @@
 }
 
 /* ============================================
-   THEME COLOURS — greyscale + red accent
+   THEME COLOURS — greyscale + army green accent
    ============================================
    --accent  = section background (off-white)
-   --primary = the pop colour (red)
+   --primary = the pop colour (army green)
    --white   = type colour on sections (near-black)
    ============================================ */
 :root{
   /* core three */
   --accent:  #F5F5F5;   /* off-white — section background */
-  --primary: #D42B1E;   /* red       — accent / pop       */
+  --primary: #4B5320;   /* army green — accent / pop      */
   --white:   #111111;   /* near-black — type              */
 
   /* greyscale ramp */
@@ -174,10 +174,10 @@ nav a:hover::after{width:100%}
 .ai-andrew-modal__close{
   -webkit-appearance:none;    /* kill Safari/macOS native button chrome */
   appearance:none;
-  background:var(--primary);   /* red */
+  background:var(--primary);   /* army green */
   background-image:none;
   border:0;
-  color:#fff;                  /* white icon on red */
+  color:#fff;                  /* white icon on green */
   font: 700 1.3rem/1 "GT Standard L", system-ui, sans-serif;
   cursor:pointer;
   width:34px; height:34px;
@@ -192,7 +192,7 @@ nav a:hover::after{width:100%}
 }
 .ai-andrew-modal__close:hover{background:#111111; transform:scale(1.05);}
 .ai-andrew-modal__close:focus{outline:none;}
-.ai-andrew-modal__close:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(212,43,30,.45);}
+.ai-andrew-modal__close:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(75,83,32,.45);}
 .ai-andrew-modal__body{padding:0; flex:1; min-height:0; display:flex;}
 body.no-scroll{overflow:hidden}
 

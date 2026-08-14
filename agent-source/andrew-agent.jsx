@@ -149,18 +149,18 @@ function isFollowUp(q) { return FOLLOWUP.some(t => q.toLowerCase().includes(t));
 function isCorrection(q) { return CORRECTION.some(t => q.toLowerCase().includes(t)); }
 const TypingIndicator = () => (
   <div style={{ display: "flex", padding: "6px 20px" }}>
-    <div style={{ background: "rgba(212,43,30,0.25)", borderRadius: "20px 20px 20px 6px", padding: "16px 20px", display: "flex", gap: 6 }}>
-      {[0, 1, 2].map(i => (<div key={i} style={{ width: 7, height: 7, borderRadius: "50%", background: "#D42B1E", opacity: 0.6, animation: "typingDot 1.4s infinite " + (i * 0.2) + "s" }} />))}
+    <div style={{ background: "rgba(75,83,32,0.25)", borderRadius: "20px 20px 20px 6px", padding: "16px 20px", display: "flex", gap: 6 }}>
+      {[0, 1, 2].map(i => (<div key={i} style={{ width: 7, height: 7, borderRadius: "50%", background: "#4B5320", opacity: 0.6, animation: "typingDot 1.4s infinite " + (i * 0.2) + "s" }} />))}
     </div>
   </div>
 );
 const Bubble = ({ text, isUser }) => (
   <div style={{ display: "flex", justifyContent: isUser ? "flex-end" : "flex-start", padding: "4px 20px", animation: "messageIn 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(17,17,17,0.15)" : "rgba(212,43,30,0.2)", color: "#111111", fontSize: 15, lineHeight: 1.6, fontFamily: "'GT Standard L', system-ui, sans-serif", border: isUser ? "1px solid rgba(17,17,17,0.15)" : "1px solid rgba(212,43,30,0.12)", whiteSpace: "pre-wrap", wordBreak: "break-word", overflowWrap: "anywhere" }}>{text}</div>
+    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(17,17,17,0.15)" : "rgba(75,83,32,0.2)", color: "#111111", fontSize: 15, lineHeight: 1.6, fontFamily: "'GT Standard L', system-ui, sans-serif", border: isUser ? "1px solid rgba(17,17,17,0.15)" : "1px solid rgba(75,83,32,0.12)", whiteSpace: "pre-wrap", wordBreak: "break-word", overflowWrap: "anywhere" }}>{text}</div>
   </div>
 );
 const Chip = ({ label, onClick }) => (
-  <button onClick={onClick} style={{ background: "rgba(212,43,30,0.15)", border: "1px solid rgba(212,43,30,0.3)", borderRadius: 100, padding: "8px 16px", fontSize: 13, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#111111", cursor: "pointer", margin: "2px" }}>{label}</button>
+  <button onClick={onClick} style={{ background: "rgba(75,83,32,0.15)", border: "1px solid rgba(75,83,32,0.3)", borderRadius: 100, padding: "8px 16px", fontSize: 13, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#111111", cursor: "pointer", margin: "2px" }}>{label}</button>
 );
 const SUGGESTIONS = ["Who is Andrew Broughton?", "What have you worked on?", "How do you approach design?", "What are you passionate about?"];
 
@@ -243,19 +243,19 @@ function AndrewAgent() {
         input::placeholder { color: rgba(17,17,17,0.4); }
         ::-webkit-scrollbar { width: 0; }
       `}</style>
-      <div style={{ padding: "18px 20px 14px", borderBottom: "1.5px solid rgba(212,43,30,0.3)" }}>
+      <div style={{ padding: "18px 20px 14px", borderBottom: "1.5px solid rgba(75,83,32,0.3)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 44, height: 44, borderRadius: 14, background: "rgba(212,43,30,0.25)", border: "1.5px solid rgba(212,43,30,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ color: "#111111", fontSize: 17, fontWeight: 800 }}>AB</span></div>
+          <div style={{ width: 44, height: 44, borderRadius: 14, background: "rgba(75,83,32,0.25)", border: "1.5px solid rgba(75,83,32,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ color: "#111111", fontSize: 17, fontWeight: 800 }}>AB</span></div>
           <div>
             <div style={{ fontSize: 17, fontWeight: 700, color: "#111111" }}>Andrew B.</div>
-            <div style={{ fontSize: 12, color: "rgba(17,17,17,0.6)", fontWeight: 500, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: "#D42B1E", animation: "subtlePulse 2.5s infinite" }} />Design & Innovation</div>
+            <div style={{ fontSize: 12, color: "rgba(17,17,17,0.6)", fontWeight: 500, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4B5320", animation: "subtlePulse 2.5s infinite" }} />Design & Innovation</div>
           </div>
         </div>
       </div>
       <div style={{ flex: 1, overflowY: "auto", padding: "8px 0", display: "flex", flexDirection: "column" }}>
         {welcome && (
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "40px 28px", animation: "fadeUp 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
-            <div style={{ width: 80, height: 80, borderRadius: 24, background: "rgba(212,43,30,0.2)", border: "2px solid rgba(212,43,30,0.35)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}><span style={{ color: "#111111", fontSize: 32, fontWeight: 800 }}>AB</span></div>
+            <div style={{ width: 80, height: 80, borderRadius: 24, background: "rgba(75,83,32,0.2)", border: "2px solid rgba(75,83,32,0.35)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}><span style={{ color: "#111111", fontSize: 32, fontWeight: 800 }}>AB</span></div>
             <h1 style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", fontSize: 28, fontWeight: 800, color: "#111111", textAlign: "center", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 12 }}>G'day, I'm Andrew.</h1>
             <p style={{ fontSize: 15, color: "rgba(17,17,17,0.65)", textAlign: "center", lineHeight: 1.6, maxWidth: 320, marginBottom: 36 }}>Design leadership that turns complexity into clarity and momentum.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", maxWidth: 360 }}>
@@ -268,10 +268,10 @@ function AndrewAgent() {
         {chips && (<div style={{ padding: "8px 20px", display: "flex", flexWrap: "wrap", gap: 4, animation: "messageIn 0.3s ease" }}>{chips.map((c, i) => <Chip key={i} label={c.label} onClick={() => pickTopic(c.topic)} />)}</div>)}
         <div ref={endRef} />
       </div>
-      <div style={{ padding: "12px 16px 28px", borderTop: "1.5px solid rgba(212,43,30,0.3)" }}>
+      <div style={{ padding: "12px 16px 28px", borderTop: "1.5px solid rgba(75,83,32,0.3)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(17,17,17,0.1)", borderRadius: 28, padding: "6px 6px 6px 20px", border: "1.5px solid rgba(17,17,17,0.12)" }}>
           <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }}} placeholder="Ask Andrew something..." style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: 15, fontFamily: "'GT Standard L', system-ui, sans-serif", color: "#111111", padding: "10px 0" }} />
-          <button onClick={() => send()} disabled={!input.trim() || typing} style={{ width: 44, height: 44, borderRadius: "50%", border: "none", background: input.trim() && !typing ? "#D42B1E" : "rgba(17,17,17,0.1)", color: input.trim() && !typing ? "#F5F5F5" : "rgba(17,17,17,0.3)", cursor: input.trim() && !typing ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.25s ease", flexShrink: 0 }}>
+          <button onClick={() => send()} disabled={!input.trim() || typing} style={{ width: 44, height: 44, borderRadius: "50%", border: "none", background: input.trim() && !typing ? "#4B5320" : "rgba(17,17,17,0.1)", color: input.trim() && !typing ? "#F5F5F5" : "rgba(17,17,17,0.3)", cursor: input.trim() && !typing ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.25s ease", flexShrink: 0 }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
           </button>
         </div>
