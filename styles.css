@@ -3542,3 +3542,17 @@ body{ padding-bottom:72px !important; }
   letter-spacing:.02em;
   flex-shrink:0;
 }
+
+
+/* link-cta: crimson text everywhere */
+.link-cta,
+#hero .link-cta,
+.cta .link-cta{
+  color:var(--primary) !important;
+}
+.link-cta:hover,
+#hero .link-cta:hover,
+.cta .link-cta:hover{
+  color:#FFFFFF !important;
+  background:var(--ink) !important;
+}
