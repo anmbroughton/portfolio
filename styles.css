@@ -2651,3 +2651,66 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
   transform:none !important;
   transition:none !important;
 }
+
+
+/* ============================================================
+   CARD RADIUS — all four corners of both blocks animate
+   rest: 32px   |   hover: 64px
+   ============================================================ */
+
+/* IMAGE: top corners always rounded, bottom corners round on hover */
+.case-card img, .carousel-card img{
+  border-radius:32px 32px 0 0 !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+.case-card:hover img, .case-card:focus-within img,
+.carousel-card:hover img, .carousel-card:focus-within img{
+  border-radius:64px !important;
+}
+
+/* CAPTION: bottom corners always rounded, top corners round on hover */
+.case-card .overlay-inner, .carousel-card .overlay-inner{
+  border-radius:0 0 32px 32px !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+.case-card:hover .overlay-inner, .case-card:focus-within .overlay-inner,
+.carousel-card:hover .overlay-inner, .carousel-card:focus-within .overlay-inner{
+  border-radius:64px !important;
+}
+
+/* click target follows the same shape */
+.case-card > a.overlay, .carousel-card > a.overlay{
+  border-radius:32px !important;
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+.case-card:hover > a.overlay, .carousel-card:hover > a.overlay{
+  border-radius:64px !important;
+}
+
+/* ID-level guarantee so nothing outranks the above */
+#work .case-card img, #work .case-card .overlay-inner,
+#speaking .carousel-card img, #speaking .carousel-card .overlay-inner,
+#thoughts .carousel-card img, #thoughts .carousel-card .overlay-inner{
+  transition:border-radius .4s cubic-bezier(.22,.61,.36,1) !important;
+}
+#work .case-card img{border-radius:32px 32px 0 0 !important;}
+#work .case-card .overlay-inner{border-radius:0 0 32px 32px !important;}
+#speaking .carousel-card img,
+#thoughts .carousel-card img{border-radius:32px 32px 0 0 !important;}
+#speaking .carousel-card .overlay-inner,
+#thoughts .carousel-card .overlay-inner{border-radius:0 0 32px 32px !important;}
+
+#work .case-card:hover img,
+#work .case-card:hover .overlay-inner,
+#speaking .carousel-card:hover img,
+#speaking .carousel-card:hover .overlay-inner,
+#thoughts .carousel-card:hover img,
+#thoughts .carousel-card:hover .overlay-inner{
+  border-radius:64px !important;
+}
+
+/* About & Experience keeps its own square-ish panel */
+#about-experience .carousel-card,
+#about-experience .carousel-card:hover{border-radius:32px !important;}
+#about-experience .carousel-card .overlay-inner,
+#about-experience .carousel-card:hover .overlay-inner{border-radius:0 !important;}
