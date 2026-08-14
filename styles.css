@@ -3615,3 +3615,52 @@ body #hero .cta a.link-cta:hover{
   background:#FFFFFF !important;
   color:var(--primary) !important;
 }
+
+
+/* ============================================================
+   HERO — full viewport height, sitting behind nav and ticker
+   ============================================================ */
+
+/* body no longer reserves space at the bottom for the ticker;
+   the ticker floats over content instead */
+body{ padding-bottom:0 !important; }
+
+#hero{
+  min-height:100vh !important;
+  min-height:100svh !important;   /* stable on mobile browser chrome */
+  display:flex !important;
+  align-items:center !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:var(--primary) !important;
+}
+
+#hero .container{
+  width:var(--container);
+  margin:auto;
+  /* clear the fixed nav at the top and the ticker at the bottom */
+  padding-top:calc(var(--ticker-h) + clamp(2.5rem,6vh,5rem)) !important;
+  padding-bottom:calc(var(--ticker-h) + clamp(2rem,5vh,4rem)) !important;
+}
+
+.hero-grid{ width:100%; }
+
+/* portrait scales to the space available rather than a fixed height */
+.hero-portrait img{
+  height:clamp(320px,52vh,560px) !important;
+}
+
+/* sections after the hero flow normally; last one clears the ticker */
+main > div:last-child,
+footer.alt-0{
+  padding-bottom:calc(var(--ticker-h) + 1.5rem) !important;
+}
+
+@media (max-width:900px){
+  #hero{ min-height:auto !important; }
+  #hero .container{
+    padding-top:calc(var(--ticker-h) + 2rem) !important;
+    padding-bottom:calc(var(--ticker-h) + 2rem) !important;
+  }
+  .hero-portrait img{ height:clamp(260px,38vh,400px) !important; }
+}
