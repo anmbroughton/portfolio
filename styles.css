@@ -3508,3 +3508,37 @@ body{ padding-bottom:72px !important; }
   color:var(--primary) !important;
   opacity:1 !important;
 }
+
+
+/* ============================================================
+   ROLE LOGOS in About & Experience cards
+   ============================================================ */
+#about-experience .role-logo{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  height:34px;
+  margin-bottom:1rem;
+}
+#about-experience .role-logo img{
+  height:26px;
+  width:auto;
+  max-width:130px;
+  object-fit:contain;
+  display:block;
+}
+#about-experience .role-mono{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--primary) !important;
+  color:#fff !important;
+  font-family:"GT Standard M", system-ui, sans-serif;
+  font-weight:900;
+  font-size:.78rem;
+  letter-spacing:.02em;
+  flex-shrink:0;
+}
