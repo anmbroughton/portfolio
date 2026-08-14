@@ -148,20 +148,47 @@ const CORRECTION = ["no i meant","not that","actually i","i was asking","no,","t
 function isFollowUp(q) { return FOLLOWUP.some(t => q.toLowerCase().includes(t)); }
 function isCorrection(q) { return CORRECTION.some(t => q.toLowerCase().includes(t)); }
 const TypingIndicator = () => (
-  <div style={{ display: "flex", padding: "6px 20px" }}>
-    <div style={{ background: "rgba(75,83,32,0.25)", borderRadius: "20px 20px 20px 6px", padding: "16px 20px", display: "flex", gap: 6 }}>
-      {[0, 1, 2].map(i => (<div key={i} style={{ width: 7, height: 7, borderRadius: "50%", background: "#4B5320", opacity: 0.6, animation: "typingDot 1.4s infinite " + (i * 0.2) + "s" }} />))}
+  <div style={{ display: "flex", padding: "5px 20px" }}>
+    <div style={{ background: "#E63946", borderRadius: 32, padding: "18px 22px", display: "flex", gap: 6 }}>
+      {[0, 1, 2].map(i => (<div key={i} style={{ width: 7, height: 7, borderRadius: "50%", background: "#FFFFFF", opacity: 0.7, animation: "typingDot 1.4s infinite " + (i * 0.2) + "s" }} />))}
     </div>
   </div>
 );
+
 const Bubble = ({ text, isUser }) => (
-  <div style={{ display: "flex", justifyContent: isUser ? "flex-end" : "flex-start", padding: "4px 20px", animation: "messageIn 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-    <div style={{ maxWidth: "82%", padding: "14px 18px", borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px", background: isUser ? "rgba(17,17,17,0.15)" : "rgba(75,83,32,0.2)", color: "#111111", fontSize: 15, lineHeight: 1.6, fontFamily: "'GT Standard L', system-ui, sans-serif", border: isUser ? "1px solid rgba(17,17,17,0.15)" : "1px solid rgba(75,83,32,0.12)", whiteSpace: "pre-wrap", wordBreak: "break-word", overflowWrap: "anywhere" }}>{text}</div>
+  <div style={{ display: "flex", justifyContent: isUser ? "flex-end" : "flex-start", padding: "5px 20px", animation: "messageIn 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+    <div style={{
+      maxWidth: "84%",
+      padding: "16px 20px",
+      borderRadius: 32,
+      background: isUser ? "#F5F5F5" : "#E63946",
+      color: isUser ? "#0A0A0A" : "#FFFFFF",
+      fontSize: 15,
+      lineHeight: 1.55,
+      fontFamily: "'GT Standard L', system-ui, sans-serif",
+      border: "none",
+      whiteSpace: "pre-wrap",
+      wordBreak: "break-word",
+      overflowWrap: "anywhere"
+    }}>{text}</div>
   </div>
 );
+
 const Chip = ({ label, onClick }) => (
-  <button onClick={onClick} style={{ background: "rgba(75,83,32,0.15)", border: "1px solid rgba(75,83,32,0.3)", borderRadius: 100, padding: "8px 16px", fontSize: 13, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#111111", cursor: "pointer", margin: "2px" }}>{label}</button>
+  <button onClick={onClick} style={{
+    background: "#FFFFFF",
+    border: "none",
+    borderRadius: 100,
+    padding: "9px 16px",
+    fontSize: 13,
+    fontFamily: "'GT Standard L', system-ui, sans-serif",
+    fontWeight: 500,
+    color: "#0A0A0A",
+    cursor: "pointer",
+    margin: "3px"
+  }}>{label}</button>
 );
+
 const SUGGESTIONS = ["Who is Andrew Broughton?", "What have you worked on?", "How do you approach design?", "What are you passionate about?"];
 
 // Map each topic to 3 contextually related topics for follow-up chips
@@ -232,7 +259,7 @@ function AndrewAgent() {
     else { setTyping(true); setTimeout(() => { setMsgs(prev => [...prev, { text: "Hmm, I\u2019m not sure I\u2019ve got a specific answer for that one. Here are some things I can talk about though \u2014 pick whatever\u2019s closest:", isUser: false }]); setChips([{topic:"background",label:"Career background"},{topic:"enterprise",label:"WorkSafe projects"},{topic:"designprocess",label:"How I work"},{topic:"clients",label:"Clients"},{topic:"personal",label:"Personal stuff"},{topic:"contact",label:"Get in touch"}]); setTyping(false); }, 600); }
   };
   return (
-    <div style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#F5F5F5", overflow: "hidden", borderRadius: 12 }}>
+    <div style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#FFFFFF", overflow: "hidden", borderRadius: 32 }}>
       <style>{`
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -240,26 +267,26 @@ function AndrewAgent() {
         @keyframes messageIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes subtlePulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        input::placeholder { color: rgba(17,17,17,0.4); }
+        input::placeholder { color: rgba(10,10,10,0.4); }
         ::-webkit-scrollbar { width: 0; }
       `}</style>
-      <div style={{ padding: "18px 20px 14px", borderBottom: "1.5px solid rgba(75,83,32,0.3)" }}>
+      <div style={{ padding: "20px 22px 18px", background: "#F6F2E9", borderBottom: "none" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 44, height: 44, borderRadius: 14, background: "rgba(75,83,32,0.25)", border: "1.5px solid rgba(75,83,32,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ color: "#111111", fontSize: 17, fontWeight: 800 }}>AB</span></div>
+          <div style={{ width: 46, height: 46, borderRadius: 16, background: "#E63946", border: "none", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><span style={{ color: "#FFFFFF", fontSize: 17, fontWeight: 900 }}>AB</span></div>
           <div>
-            <div style={{ fontSize: 17, fontWeight: 700, color: "#111111" }}>Andrew B.</div>
-            <div style={{ fontSize: 12, color: "rgba(17,17,17,0.6)", fontWeight: 500, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4B5320", animation: "subtlePulse 2.5s infinite" }} />Design & Innovation</div>
+            <div style={{ fontSize: 17, fontWeight: 700, color: "#0A0A0A" }}>Andrew B.</div>
+            <div style={{ fontSize: 12, color: "rgba(10,10,10,0.6)", fontWeight: 500, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: "#E63946", animation: "subtlePulse 2.5s infinite" }} />Design & Innovation</div>
           </div>
         </div>
       </div>
       <div style={{ flex: 1, overflowY: "auto", padding: "8px 0", display: "flex", flexDirection: "column" }}>
         {welcome && (
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "40px 28px", animation: "fadeUp 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
-            <div style={{ width: 80, height: 80, borderRadius: 24, background: "rgba(75,83,32,0.2)", border: "2px solid rgba(75,83,32,0.35)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}><span style={{ color: "#111111", fontSize: 32, fontWeight: 800 }}>AB</span></div>
-            <h1 style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", fontSize: 28, fontWeight: 800, color: "#111111", textAlign: "center", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 12 }}>G'day, I'm Andrew.</h1>
-            <p style={{ fontSize: 15, color: "rgba(17,17,17,0.65)", textAlign: "center", lineHeight: 1.6, maxWidth: 320, marginBottom: 36 }}>Design leadership that turns complexity into clarity and momentum.</p>
+            <div style={{ width: 84, height: 84, borderRadius: 28, background: "#E63946", border: "none", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 26 }}><span style={{ color: "#FFFFFF", fontSize: 32, fontWeight: 900 }}>AB</span></div>
+            <h1 style={{ fontFamily: "'GT Standard L', system-ui, sans-serif", fontSize: 28, fontWeight: 800, color: "#0A0A0A", textAlign: "center", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 12 }}>G'day, I'm Andrew.</h1>
+            <p style={{ fontSize: 15, color: "rgba(10,10,10,0.65)", textAlign: "center", lineHeight: 1.6, maxWidth: 320, marginBottom: 36 }}>Design leadership that turns complexity into clarity and momentum.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", maxWidth: 360 }}>
-              {SUGGESTIONS.map((q, i) => (<button key={i} onClick={() => send(q)} style={{ background: "transparent", border: "1.5px solid rgba(17,17,17,0.35)", borderRadius: 100, padding: "10px 18px", fontSize: 13, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#111111", cursor: "pointer" }}>{q}</button>))}
+              {SUGGESTIONS.map((q, i) => (<button key={i} onClick={() => send(q)} style={{ background: "#F5F5F5", border: "none", borderRadius: 100, padding: "12px 20px", fontSize: 13.5, fontFamily: "'GT Standard L', system-ui, sans-serif", fontWeight: 500, color: "#0A0A0A", cursor: "pointer" }}>{q}</button>))}
             </div>
           </div>
         )}
@@ -268,14 +295,14 @@ function AndrewAgent() {
         {chips && (<div style={{ padding: "8px 20px", display: "flex", flexWrap: "wrap", gap: 4, animation: "messageIn 0.3s ease" }}>{chips.map((c, i) => <Chip key={i} label={c.label} onClick={() => pickTopic(c.topic)} />)}</div>)}
         <div ref={endRef} />
       </div>
-      <div style={{ padding: "12px 16px 28px", borderTop: "1.5px solid rgba(75,83,32,0.3)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(17,17,17,0.1)", borderRadius: 28, padding: "6px 6px 6px 20px", border: "1.5px solid rgba(17,17,17,0.12)" }}>
-          <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }}} placeholder="Ask Andrew something..." style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: 15, fontFamily: "'GT Standard L', system-ui, sans-serif", color: "#111111", padding: "10px 0" }} />
-          <button onClick={() => send()} disabled={!input.trim() || typing} style={{ width: 44, height: 44, borderRadius: "50%", border: "none", background: input.trim() && !typing ? "#4B5320" : "rgba(17,17,17,0.1)", color: input.trim() && !typing ? "#F5F5F5" : "rgba(17,17,17,0.3)", cursor: input.trim() && !typing ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.25s ease", flexShrink: 0 }}>
+      <div style={{ padding: "16px 18px 24px", background: "#F6F2E9", borderTop: "none" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, background: "#FFFFFF", borderRadius: 32, padding: "6px 6px 6px 20px", border: "none" }}>
+          <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }}} placeholder="Ask Andrew something..." style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: 15, fontFamily: "'GT Standard L', system-ui, sans-serif", color: "#0A0A0A", padding: "10px 0" }} />
+          <button onClick={() => send()} disabled={!input.trim() || typing} style={{ width: 44, height: 44, borderRadius: "50%", border: "none", background: input.trim() && !typing ? "#E63946" : "#F5F5F5", color: input.trim() && !typing ? "#FFFFFF" : "rgba(10,10,10,0.35)", cursor: input.trim() && !typing ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.25s ease", flexShrink: 0 }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
           </button>
         </div>
-        <div style={{ textAlign: "center", marginTop: 10, fontSize: 11, color: "rgba(17,17,17,0.3)", fontWeight: 500 }}>AI representation · Responses from Andrew's portfolio</div>
+        <div style={{ textAlign: "center", marginTop: 10, fontSize: 11, color: "rgba(10,10,10,0.3)", fontWeight: 500 }}>AI representation · Responses from Andrew's portfolio</div>
       </div>
     </div>
   );

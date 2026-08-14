@@ -2887,3 +2887,24 @@ header{
 @media (max-width:640px){
   .ticker{border-radius:20px 20px 0 0 !important;}
 }
+
+
+/* ============================================================
+   CHAT MODAL — same shape language as the site
+   ============================================================ */
+.ai-andrew-modal{
+  border-radius:32px !important;
+  box-shadow:none !important;
+  overflow:hidden;
+}
+.ai-andrew-modal__close{
+  background:var(--primary) !important;
+  color:#fff !important;
+  border:0 !important;
+  box-shadow:none !important;
+  width:36px; height:36px;
+}
+.ai-andrew-modal__close:hover{background:var(--ink) !important;}
+@media (max-width:520px){
+  .ai-andrew-modal{border-radius:0 !important;}
+}
