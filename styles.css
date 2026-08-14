@@ -3556,3 +3556,46 @@ body{ padding-bottom:72px !important; }
   color:#FFFFFF !important;
   background:var(--ink) !important;
 }
+
+
+/* ============================================================
+   About & Experience list copy white on the crimson band
+   ============================================================ */
+#about-experience > .container ul,
+#about-experience > .container ol,
+#about-experience > .container li,
+#about-experience .grid li,
+#about-experience .span-6 li,
+#about-experience .span-6 p,
+#about-experience .span-6 h4,
+#about-experience .span-6 strong{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* cards stay white with dark copy */
+#about-experience .carousel-card li,
+#about-experience .carousel-card p,
+#about-experience .carousel-card h3,
+#about-experience .carousel-card strong{
+  color:var(--ink) !important;
+}
+#about-experience .carousel-card li{ color:rgba(10,10,10,.8) !important; }
+#about-experience .carousel-card strong{ color:var(--ink) !important; }
+
+/* ============================================================
+   Hero CTA text crimson at rest (highest specificity)
+   ============================================================ */
+#hero .cta a.link-cta,
+#hero .hero-left .cta a.link-cta,
+body #hero .cta a.link-cta{
+  background:#FFFFFF !important;
+  color:var(--primary) !important;
+  border:0 !important;
+}
+#hero .cta a.link-cta:hover,
+#hero .hero-left .cta a.link-cta:hover,
+body #hero .cta a.link-cta:hover{
+  background:var(--ink) !important;
+  color:#FFFFFF !important;
+}
