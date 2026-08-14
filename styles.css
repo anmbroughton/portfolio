@@ -1430,10 +1430,6 @@ button:focus-visible,
 
 .carousel-card:hover::before{display:none;}
 
-.case-card:hover img,
-.carousel-card:hover img{
-  filter:saturate(.95) contrast(.95) brightness(.82) !important;
-}
 
 
 
@@ -1467,11 +1463,6 @@ button:focus-visible,
 .carousel-card:hover::before{display:none;}
 
 /* Do not let image brightness reduce text contrast */
-#speaking .carousel-card:hover img,
-#thoughts .carousel-card:hover img,
-.carousel-card:hover img{
-  filter:saturate(.9) contrast(.9) brightness(.68) !important;
-}
 
 
 
@@ -1973,12 +1964,6 @@ footer.alt-0 a:hover{color:var(--primary);}
              filter .45s ease,
              opacity .45s ease;
 }
-/* image settles back + dims slightly so the caption panel reads as foreground */
-.case-card:hover img,
-.carousel-card:hover img{
-  transform:scale(1.015);
-  filter:brightness(.72) saturate(.95);
-}
 
 /* ---- caption: translucent band by default ---- */
 .case-card .overlay-inner,
@@ -2044,8 +2029,6 @@ footer.alt-0 a:hover{color:var(--primary);}
   pointer-events:auto;
 }
 .carousel-card::before{display:none !important;}
-.case-card:hover img{filter:brightness(.72) saturate(.95) !important;}
-.carousel-card:hover img{filter:brightness(.72) saturate(.95) !important;}
 
 /* badge stays above everything */
 .logo-badge{z-index:5;}
@@ -2146,12 +2129,6 @@ header{
 .case-card:hover .overlay-inner p,
 .carousel-card:hover .overlay-inner p{ color:rgba(255,255,255,.95) !important; }
 
-/* image dim only — never touch the caption */
-.case-card:hover img,
-.carousel-card:hover img{
-  filter:brightness(.65) saturate(.9) !important;
-  transform:scale(1.02) !important;
-}
 
 /* About & Experience opts out entirely */
 #about-experience .carousel-card{
@@ -2660,4 +2637,17 @@ h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
 
 @media (prefers-reduced-motion: reduce){
   .case-card .overlay-inner, .carousel-card .overlay-inner{transition:none !important;}
+}
+
+
+/* ID-level guarantee: card images are never filtered or moved */
+#work .case-card img,  #work .case-card:hover img,
+#speaking .carousel-card img, #speaking .carousel-card:hover img,
+#thoughts .carousel-card img, #thoughts .carousel-card:hover img,
+#about-experience .carousel-card img, #about-experience .carousel-card:hover img{
+  filter:none !important;
+  -webkit-filter:none !important;
+  opacity:1 !important;
+  transform:none !important;
+  transition:none !important;
 }
