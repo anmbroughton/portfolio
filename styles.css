@@ -2993,3 +2993,15 @@ footer nav a{
   letter-spacing:0;
 }
 footer a:hover{color:var(--primary) !important;}
+
+
+/* ticker: same size as header, lighter weight */
+.ticker__item{
+  font-family:"GT Standard L", system-ui, sans-serif !important;
+  font-weight:400 !important;
+  letter-spacing:0 !important;
+}
+.ticker__item::after{
+  font-family:"GT Standard L", system-ui, sans-serif !important;
+  font-weight:400 !important;
+}
