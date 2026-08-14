@@ -1865,3 +1865,115 @@ footer.alt-0 a:hover{color:var(--primary);}
   .hero-meta{margin-top:1.4rem;}
   .logo-strip img,.logo-strip svg{height:28px;}
 }
+
+
+/* ============================================================
+   BAND + CONTRAST FIX
+   (ID selectors used deliberately — earlier #id rules outrank
+    the .alt-* classes, so we match their specificity here.)
+   ============================================================ */
+
+/* ---------- Alternating bands, forced at ID specificity ---------- */
+#work,
+#about-experience,
+#portfolio{
+  background:var(--grey) !important;        /* white */
+  color:var(--ink) !important;
+}
+#speaking,
+#thoughts{
+  background:var(--grey-soft) !important;   /* grey  */
+  color:var(--ink) !important;
+}
+#work h2,#speaking h2,#about-experience h2,#thoughts h2,#portfolio h2,
+#work h3,#speaking h3,#about-experience h3,#thoughts h3,#portfolio h3,
+#work p,#speaking p,#about-experience p,#thoughts p,#portfolio p,
+#work li,#about-experience li,#portfolio td{
+  color:var(--ink);
+}
+/* card interiors keep their own light-on-dark treatment */
+#work .overlay-inner h3,#speaking .overlay-inner h3,#thoughts .overlay-inner h3{color:#fff;}
+#work .overlay-inner p,#speaking .overlay-inner p,#thoughts .overlay-inner p{color:rgba(255,255,255,.82);}
+
+/* ---------- About & Experience: grey cards on the white band ---------- */
+#about-experience .carousel-card{
+  background:var(--grey-soft) !important;
+  color:var(--ink) !important;
+  border-radius:24px;
+  padding:1.75rem;
+}
+#about-experience .carousel-card :where(h3,h4,p,li,ul,strong,span){
+  color:var(--ink) !important;
+}
+#about-experience .carousel-card li{opacity:.85;}
+
+/* ---------- Button / link contrast ---------- */
+/* solid pills: dark bg -> white text */
+.nav-chat-btn{background:var(--ink) !important; color:#fff !important;}
+.nav-chat-btn:hover{background:var(--primary) !important; color:#fff !important;}
+
+/* text CTAs sit on light bands: dark text, crimson on hover */
+.link-cta{
+  background:transparent !important;
+  color:var(--ink) !important;
+  border:1px solid rgba(10,10,10,.25);
+  padding:.7rem 1.4rem;
+  border-radius:999px;
+}
+.link-cta:hover{
+  background:var(--ink) !important;
+  color:#fff !important;
+  border-color:var(--ink);
+}
+/* hero sits on the dark photo -> invert */
+#hero .link-cta{
+  background:transparent !important;
+  color:#fff !important;
+  border-color:rgba(255,255,255,.55);
+}
+#hero .link-cta:hover{
+  background:#fff !important;
+  color:var(--ink) !important;
+  border-color:#fff;
+}
+
+/* "Show more" / view-more link */
+.view-more{
+  color:var(--ink) !important;
+  border-bottom:1px solid var(--ink) !important;
+  font-weight:600;
+}
+.view-more:hover{
+  color:var(--primary) !important;
+  border-color:var(--primary) !important;
+}
+
+/* carousel arrows readable on both bands */
+.carousel-controls .carousel-btn{
+  color:var(--ink) !important;
+  font-size:2.25rem;
+  width:auto; height:auto;
+  border:0 !important;
+}
+.carousel-controls .carousel-btn:hover{
+  color:var(--primary) !important;
+  background:transparent !important;
+}
+
+/* footer-callout pill on the black slab */
+.footer-callout-wrap .cta-inner a{
+  background:#fff !important;
+  color:var(--ink) !important;
+  border:0;
+}
+.footer-callout-wrap .cta-inner a:hover{
+  background:var(--primary) !important;
+  color:#fff !important;
+}
+
+/* portfolio status pills */
+#portfolio .pill{
+  background:rgba(10,10,10,.06) !important;
+  color:var(--ink) !important;
+  border:0;
+}
