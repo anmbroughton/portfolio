@@ -3501,3 +3501,10 @@ body{ padding-bottom:72px !important; }
   background:var(--ink) !important;
   color:#FFFFFF !important;
 }
+
+
+/* "Designer." in the header goes crimson */
+.brand .role{
+  color:var(--primary) !important;
+  opacity:1 !important;
+}
