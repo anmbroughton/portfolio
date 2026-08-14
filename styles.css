@@ -21,35 +21,31 @@
 }
 
 /* ============================================
-   THEME COLOURS
+   THEME COLOURS — greyscale + red accent
    ============================================
-   Four accent colours:
-   --accent  = BG / Accent 1 / hazy blue-violet river light
-   --primary = P  / Accent 2 / teal
-   --gold    = A  / Accent 3 / gold
-   --forest  = T  / Accent 4 / dark forest
-
-   Two base colours:
-   --grey     = GR / Base 1 / light neutral
-   --charcoal = CH / Base 2 / deep neutral
+   --accent  = section background (off-white)
+   --primary = the pop colour (red)
+   --white   = type colour on sections (near-black)
    ============================================ */
 :root{
-  /* accents */
-  --accent:  #CECAD4;
-  --primary: #2A5A6E;
-  --gold:    #C8A96E;
-  --forest:  #1A2818;
+  /* core three */
+  --accent:  #F5F5F5;   /* off-white — section background */
+  --primary: #D42B1E;   /* red       — accent / pop       */
+  --white:   #111111;   /* near-black — type              */
 
-  /* bases */
+  /* greyscale ramp */
   --grey:    #F5F5F5;
+  --grey-mid:#8A8A8A;
   --charcoal:#1F1F1F;
+  --black:   #111111;
 
   /* legacy aliases / system colours */
-  --bg:var(--grey);
-  --white:var(--grey);
-  --ink:var(--forest);
-  --ink-70:rgba(26,40,24,.75);
-  --ink-50:rgba(26,40,24,.55);
+  --gold:   var(--primary);
+  --forest: var(--black);
+  --bg:var(--black);
+  --ink:var(--black);
+  --ink-70:rgba(17,17,17,.72);
+  --ink-50:rgba(17,17,17,.52);
 
   --container:max(56px,min(1240px,92vw));
   --radius:5px;
@@ -178,10 +174,10 @@ nav a:hover::after{width:100%}
 .ai-andrew-modal__close{
   -webkit-appearance:none;    /* kill Safari/macOS native button chrome */
   appearance:none;
-  background:#C8A96E;         /* gold */
+  background:var(--primary);   /* red */
   background-image:none;
   border:0;
-  color:#1A2818;              /* dark forest icon */
+  color:#fff;                  /* white icon on red */
   font: 700 1.3rem/1 "GT Standard L", system-ui, sans-serif;
   cursor:pointer;
   width:34px; height:34px;
@@ -194,9 +190,9 @@ nav a:hover::after{width:100%}
   overflow:hidden;
   transition:transform .15s ease, background .2s ease;
 }
-.ai-andrew-modal__close:hover{background:#CECAD4; transform:scale(1.05);}
+.ai-andrew-modal__close:hover{background:#111111; transform:scale(1.05);}
 .ai-andrew-modal__close:focus{outline:none;}
-.ai-andrew-modal__close:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(200,169,110,.5);}
+.ai-andrew-modal__close:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(212,43,30,.45);}
 .ai-andrew-modal__body{padding:0; flex:1; min-height:0; display:flex;}
 body.no-scroll{overflow:hidden}
 
