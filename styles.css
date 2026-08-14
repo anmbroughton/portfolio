@@ -1553,38 +1553,14 @@ nav a::after{background:var(--primary); height:1px; bottom:-3px;}
   opacity:1;
 }
 
-/* ---------- Numbered section headings (01 / 02 / 03 …) ---------- */
-main{counter-reset:sec;}
+/* ---------- Section headings ---------- */
 .section h2{
-  counter-increment:sec;
-  display:grid;
-  grid-template-columns:auto 1fr;
-  align-items:start;
-  gap:clamp(1.25rem,3vw,2.5rem);
   max-width:20ch;
   font-size:clamp(2.4rem,6vw,5.25rem);
   line-height:1;
   letter-spacing:-.035em;
   margin-bottom:clamp(2rem,5vh,3.5rem);
 }
-.section h2::before{
-  content:"0" counter(sec);
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:clamp(56px,6vw,90px);
-  height:clamp(56px,6vw,90px);
-  border:1.5px solid var(--primary);
-  border-radius:50%;
-  color:var(--primary);
-  font-family:"GT Standard L",system-ui,sans-serif;
-  font-style:italic;
-  font-weight:400;
-  font-size:clamp(1rem,1.5vw,1.5rem);
-  letter-spacing:0;
-  flex-shrink:0;
-}
-#hero h1::before{content:none;}
 
 /* section intro paragraph sits under the heading, indented to the type column */
 .section > .container > p:first-of-type{
@@ -1789,8 +1765,6 @@ footer a:hover{color:var(--primary);}
 .carousel-btn:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
 
 @media (max-width:720px){
-  .section h2{grid-template-columns:1fr; gap:1rem;}
-  .section h2::before{width:48px; height:48px; font-size:.9rem;}
   .footer-callout-wrap{border-radius:16px;}
   .case-card, .carousel-card{border-radius:16px;}
 }
