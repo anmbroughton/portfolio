@@ -2345,3 +2345,117 @@ header{
 
 /* no text shadows anywhere — captions sit on solid blocks now */
 h1,h2,h3,h4,p,li,span,a,strong,div{ text-shadow:none !important; }
+
+
+/* ============================================================
+   CARD ROLLOVER v3 — joined at rest, separate on hover.
+   Radius + gap animate. No colour change, no dark wash.
+   ============================================================ */
+
+.case-card,
+.carousel-card{
+  display:flex !important;
+  flex-direction:column !important;
+  background:transparent !important;
+  overflow:visible !important;
+  border-radius:0 !important;
+  transform:none !important;
+  position:relative;
+}
+
+/* IMAGE — rounded top only at rest, all four corners on hover */
+.case-card img,
+.carousel-card img{
+  display:block;
+  width:100%;
+  position:relative;
+  z-index:1;
+  filter:none !important;
+  transform:none !important;
+  border-radius:24px 24px 0 0 !important;
+  transition:border-radius .38s cubic-bezier(.22,.61,.36,1) !important;
+}
+.case-card:hover img,
+.case-card:focus-within img,
+.carousel-card:hover img,
+.carousel-card:focus-within img{
+  border-radius:24px !important;
+  filter:none !important;
+  transform:none !important;
+}
+
+/* CAPTION — rounded bottom only at rest, flush to the image */
+.case-card .overlay-inner,
+.carousel-card .overlay-inner{
+  position:static !important;
+  inset:auto !important;
+  display:flex !important;
+  flex-direction:column;
+  gap:.4rem;
+  margin-top:0 !important;
+  padding:1.5rem 1.6rem 1.6rem !important;
+  background:var(--ink) !important;
+  color:#fff !important;
+  opacity:1 !important;
+  transform:none !important;
+  max-width:none !important;
+  z-index:2;
+  pointer-events:none;
+  border-radius:0 0 24px 24px !important;
+  transition:border-radius .38s cubic-bezier(.22,.61,.36,1),
+             margin-top .38s cubic-bezier(.22,.61,.36,1) !important;
+}
+
+/* HOVER — caption detaches: gap opens, all corners round */
+.case-card:hover .overlay-inner,
+.case-card:focus-within .overlay-inner,
+.carousel-card:hover .overlay-inner,
+.carousel-card:focus-within .overlay-inner{
+  background:var(--ink) !important;      /* unchanged colour */
+  border-radius:24px !important;
+  margin-top:.65rem !important;
+  padding:1.5rem 1.6rem 1.6rem !important;
+  inset:auto !important;
+}
+
+/* type stays constant */
+.case-card .overlay-inner h3,
+.carousel-card .overlay-inner h3,
+.case-card:hover .overlay-inner h3,
+.carousel-card:hover .overlay-inner h3{
+  color:#fff !important;
+  margin:0 !important;
+}
+.case-card .overlay-inner p,
+.carousel-card .overlay-inner p,
+.case-card:hover .overlay-inner p,
+.carousel-card:hover .overlay-inner p{
+  color:rgba(255,255,255,.88) !important;
+  margin:0 !important;
+}
+
+/* no washes, no tints, no lifts anywhere */
+.case-card > a.overlay,
+.carousel-card > a.overlay{
+  background:none !important;
+  opacity:1 !important;
+  z-index:5 !important;
+  border-radius:24px;
+}
+.carousel-card::before{display:none !important;}
+.case-card:hover,
+.carousel-card:hover{transform:none !important;}
+
+/* About & Experience unaffected */
+#about-experience .carousel-card .overlay-inner,
+#about-experience .carousel-card:hover .overlay-inner{
+  background:none !important;
+  border-radius:0 !important;
+  margin-top:0 !important;
+  padding:0 !important;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .case-card img,.carousel-card img,
+  .case-card .overlay-inner,.carousel-card .overlay-inner{transition:none !important;}
+}
