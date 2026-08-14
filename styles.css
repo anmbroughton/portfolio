@@ -172,21 +172,27 @@ nav a:hover::after{width:100%}
 }
 .ai-andrew-modal__header h2{position:absolute; left:-9999px;}
 .ai-andrew-modal__close{
+  -webkit-appearance:none;    /* kill Safari/macOS native button chrome */
+  appearance:none;
   background:#C8A96E;         /* gold */
+  background-image:none;
   border:0;
   color:#1A2818;              /* dark forest icon */
-  font-size:1.3rem;
-  line-height:1;
+  font: 700 1.3rem/1 "GT Standard L", system-ui, sans-serif;
   cursor:pointer;
   width:34px; height:34px;
   border-radius:50%;
   padding:0;
+  margin:0;
   outline:none;
+  box-shadow:none;
   display:inline-flex; align-items:center; justify-content:center;
-  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+  overflow:hidden;
+  transition:transform .15s ease, background .2s ease;
 }
 .ai-andrew-modal__close:hover{background:#CECAD4; transform:scale(1.05);}
-.ai-andrew-modal__close:focus-visible{box-shadow:0 0 0 3px rgba(200,169,110,.4);}
+.ai-andrew-modal__close:focus{outline:none;}
+.ai-andrew-modal__close:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(200,169,110,.5);}
 .ai-andrew-modal__body{padding:0; flex:1; min-height:0; display:flex;}
 body.no-scroll{overflow:hidden}
 
