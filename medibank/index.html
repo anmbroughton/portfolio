@@ -189,7 +189,7 @@ a.case{cursor:pointer}
 .frame .asks + .lede{margin-top:10px}
 
 /* Title */
-.intro h1{font-size:92px;max-width:11.5ch;position:relative;z-index:2}
+.intro h1{font-size:74px;max-width:15ch;position:relative;z-index:2}
 .intro .lede{position:relative;z-index:2}
 .collage{position:absolute;inset:-96px 0 0 0;pointer-events:none;z-index:1}
 .collage .cl{position:absolute;display:block;border-radius:14px;transform:translate(calc(var(--mx,0)*var(--p)),calc(var(--my,0)*var(--p))) rotate(var(--r));animation:drift calc(9s + var(--k)*.7s) ease-in-out infinite alternate;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -431,7 +431,8 @@ dialog::backdrop{background:rgba(10,10,10,.78)}
    Each slot shows the exact filename it expects until the
    file exists. See images/IMAGE-NAMES.txt.
    ========================================================= */
-const IMG = "images/";
+/* Resolve images whether the deck is opened as /medibank, /medibank/ or index.html (a URL without the trailing slash would otherwise look in /images/) */
+const IMG = (()=>{const p=location.pathname;if(p.endsWith("/")||/\.[a-z0-9]+$/i.test(p))return "images/";return p.split("/").pop()+"/images/";})();
 
 /* The AI Design Lead position description: five accountabilities. Frames point at one with .role */
 const ROLE = [
@@ -445,7 +446,7 @@ const ROLE = [
 /* The narrative wrapper: title, who I am, the question behind the brief, why I make sense */
 const STORY = {
   "title": {
-    "h": "18 years designing how people and technology work together",
+    "h": "18 years designing how people, products, services and technology work together",
     "lede": "Andrew Broughton. Product, service, strategic and brand design, in-house, agency and consultancy. A case study for the AI Design Lead role at Medibank.",
     "collage": [
       [
@@ -558,7 +559,7 @@ const STORY = {
       ],
       [
         "Since 2015",
-        "Lead",
+        "Leadership",
         "In-house, agency and consultancy. Managing and growing design teams, and leading consulting for clients like Australia Post and Meta."
       ],
       [
