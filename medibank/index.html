@@ -186,7 +186,7 @@ a.case{cursor:pointer}
 .frame .asks + .lede{margin-top:10px}
 
 /* Title */
-.intro h1{font-size:150px;max-width:12ch}
+.intro h1{font-size:112px;max-width:16ch}
 .intro .lede{margin-top:40px;max-width:40ch;font-size:28px}
 /* Project map */
 .map h2{font-size:46px;letter-spacing:-.03em}
@@ -223,6 +223,43 @@ a.case{cursor:pointer}
 .g-seg.r{border-top-right-radius:999px;border-bottom-right-radius:999px;width:calc(25% - 10px)}
 .g-seg.l.r{width:calc(25% - 20px)}
 .g-seg:hover{filter:brightness(.92)}
+
+/* Who I am */
+.slide.me .s-body{padding-right:calc(720px + 96px)}
+.me h2{font-size:84px;letter-spacing:-.035em}
+.me-role{font-size:22px;color:var(--ink-70);margin-top:8px}
+.me .lede{margin-top:26px;font-size:26px;max-width:none}
+.arc{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}
+.arc li{border-top:4px solid var(--primary);padding-top:14px}
+.arc span{font-size:15px;color:var(--ink-70)}
+.arc b{display:block;font-family:var(--M);font-weight:900;font-size:26px;margin-top:2px}
+.arc p{font-size:17px;line-height:1.4;margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:32px}
+.stats b{display:block;font-family:var(--M);font-weight:900;font-size:40px;color:var(--primary);letter-spacing:-.03em}
+.stats span{font-size:15px;line-height:1.35;display:block;margin-top:4px}
+.stack.one{grid-template-rows:1fr}
+/* The question */
+.ask h2{font-size:100px}
+.ask .answer{background:var(--ink);color:#fff;border-radius:28px;padding:26px 32px;font-size:27px;line-height:1.45;max-width:58ch;margin-top:34px;position:relative;z-index:1}
+.ask .sub{font-size:22px;margin-top:22px}
+.steps-row a{color:#fff;text-decoration:none}
+/* Question slides: role line */
+.question h2{font-size:100px}
+.q-role{position:relative;z-index:1;margin-top:18px;font-size:20px;font-weight:600;background:rgba(0,0,0,.16);display:inline-block;padding:10px 18px;border-radius:14px;max-width:70ch}
+/* Frame: role fit */
+.org .fit{margin-left:14px;font-size:15px;font-weight:600;color:var(--primary);background:#FDECEE;border-radius:999px;padding:4px 12px;white-space:nowrap}
+/* Gantt role line */
+.g-q em{display:block;font-style:normal;font-weight:400;font-size:14px;color:var(--ink-70);margin-top:4px}
+/* Why me */
+.why h2{font-size:64px;letter-spacing:-.035em}
+.why-grid{margin-top:28px;display:grid;gap:10px}
+.why-r{display:grid;grid-template-columns:360px 1fr 360px;gap:24px;align-items:center;background:var(--grey-soft);border-radius:20px;padding:16px 22px}
+.why-r b{font-family:var(--M);font-weight:900;font-size:20px;color:var(--primary)}
+.why-r p{font-size:20px;line-height:1.4}
+.why-r span{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.why-r i{font-style:normal;font-size:14px;font-weight:600;background:#fff;border-radius:999px;padding:5px 12px}
+.why-close{margin-top:24px;font-size:26px;max-width:none}
+.why-hands{margin-top:14px;font-size:18px;color:var(--ink-70)}
 /* ============ Reflection ============ */
 .reflect h2{font-size:104px;letter-spacing:-.035em;color:#fff;max-width:14ch}
 .reflect-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:36px;margin-top:72px}
@@ -338,6 +375,121 @@ dialog::backdrop{background:rgba(10,10,10,.78)}
    ========================================================= */
 const IMG = "images/";
 
+/* The AI Design Lead position description: five accountabilities. Frames point at one with .role */
+const ROLE = [
+  "Human-AI experience framework",
+  "Supervision and human oversight",
+  "Specialist experience leadership",
+  "Research and evidence",
+  "Enterprise enablement"
+];
+
+/* The narrative wrapper: title, who I am, the question behind the brief, why I make sense */
+const STORY = {
+  "title": {
+    "h": "Setting the standard for how people and AI work together",
+    "lede": "Andrew Broughton. A case study for the AI Design Lead role at Medibank. Four questions, five projects, one answer."
+  },
+  "me": {
+    "name": "Andrew Broughton",
+    "role": "Practice Lead, Enterprise Design, WorkSafe Victoria",
+    "line": "I design how organisations change: the strategy, the service, and the standards that keep it working. Making the unreal, real.",
+    "arc": [
+      [
+        "2007 to 2015",
+        "Craft",
+        "Digital and creative for MIFF, Melbourne Museum and Ford."
+      ],
+      [
+        "2015 to 2020",
+        "Lead",
+        "Design teams for ME Bank, Optus and Flybuys. Consulting at Craig Walker for Australia Post and Meta."
+      ],
+      [
+        "2020 to now",
+        "Build",
+        "WorkSafe's Futures Lab, Innovation Centre and Enterprise Design practice, and its first AI governance."
+      ]
+    ],
+    "stats": [
+      [
+        "18+",
+        "years in design and innovation"
+      ],
+      [
+        "From scratch",
+        "WorkSafe's central design practice"
+      ],
+      [
+        "Published",
+        "Design for Social Innovation, 2022"
+      ],
+      [
+        "Finalist",
+        "Victorian Premier's Design Awards, Service Design"
+      ]
+    ],
+    "photo": "pub-outlook.jpg",
+    "caption": "Speaking at The Outlook, design leadership"
+  },
+  "ask": {
+    "kicker": "The question behind the brief",
+    "lines": [
+      "Can I set the standard",
+      "for how people and AI",
+      "work together",
+      "at Medibank?"
+    ],
+    "answer": "Yes. It takes four things: a direction people commit to, progress when no one knows the answer, a capability that delivers, and a standard people follow. I've done all four in a regulated organisation, including bringing AI in safely.",
+    "after": "Medibank asked about these four capabilities. The rest of this case study answers each one with the projects that prove it."
+  },
+  "why": {
+    "title": "Why I make sense for this role",
+    "rows": [
+      [
+        0,
+        "I've written standards teams build to: a design process mapped to how the business delivers, and the minimum viable experience for core services.",
+        [
+          "Design Practice",
+          "CX Guardrails"
+        ]
+      ],
+      [
+        1,
+        "I helped set up WorkSafe's first AI governance: a governance and risk framework, with a delivery pathway that filters use cases and de-risks investment.",
+        [
+          "AI Working Group"
+        ]
+      ],
+      [
+        2,
+        "I've run design-led programs from a blank page to a live service.",
+        [
+          "AP CoLab",
+          "Futures Lab"
+        ]
+      ],
+      [
+        3,
+        "I let evidence settle the argument: experience prototypes scaled with real users using the Eames' Powers of Ten.",
+        [
+          "AP CoLab",
+          "Futures Lab"
+        ]
+      ],
+      [
+        4,
+        "I've set up a design practice from scratch, mapped it into delivery, and given it pathways to grow.",
+        [
+          "Design Practice"
+        ]
+      ]
+    ],
+    "close": "I've set the vision, made it real, built the capability and written the standard. Now I want to do it for how people and AI work together at Medibank.",
+    "hands": "Already building with AI: an AI-ready knowledge base of my own work, and AI Andrew, an agent on broughton.com.au."
+  }
+};
+
 /* tackle: the problem each project was set up to tackle (shown on the project map) */
 const PROJECTS = [
   {
@@ -345,7 +497,7 @@ const PROJECTS = [
     "name": "AP CoLab",
     "org": "Australia Post, with Craig Walker",
     "hmw": "How might we bring services to life through collaboration with communities?",
-    "tackle": "Bring new essential services to life with the communities they serve."
+    "tackle": "Bring new services to life through a design-led program with communities."
   },
   {
     "id": "guard",
@@ -365,15 +517,15 @@ const PROJECTS = [
     "id": "practice",
     "name": "Design Practice",
     "org": "WorkSafe Victoria",
-    "hmw": "How might we start a central design practice inside a government delivery model?",
-    "tackle": "Build a design capability that could deliver reform."
+    "hmw": "How might we set up a central design practice that aligns the business and de-risks how it delivers change?",
+    "tackle": "Set up a design practice that aligns the business and de-risks delivery."
   },
   {
     "id": "ai",
     "name": "AI Working Group",
     "org": "WorkSafe Victoria",
-    "hmw": "How might we let teams try AI safely, and invest in what works?",
-    "tackle": "Bring AI into WorkSafe safely, and invest in what works."
+    "hmw": "How might we govern AI so WorkSafe can switch on what works, safely?",
+    "tackle": "Govern AI so WorkSafe can enable it, safely, and invest in what works."
   }
 ];
 const PUBLICATIONS = {
@@ -415,12 +567,12 @@ const QUESTIONS = [
   {
     "area": "Strategy and visioning",
     "lines": [
-      "How do we",
-      "define the why,",
-      "the what",
-      "and the how?"
+      "How do you",
+      "set a direction",
+      "people will",
+      "commit to?"
     ],
-    "sub": "Understand the forces at play. Win hearts and minds on why change is needed. Then define the future state, and the roadmap to get there.",
+    "sub": "Understand the forces at play. Win hearts and minds on why change is needed. Then show the future state, and the roadmap to get there.",
     "frames": {
       "colab": {
         "said": "We let the community set the why. Then we co-designed the what and the how with them, in a pop-up lab.",
@@ -435,7 +587,7 @@ const QUESTIONS = [
         "solution": "A pop-up co-design lab in Footscray, where we shaped that vision into a new service with the people it was for."
       },
       "guard": {
-        "said": "The Future of the Post Office strategy was the why. A vision for each priority use case was the what. Guardrails every build is checked against were the how.",
+        "said": "Strategy before technology. We set the vision for each priority use case before anything was built, so the new system delivered value, not just features.",
         "did": [
           "The point-of-sale technology for Australia's largest retail network was bought. What it needed to deliver, and in what order, wasn't defined, and the backlog was enormous.",
           "A vision for the post office of the future, broken into priority use cases, each with the best experience the new technology could deliver.",
@@ -445,10 +597,11 @@ const QUESTIONS = [
         "proof": "Outcome: the use cases carried the vision for the new technology, and guided the build and national rollout.",
         "notes": "Strategy first, technology second. Each priority use case carried its own vision for the experience, and the guardrails kept every build true to it.",
         "problem": "Australia Post had bought the technology for its largest point-of-sale rollout, but the services on it weren't designed and the backlog was enormous.",
-        "solution": "We aligned the Future of the Post Office strategy to the highest-priority use cases, and set a vision for the experience each one should deliver."
+        "solution": "We aligned the Future of the Post Office strategy to the highest-priority use cases, and set a vision for the experience each one should deliver.",
+        "role": 0
       },
       "futures": {
-        "said": "Look at the next, the near and the far. The threats and opportunities five years out and beyond gave the why. Focus areas for the next strategy gave the what.",
+        "said": "Look beyond the plan. Mapping the next, near and far gave the executive a reason to act now, and became the front end of the 2025 strategy.",
         "did": [
           "The current strategy looked three years ahead. The CEO's challenge was bigger: build a scheme fit for the next 10, 20 and 30 years, in a modern economy.",
           "Five emerging themes, from a literature review and expert interviews including CSIRO, the Grattan Institute and Telstra's former CTO: the changing Victorian community, changing work contracts, future industry, the non-human organisation, and pressure on the healthcare system.",
@@ -457,7 +610,8 @@ const QUESTIONS = [
         "proof": "Outcome: the foundation for the Innovation Centre's portfolio and project briefs, and the front end of WorkSafe's 2025 strategy.",
         "notes": "Next, near and far: three years, five years, and beyond. The non-human organisation theme flagged AI regulation, accountability and the need for human supervision back in 2022. That's a direct line to this role.",
         "problem": "The current strategy covered the next three years. No one was looking at what the near and far future would ask of the scheme.",
-        "solution": "WorkSafe of the Future: a speculative futures project across the next, near and far horizons, building the bridge to the next strategy."
+        "solution": "WorkSafe of the Future: a speculative futures project across the next, near and far horizons, building the bridge to the next strategy.",
+        "role": 0
       },
       "practice": {
         "said": "Reform was the why. A central design practice was the what. Designing the organisation, and winning the investment, was the how.",
@@ -472,16 +626,17 @@ const QUESTIONS = [
         "solution": "A central design practice, built into enterprise delivery, with the executive investing in it."
       },
       "ai": {
-        "said": "Be in the room early. The risk of falling behind was the why. Early governance was the first how.",
+        "said": "Name the real risk. AI features were arriving in WorkSafe's technology, and without governance we couldn't switch them on. That got its first AI governance moving.",
         "did": [
-          "Our strategic project work showed a growing risk: falling behind the pace of an economy already using AI, in how we regulate it and how we use it.",
-          "Early concepts, frameworks and governance for realising AI's value, and a proposed AI Lab to discover, test and learn.",
-          "I was part of the first conversations. The proposed program starts and ends: strategy and executive alignment, then solution definition, then investment decisions and a roadmap."
+          "Our strategic project work showed the risk: AI features arriving in the products WorkSafe already uses, and no way to approve them. Not enabling AI was becoming its own risk.",
+          "A governance framework (who sponsors, who assesses, who endorses), a risk mitigation framework, and a delivery framework around them to filter use cases into investment.",
+          "I was part of the first conversations. The proposed program runs from strategy and executive alignment, to solution definition, to investment decisions and a roadmap."
         ],
-        "proof": "Outcome: early focus and governance, and a shared direction for AI at WorkSafe.",
-        "notes": "Lucky to be in the genesis conversations. Early concepts and frameworks, then focus and early governance.",
-        "problem": "WorkSafe risked falling behind an economy already using AI, in how it regulates it and in how it uses it.",
-        "solution": "Early concepts, frameworks and governance, and a proposal for an AI Lab to test where AI really adds value."
+        "proof": "Outcome: WorkSafe's first AI governance, and a clear path to enabling AI in its technology stack.",
+        "notes": "Not a tool to buy, a risk to manage. Governance is what lets AI be enabled, not what slows it down.",
+        "problem": "AI features were arriving across WorkSafe's technology stack, with no governance to enable them safely. The risk was being unable to use them at all.",
+        "solution": "A governance framework and a risk mitigation framework, inside a delivery framework that filters use cases and de-risks the investment.",
+        "role": 1
       }
     },
     "notes": "Deeply understand the factors shaping a space, so the call on direction is both rational and emotional. Hearts and minds, plus desirability, viability and feasibility. Imaginative and material thinking, with business and strategy acumen. Influences: [CHECK: CSIRO] global megatrends, radical ethnography, Bruce Mau, Jess Scully's Glimpses of Utopia. It boils down to creating the need for change and defining a future state, with a roadmap. It's the precursor to the next part: making the unreal, real. Link to the role: setting a human-AI experience framework is a why, what and how problem. Bring thought leadership on where AI is heading, and win the case for it.",
@@ -494,20 +649,21 @@ const QUESTIONS = [
       "guard",
       "futures",
       "ai"
-    ]
+    ],
+    "role": "In the role: owning the human-AI experience framework, and bringing a point of view on where AI is heading."
   },
   {
     "area": "Helping teams through ambiguity",
     "lines": [
-      "How do we",
-      "make the unreal",
-      "real, with the people",
-      "who will use it?"
+      "How do you",
+      "move a team",
+      "when no one knows",
+      "the answer?"
     ],
-    "sub": "Take the vision and build the service, product and team that deliver it. Design with users early, so adoption isn't left to change management.",
+    "sub": "Make it real early. Prototype with the people it's for, and let the evidence settle the argument.",
     "frames": {
       "colab": {
-        "said": "Prototype it live in the community, and let the evidence settle it.",
+        "said": "Lead with design. A design-led program, run from a pop-up lab, where live prototypes with the community settled what debate couldn't.",
         "did": [
           "Participatory design, run from the shopfront: open days, community workshops and live service prototypes, with the people the service was for.",
           "Co-design put the community in the room. Working this closely created space for unexpected, compelling leads.",
@@ -517,7 +673,8 @@ const QUESTIONS = [
         "proof": "Outcome: the lab way of working drew interest from leadership across Australia Post.",
         "notes": "Participatory design in practice: the users and facilitators of the service shaped how it was built.",
         "problem": "A service that didn't exist yet, and no evidence of what communities would actually use.",
-        "solution": "Participatory design from the shopfront, with live prototypes and the pilot tracked week by week."
+        "solution": "A design-led program run from a shopfront lab: participatory design, live prototypes, and the pilot tracked week by week.",
+        "role": 3
       },
       "guard": {
         "said": "Pick where to start. Prioritise the first use cases, and test each one for feasibility before it's built.",
@@ -532,20 +689,22 @@ const QUESTIONS = [
         "solution": "A prioritised set of first use cases, each with high-level requirements so it could be tested for feasibility."
       },
       "futures": {
-        "said": "Prototype it, pilot it with real people, and only scale what works.",
+        "said": "Test the future in the present. Using the Eames' Powers of Ten, we scaled experience prototypes with real users, one order of magnitude at a time, until the evidence was strong enough to land.",
         "did": [
-          "The provocations from WorkSafe of the Future were prioritised by impact and fit with the strategy, then turned into experiment briefs. Each became a product or service that was prototyped, piloted and, where it worked, scaled into the business.",
+          "The provocations from WorkSafe of the Future were prioritised by impact and fit with the strategy, then turned into experiment briefs.",
+          "Powers of Ten borrows from Charles and Ray Eames' film for IBM, which zooms out by a factor of ten at each step. We scaled experience prototypes the same way: start small with real users, then grow by ten each time, so the risk only grew as fast as the evidence.",
           "Concepts were tested with the people they were for. Workers Club, a social recovery program so no one faces recovery alone, and Jobify, a personalised job search that gives injured workers more agency.",
           "Pilot leads held the vision while experiments ran, and the evidence fed executive decisions.",
           "[[How did you decide what to pilot and what to drop?]]"
         ],
-        "proof": "Outcome: four pilots tested with cohorts of 20+ people. One moved into business as usual in service delivery.",
-        "notes": "Speculative work only matters if it ships. In a risk-averse regulator, getting a pilot to BAU in 18 months was the win.",
+        "proof": "Outcome: four concepts piloted with real users. One moved into business as usual in service delivery.",
+        "notes": "Speculative work only matters if it ships. Powers of Ten, the Eames framework from their IBM film, let a risk-averse regulator say yes to the next step, not the whole thing.",
         "problem": "Speculative ideas, and an incredibly risk-averse regulator to land them in.",
-        "solution": "Every concept was prototyped and piloted with cohorts of 20+ people, and the evidence went back to the executive."
+        "solution": "Powers of Ten, after Charles and Ray Eames: every concept became an experience prototype, scaled with real users by a factor of ten at each step, and only grown when the evidence held.",
+        "role": 3
       },
       "practice": {
-        "said": "Clarify the problem first, design with users, and de-risk adoption before go-live.",
+        "said": "Clarify the problem before the solution. Redesigning a failing release with its users turned a 4x drop in productivity into a 4x gain.",
         "did": [
           "Stepped into an underperforming technology program and paired design with the technology delivery team on a full service and platform redesign. Rebooted legislative change programs the same way: clarify the problem before defining the solution.",
           "Brought users into the work through co-design, so the solution was shaped by the people who would use it.",
@@ -555,7 +714,8 @@ const QUESTIONS = [
         "proof": "Outcome: a first release without design saw a 4x drop in productivity. The redesigned release saw a 4x gain.",
         "notes": "Change managers matter, but they shouldn't be the only way adoption is de-risked. Good design, done well, needs very little change management.",
         "problem": "An underperforming technology program. Its first release, built without design, cut productivity fourfold.",
-        "solution": "We paired design with the technology delivery team on a full service and platform redesign."
+        "solution": "We paired design with the technology delivery team on a full service and platform redesign.",
+        "role": 2
       },
       "ai": {
         "said": "Start with the problems AI could solve, not the tools that are safe to implement.",
@@ -577,23 +737,23 @@ const QUESTIONS = [
       "De-risk adoption"
     ],
     "projects": [
-      "colab",
       "futures",
-      "practice"
-    ]
+      "colab"
+    ],
+    "role": "In the role: leading precedent-setting AI initiatives, and turning research and evidence into decisions."
   },
   {
     "area": "Practice improvement",
     "lines": [
-      "How do we",
-      "build a capability",
-      "that delivers its value,",
-      "and keeps growing?"
+      "How do you",
+      "build the capability",
+      "to deliver it,",
+      "and make it stick?"
     ],
     "sub": "A capability is the people, process and technology behind a front or back of house outcome, like a new service or product. Design the roles across all three, so it delivers the value intended, with clear pathways to make it stronger.",
     "frames": {
       "colab": {
-        "said": "Give a new way of working its own people, principles and tools, until it's how the team delivers new services.",
+        "said": "Make the program design-led. The lab gave the Community team a new way to deliver, and it delivered three new services.",
         "did": [
           "Challenged traditional project roles and widened the team's skill sets.",
           "Gave the lab its own principles, brand and microsite, and a new approach to project management and team dynamics.",
@@ -601,7 +761,9 @@ const QUESTIONS = [
         ],
         "proof": "Outcome: three new services (NWS, CDR, PIF) and interest from leadership across Australia Post.",
         "problem": "Traditional project roles and approaches were slowing how new services got made.",
-        "solution": "A lab with new roles, its own principles, brand and microsite, and a new approach to project management."
+        "solution": "A design-led program model: new roles, the lab's own principles, brand and microsite, and a new approach to project management.",
+        "role": 4,
+        "notes": "Design-led programs: design sets the direction and the way of working, not just the outputs."
       },
       "guard": {
         "said": "Write the requirements from the experience, and let Australia Post's own teams build them.",
@@ -627,19 +789,21 @@ const QUESTIONS = [
         "solution": "A flat, networked team using design and futures methods, with pilot leads who own the problem."
       },
       "practice": {
-        "said": "Design the roles across people, process and technology, then give the team clear pathways to grow.",
+        "said": "Design the practice, not just the work. A central practice, built into how WorkSafe delivers, aligned the business and de-risked every investment along the way.",
         "did": [
-          "Defined the role types and where they fit in delivery, hired the team, built the leadership layer, then coached and trained people to work within the system.",
-          "Built design into enterprise delivery with Technology: dual track delivery and shared design standards across programs.",
-          "Used the employee opinion survey and a capability map to find where to grow next, and brought the work in house so the value stayed inside WorkSafe."
+          "Set it up: defined the role types and where they fit in delivery, hired the team, built the leadership layer, then coached people to work within the system.",
+          "How it works: front-end visions and discovery before investment, then dual track delivery with Technology, so the business agrees on the problem before paying for the solution.",
+          "Adoption by design: meeting user needs early, so adoption isn't left to change management alone.",
+          "Keep growing: the employee opinion survey (eNPS +20 to +41) and a capability map show where to invest in the team next."
         ],
-        "proof": "Outcome: $1.8M a year saved, 50% fewer program extensions, eNPS between +20 and +41, and a Victorian Premier's Design Awards finalist for Service Design.",
-        "notes": "The greatest challenge in practice leadership, and what defines the team's success. It is also how the business realises its investment.",
-        "problem": "Design specialists were spread across the organisation, and WorkSafe wasn't getting the value it was paying for.",
-        "solution": "We defined the roles, built design into the delivery process alongside Technology, and created pathways for the team to grow."
+        "proof": "Outcome: business alignment on what gets built and why, more efficient and effective delivery, higher adoption, and investment de-risked at every stage. Victorian Premier's Design Awards finalist, Service Design.",
+        "notes": "The greatest challenge in practice leadership. Its value isn't the cost line, it's alignment, better delivery, adoption, and lower risk on every investment.",
+        "problem": "Design specialists were scattered across the organisation, with no shared way of working, so change was delivered differently every time.",
+        "solution": "A central design practice: defined roles and a leadership layer, design built into enterprise delivery with Technology, and pathways for the team to grow.",
+        "role": 4
       },
       "ai": {
-        "said": "Put AI governance with the people who own the risk.",
+        "said": "Give AI a delivery framework the business owns. Governance and risk, wrapped in a pathway from use case to investment.",
         "did": [
           "Led a team of risk and technology staff to define how AI comes into WorkSafe.",
           "Matured the early governance into a risk mitigation framework, a governance framework, and a way to define use cases with clear pathways to delivery.",
@@ -647,7 +811,7 @@ const QUESTIONS = [
         ],
         "proof": "Outcome: a generative AI governance framework and risk mitigation process for delivering AI products and services.",
         "problem": "AI needed a home with the people accountable for risk and technology.",
-        "solution": "A governance and risk framework, built with risk and technology, and owned by the Director of Technology."
+        "solution": "A governance framework and a risk mitigation framework, wrapped in a delivery framework, owned by the Director of Technology."
       }
     },
     "notes": "Capability in the enterprise architecture sense: the people, process and technology that deliver a front or back of house outcome. Define the roles across all three, and the frameworks and systems that guide them. The biggest challenge in practice leadership, and what defines the team's success. It's also how the business realises its investment in the capability. Design management and future skills: realising the value of design across an organisation. Link to the role: enterprise enablement. Build AI design capability across product, design, research and delivery through coaching, guidance and tools.",
@@ -659,17 +823,18 @@ const QUESTIONS = [
     "projects": [
       "practice",
       "colab"
-    ]
+    ],
+    "role": "In the role: building AI design capability across product, design, research and delivery."
   },
   {
     "area": "Guidance and standards",
     "lines": [
-      "How do we",
-      "keep it getting",
-      "better after",
-      "it ships?"
+      "How do you",
+      "set a standard",
+      "people follow,",
+      "and keep it current?"
     ],
-    "sub": "Everything is an experience prototype. Build the mechanisms that capture, inform and drive change, then let it run.",
+    "sub": "Everything is an experience prototype. Make the right path the easy path, and build in the mechanisms that keep it improving.",
     "frames": {
       "colab": {
         "said": "Give it one language, write it down, and publish it so others can carry it on.",
@@ -684,15 +849,18 @@ const QUESTIONS = [
         "solution": "A unified language and brand style guide, and the approach published in Design for Social Innovation."
       },
       "guard": {
-        "said": "One guardrails document that every build decision is checked against.",
+        "said": "Bring experience and technology together. We defined the high-level requirements and the minimum viable experience each core service needed.",
         "did": [
-          "One document set how experiences should deliver value, which use cases came first, and what each one needed.",
-          "[[Give one example of a guardrail, and a decision it changed.]]",
-          "It then guided the build and rollout across Australia."
+          "Brought the experience and technology teams together on each core service, so requirements came from the experience and were tested against what the platform could do.",
+          "Defined the minimum viable experience: the least each core service had to deliver to work for customers and staff.",
+          "The CX guardrails held every decision to that bar through the build and rollout across Australia.",
+          "[[Give one example of a guardrail, and a decision it changed.]]"
         ],
-        "proof": "Outcome: guided the build and rollout of Australia's largest point-of-sale system.",
-        "problem": "A national rollout needed every build decision to stay true to the experience.",
-        "solution": "Set the value, priority and requirements for every use case, then guided the build and rollout across Australia."
+        "proof": "Outcome: a clear bar for every core service, which guided the build and national rollout of Australia's largest point-of-sale system.",
+        "problem": "A new point-of-sale platform, and no shared definition of what each core service had to deliver for customers and staff.",
+        "solution": "Experience and technology defined together: high-level requirements and a minimum viable experience for every core service, held to the CX guardrails.",
+        "role": 0,
+        "notes": "Experience and technology at one table. The minimum viable experience is the standard: below it, a service doesn't ship."
       },
       "futures": {
         "said": "Clear ownership rules and evidence reporting, so pilots move from the lab into the business.",
@@ -706,19 +874,21 @@ const QUESTIONS = [
         "solution": "Rules for who owns what, from problem space to business delivery, with evidence from every experiment reported back."
       },
       "practice": {
-        "said": "Guidelines and a toolkit, kept current through community of practice routines and design inside agile squads.",
+        "said": "Map design to how the business delivers, and put the knowledge where everyone can find it. That's how a practice scales into a centre of practice.",
         "did": [
-          "Wrote the Design Practice Guidelines: how design works in delivery through discovery and execution, and the methods, outputs and outcomes to expect. Built a Methods Toolkit alongside it.",
-          "Set up the routines that capture what needs to change: a community of practice cadence, and user-centred design built into agile squads.",
+          "Mapped the design process to the delivery framework: what design does in discovery and execution, and the methods, outputs and outcomes to expect at each phase.",
+          "Centralised the knowledge: the Design Practice Guidelines and a Methods Toolkit, accessible to designers and the business alike.",
+          "Kept it current: a community of practice cadence, and user-centred design built into agile squads.",
           "[[What triggered an amendment to the guidelines, and how did you roll it out?]]"
         ],
-        "proof": "Outcome: one reference for the business, for designers in the practice, and for new hires.",
-        "notes": "Everything is an experience prototype. Set up the thing, then build the mechanisms that let it run and keep improving.",
-        "problem": "A growing practice needed one shared way of working, and a way to keep it current.",
-        "solution": "The Design Practice Guidelines and a Methods Toolkit, for the business, the practice and every new hire."
+        "proof": "Outcome: one reference for designers, the business and every new hire, and the foundation for a centre of practice.",
+        "notes": "A practice scales when its knowledge does. Map it to delivery so the business recognises it, then centralise it so anyone can use it.",
+        "problem": "Design knowledge sat with individual designers, and didn't line up with how the business delivered change.",
+        "solution": "The design process mapped to the enterprise delivery framework, with guidelines, methods and a toolkit in one place for designers and the business.",
+        "role": 0
       },
       "ai": {
-        "said": "One assessment pathway for every use case, with a working group that endorses each one.",
+        "said": "Make the safe path the easy path. One governed pathway filters every AI use case, from idea to the approved AI register.",
         "did": [
           "Use cases need a director-level sponsor, are checked against the existing library, go through an initial risk assessment, and are assessed for desirability, viability and feasibility.",
           "The AI Working Group is the forum that endorses use cases before portfolio prioritisation and the approved AI register.",
@@ -726,8 +896,9 @@ const QUESTIONS = [
           "[[What did you amend after the first use cases went through?]]"
         ],
         "proof": "Outcome: these pathways have brought AI tools into multiple solutions across WorkSafe's technology stack.",
-        "problem": "AI use cases needed one consistent test before anything was built.",
-        "solution": "A pathway from idea to the approved AI register: sponsor, risk assessment, desirability, viability and feasibility, then endorsement."
+        "problem": "Every AI use case needed the same test, so the business could invest with confidence.",
+        "solution": "A delivery framework around the governance: sponsor, risk assessment, desirability, viability and feasibility, then endorsement and the approved AI register.",
+        "role": 1
       }
     },
     "notes": "When you deliver something, a framework, a service or a capability, you keep enabling and iterating it. Across all of these I've built mechanisms to capture, identify and inform change: a governance forum and its terms of reference, a CX team that monitors and improves a service, a community of practice cadence, user-centred design inside agile squads. Collaboration and connection to purpose at every level, from governance to the individual. I do this by helping teams clarify problems and define and own the solutions. It takes patience and trust, which is the core skill of a leader. Everything is an experience prototype. Link to the role: the framework has to evolve as the technology and regulation change. Evidence from customers, employees and live solutions feeds the standards.",
@@ -740,7 +911,8 @@ const QUESTIONS = [
       "ai",
       "practice",
       "guard"
-    ]
+    ],
+    "role": "In the role: standards, patterns and human oversight that evolve as the technology and regulation change."
   }
 ];
 
@@ -866,10 +1038,13 @@ const REFLECT = {
 
 /* Speaker notes for non-frame slides. Frames and question slides carry .notes in QUESTIONS. */
 const NOTES = {
-  "intro": "Four questions, five projects. Pick the lead project per question.",
+  "intro": "Open with the role, not with me. The whole deck answers one question.",
   "published": "Close: don't just take my word for it. The work has been recognised, published, and presented.",
   "reflect": "[[Reflections still to write: one learned, one mistake, one do-differently per project.]]",
-  "map": "Each project was set up to tackle a different problem. Not every project answers every question, so each question is answered by the projects that answer it best."
+  "map": "Five projects, each set up to tackle a different problem. Each question is answered by the projects that prove it best, and each one ties to part of the role.",
+  "me": "Sixty seconds. Craft, lead, build. The thread: design as a way to change organisations, now applied to how people and AI work together.",
+  "ask": "Answer first. Everything after this is the evidence.",
+  "why": "Close on the role, not the projects. If asked about direct AI delivery: few people can genuinely claim that track record yet, because the field is too new. Point to the governance work and the hands-on building."
 };
 
 /* =========================================================
@@ -904,11 +1079,33 @@ const add = (id, cls, label, sub, inner, meta={}) => slides.push({id, cls, label
 
 /* Title */
 add("intro","intro","Introduction","",`
-  <h1>Four questions, five projects</h1>
-  <p class="lede">Four questions from Medibank, each answered by the projects that answer it best. From Australia Post to WorkSafe.</p>`);
+  <h1>${esc(STORY.title.h)}</h1>
+  <p class="lede">${esc(STORY.title.lede)}</p>`);
+
+/* Who I am */
+add("me","me","Who I am","",`
+  <div class="me-text">
+    <h2>${esc(STORY.me.name)}</h2>
+    <p class="me-role">${esc(STORY.me.role)}</p>
+    <p class="lede">${esc(STORY.me.line)}</p>
+    <ol class="arc">${STORY.me.arc.map(([w,t,d])=>`<li><span>${esc(w)}</span><b>${esc(t)}</b><p>${esc(d)}</p></li>`).join("")}</ol>
+    <div class="stats">${STORY.me.stats.map(([n,l])=>`<div><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join("")}</div>
+  </div>
+  <div class="stack one"><button class="case shot" data-full="${IMG}${STORY.me.photo}" data-caption="${esc(STORY.me.caption)}">
+    <div class="media fit-cover"><img src="${IMG}${STORY.me.photo}" alt="${esc(STORY.me.caption)}" data-kind="Photo" data-hint=""></div>
+    <span class="tag"><b>On stage</b><span>${esc(STORY.me.caption)}</span></span></button></div>`);
+
+/* The question behind the brief, answered first */
+add("ask","question ask","The question","Answered first",`
+  <p class="count">${esc(STORY.ask.kicker)}</p>
+  <h2>${STORY.ask.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
+  <p class="answer">${esc(STORY.ask.answer)}</p>
+  <p class="sub">${esc(STORY.ask.after)}</p>
+  <ol class="steps-row">${QUESTIONS.map((q,i)=>`<li><a href="#q${i+1}">${esc(q.area)}</a></li>`).join("")}</ol>`);
 
 /* Project map as a Gantt: the four questions read as stages; each project's bar spans the stages it answers */
 const QSHORT = ["Strategy and visioning","Helping teams through ambiguity","Practice improvement","Guidance and standards"];
+const GROLE = ["Framework and point of view","Precedent-setting work","Building AI design capability","Standards and oversight"];
 const gantt = p => {
   const on = QUESTIONS.map(q=>(q.projects||[]).indexOf(p.id));          /* -1 = not answered, 0 = lead */
   const idx = on.map((k,i)=>k<0?null:i).filter(i=>i!==null);
@@ -925,7 +1122,7 @@ add("map","map","The projects","Mapped to the questions",`
   <h2>Five projects, mapped to the questions they answer best</h2>
   <div class="gantt">
     <span></span>
-    <div class="g-head">${QSHORT.map((t,i)=>`<a class="g-q" href="#q${i+1}"><b>${i+1}</b>${esc(t)}</a>`).join("")}</div>
+    <div class="g-head">${QSHORT.map((t,i)=>`<a class="g-q" href="#q${i+1}"><b>${i+1}</b>${esc(t)}<em>${esc(GROLE[i])}</em></a>`).join("")}</div>
     ${PROJECTS.map(p=>`<div class="pm-p">
         <div class="pm-img media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
         <div><h3>${esc(p.name)}</h3><p class="pm-org">${esc(p.org)}</p><p class="pm-t">${esc(p.tackle||"")}</p></div>
@@ -941,6 +1138,7 @@ QUESTIONS.forEach((q,qi)=>{
     <p class="count">Question ${qi+1} of 4. ${esc(q.area)}</p>
     <h2>${q.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
     <p class="sub">${esc(q.sub)}</p>
+    ${q.role?`<p class="q-role">${esc(q.role)}</p>`:""}
     ${q.steps?`<ol class="steps-row">${q.steps.map(t=>`<li>${esc(t)}</li>`).join("")}</ol>`:""}
     <div class="jump">${(q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).map(p=>`<a class="pill light" href="#${qid}-${p.id}">${esc(p.name)}</a>`).join("")}</div>`,
     {q:qi, notes:q.notes||""});
@@ -958,7 +1156,7 @@ QUESTIONS.forEach((q,qi)=>{
       <div class="frame-text">
           <p class="crumb"><b>Question ${qi+1}.</b>${esc(q.area)}</p>
           <h3>${esc(p.name)}</h3>
-          <p class="org">${esc(p.org)}</p>
+          <p class="org">${esc(p.org)}${f.role!==undefined?`<span class="fit">Role fit: ${esc(ROLE[f.role])}</span>`:""}</p>
           <p class="asks">${esc(q.lines.join(" "))}</p>
           <p class="lede">${fmt(f.said)}</p>
           <div class="ps">
@@ -992,6 +1190,13 @@ add("published","ink","Published and recognised","",`
     <div class="pub-side">${PUBLICATIONS.items.map(it=>card({...it, kind:plain(it.title), hint:"Photo"})).join("")}</div>
   </div>`);
 
+
+/* Why I make sense for this role: the close */
+add("why","why","Why me","The role",`
+  <h2>${esc(STORY.why.title)}</h2>
+  <div class="why-grid">${STORY.why.rows.map(([r,t,ps])=>`<div class="why-r"><b>${esc(ROLE[r])}</b><p>${esc(t)}</p><span>${ps.map(x=>`<i>${esc(x)}</i>`).join("")}</span></div>`).join("")}</div>
+  <p class="lede why-close">${esc(STORY.why.close)}</p>
+  <p class="why-hands">${esc(STORY.why.hands)}</p>`);
 
 slides.forEach(sl=>{ if(!sl.notes && NOTES[sl.id]) sl.notes = NOTES[sl.id]; });
 const total = slides.length;
@@ -1105,7 +1310,7 @@ matrix.innerHTML = `<span></span>` + PROJECTS.map(p=>`<span class="hd">${esc(p.n
     return `<button data-go="q${qi+1}-${p.id}" class="${isGap(q.frames[p.id].said)?"gap":""}">${esc(s.length>78?s.slice(0,76)+"…":s)}</button>`;
   }).join("")).join("");
 document.getElementById("mapextra").innerHTML =
-  [["intro","Title"],["map","Project map"],...QUESTIONS.map((q,i)=>[`q${i+1}`,`Question ${i+1}`]),["reflect","What I'd do differently"],["published","Don't just take my word for it"]]
+  [["intro","Title"],["me","Who I am"],["ask","The question"],["map","Project map"],...QUESTIONS.map((q,i)=>[`q${i+1}`,`Question ${i+1}`]),["reflect","What I'd do differently"],["published","Don't just take my word for it"],["why","Why me"]]
   .map(([id,l])=>`<button class="pill" data-go="${id}">${l}</button>`).join("");
 const map = document.getElementById("map");
 const openMap = ()=>{ if(!map.open) map.showModal(); };
