@@ -290,15 +290,20 @@ a.case{cursor:pointer}
 .bleed .frame-text .lede{background:#fff;color:var(--ink)}
 .bleed .intro-line{color:#fff}
 .bleed .detail-btn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
-.bleed .stack{display:none!important}
+.hero .stack{display:none!important}
+.hero .frame-text{max-width:720px!important;position:relative;z-index:1}
+.hero .frame-text .lede,.hero .intro-line{max-width:720px!important}
+.hero-img{left:880px!important}
+.close-img{left:1000px!important}
+.close-in{max-width:860px}
 .bleed-tag{position:absolute;right:96px;bottom:24px;z-index:2;display:inline-flex;gap:12px;align-items:baseline;background:var(--primary);color:#fff;border-radius:999px;padding:10px 20px;font-size:17px;pointer-events:none}
 .bleed-tag b{font-family:var(--M);font-weight:900;font-size:15px}
 .close .bleed-bg::after{background:linear-gradient(90deg,rgba(10,10,10,.8) 0%,rgba(10,10,10,.45) 38%,rgba(10,10,10,0) 60%)}
-.close-in{position:relative;z-index:1;color:#fff}
-.close h2{font-size:150px;letter-spacing:-.04em;line-height:.95;color:#fff}
-.close-q{font-family:var(--M);font-weight:900;font-size:64px;color:#FF8A93;margin-top:18px;letter-spacing:-.02em}
+.close-in{position:relative;z-index:1}
+.close h2{font-size:150px;letter-spacing:-.04em;line-height:.95;color:var(--ink)}
+.close-q{font-family:var(--M);font-weight:900;font-size:64px;color:var(--primary);margin-top:18px;letter-spacing:-.02em}
 .close-links{display:flex;gap:14px;margin-top:40px}
-.close-links span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 20px;font-size:20px;color:#fff}
+.close-links span{background:var(--grey-soft);border-radius:999px;padding:10px 20px;font-size:20px;color:var(--ink)}
 .intro-line{font-size:26px;line-height:1.45;margin-top:28px;max-width:820px}
 .fd-text{position:relative;z-index:1;max-width:600px;display:flex;flex-direction:column;justify-content:center;height:100%}
 .fd-lab{font-family:var(--M);font-weight:900;font-size:22px;color:var(--primary);margin-top:22px}
@@ -898,9 +903,10 @@ const QUESTIONS = [
           "futures-q2-framework.jpg",
           "From the pack: the Innovation Lab, from weak signals to future solutions"
         ],
-        "bleed": [
+        "hero": [
           "futures-q1-photo.jpg",
-          "A Futures Lab session: the future economy and the future of work"
+          "A Futures Lab session: the future economy and the future of work",
+          "In the work"
         ]
       },
       "practice": {
@@ -991,6 +997,11 @@ const QUESTIONS = [
         "simg": [
           "colab-q2-photo.jpg",
           "In the work: the weekly pilot tracker, week 16"
+        ],
+        "hero": [
+          "colab-q4-photo.jpg",
+          "A welcome at the post office counter, Neighbourhood Welcome Service",
+          "In the work"
         ]
       },
       "guard": {
@@ -1145,9 +1156,10 @@ const QUESTIONS = [
           "practice-q4-framework.jpg",
           "From the Design Practice Guidelines: the practice model, mapped to WorkSafe's delivery framework"
         ],
-        "bleed": [
+        "hero": [
           "practice-q2-photo.jpg",
-          "Co-design in the room with the business"
+          "Co-design in the room with the business",
+          "In the work"
         ]
       },
       "ai": {
@@ -1272,6 +1284,12 @@ const QUESTIONS = [
         "simg": [
           "ai-q4-framework.jpg",
           "The AI use case submission and assessment workflow"
+        ],
+        "hero": [
+          "cover-ai.jpg",
+          "Enterprise AI Lab: the proposal",
+          "The pack",
+          "contain"
         ]
       }
     },
@@ -1525,7 +1543,7 @@ QUESTIONS.forEach((q,qi)=>{
       {src:`${p.id}-q${qi+1}-framework.jpg`, label:cap[3]||"Framework", caption:cap[1], hint:"A framework or model from the work", fit:cap[5]||"contain"}
     ];
     alt = !alt;
-    add(`${qid}-${p.id}`,`frame${alt?" alt":""}${f.bleed?" bleed":""}`,`Question ${qi+1}`,p.name,`
+    add(`${qid}-${p.id}`,`frame${alt?" alt":""}${f.hero?" hero":""}`,`Question ${qi+1}`,p.name,`
       <div class="frame-text">
           <p class="crumb"><b>Question ${qi+1}.</b>${esc(q.area)}</p>
           <h3>${esc(p.name)}</h3>
@@ -1546,8 +1564,10 @@ QUESTIONS.forEach((q,qi)=>{
         <div class="detail-head"><b>${esc(q.area)}: the detail</b><button class="pill" data-detail>Close</button></div>
         <div class="did">${f.did.map((d,j)=>`<p>${q.steps&&j<q.steps.length?`<b class="lbl">${esc(q.steps[j])}.</b> `:""}${fmt(d)}</p>`).join("")}</div>
       </aside>
-      ${f.bleed?`<button class="bleed-bg" data-full="${esc(IMG+f.bleed[0])}" data-caption="${esc(f.bleed[1])}" aria-label="${esc(f.bleed[1])}"><img src="${esc(IMG+f.bleed[0])}" alt=""></button><span class="bleed-tag"><b>In the work</b>${esc(f.bleed[1])}</span>`:""}
-      <div class="stack"${f.bleed?" hidden":""}>${shots.map(sh=>`<button class="case shot" data-full="${esc(IMG+sh.src)}" data-caption="${esc(plain(sh.label+(sh.caption?". "+sh.caption:"")))}">
+      ${f.hero?`<button class="case shot fd-img hero-img" data-full="${esc(IMG+f.hero[0])}" data-caption="${esc(f.hero[1])}">
+          <div class="media${f.hero[3]?" fit-"+f.hero[3]:""}"><img src="${esc(IMG+f.hero[0])}" alt="${esc(f.hero[1])}" data-kind="Photo" data-hint=""></div>
+          <span class="tag"><b>${esc(f.hero[2])}</b><span>${esc(f.hero[1])}</span></span></button>`:""}
+      <div class="stack">${shots.map(sh=>`<button class="case shot" data-full="${esc(IMG+sh.src)}" data-caption="${esc(plain(sh.label+(sh.caption?". "+sh.caption:"")))}">
           <div class="media fit-${sh.fit}"><img src="${esc(IMG+sh.src)}" alt="${esc(plain(sh.caption||sh.label))}" data-kind="${esc(sh.label)}" data-hint="${esc(sh.hint)}"></div>
           <span class="tag"><b>${sh.label}</b>${sh.caption?`<span>${fmt(sh.caption)}</span>`:""}</span>
         </button>`).join("")}</div>
@@ -1587,11 +1607,13 @@ add("why","why map","What I've learnt","In summary",`
       <p class="cs-line">${esc(t)}</p>
       <p class="cs-org cs-foot">${esc(p.name)}</p></a>`;}).join("")}</div>`);
 
-add("close","close bleed","Thank you","Questions",`
-  <button class="bleed-bg" data-full="${IMG}${STORY.close.photo}" data-caption="${esc(STORY.close.caption)}" aria-label="${esc(STORY.close.caption)}"><img src="${IMG}${STORY.close.photo}" alt=""></button>
+add("close","close","Thank you","Questions",`
+  <button class="case shot fd-img hero-img close-img" data-full="${IMG}${STORY.close.photo}" data-caption="${esc(STORY.close.caption)}">
+    <div class="media"><img src="${IMG}${STORY.close.photo}" alt="${esc(STORY.close.caption)}" data-kind="Photo" data-hint=""></div>
+    <span class="tag"><b>In the work</b><span>${esc(STORY.close.caption)}</span></span></button>
   <div class="close-in"><h2>${esc(STORY.close.h)}</h2><p class="close-q">${esc(STORY.close.sub)}</p>
   <p class="close-links">${STORY.close.links.map(l=>`<span>${esc(l)}</span>`).join("")}</p></div>
-  <span class="bleed-tag"><b>In the work</b>${esc(STORY.close.caption)}</span>`);
+`);
 slides.forEach(sl=>{ if(!sl.notes && NOTES[sl.id]) sl.notes = NOTES[sl.id]; });
 const total = slides.length;
 document.addEventListener("pointermove",e=>{document.querySelectorAll(".collage").forEach(c=>{c.style.setProperty("--mx",(e.clientX/innerWidth-.5).toFixed(3));c.style.setProperty("--my",(e.clientY/innerHeight-.5).toFixed(3));});},{passive:true});
