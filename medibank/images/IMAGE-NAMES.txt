@@ -1,0 +1,17 @@
+Image slots still empty (drop a .jpg with this exact name into this folder):
+
+  cover-guard.jpg
+  ai-q1-photo.jpg
+  ai-q2-photo.jpg
+  ai-q3-photo.jpg
+  ai-q4-photo.jpg
+  guard-q1-photo.jpg
+  guard-q1-framework.jpg
+  guard-q2-photo.jpg
+  guard-q2-framework.jpg
+  guard-q3-photo.jpg
+  guard-q3-framework.jpg
+  guard-q4-photo.jpg
+  guard-q4-framework.jpg
+
+Each frame uses <project>-q<n>-photo.jpg (a real photo of the work) and <project>-q<n>-framework.jpg (a framework or model).
