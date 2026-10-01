@@ -288,7 +288,34 @@ a.case{cursor:pointer}
 .bleed .frame-text .asks{color:#FF8A93}
 .bleed .frame-text h3{color:#fff}
 .bleed .frame-text .lede{background:#fff;color:var(--ink)}
-.bleed .intro-line{color:#fff}
+.bleed /* intro wall: a tilted plane of pack pages and photos covering the slide */
+.intro .s-body{overflow:visible}
+.wall{position:absolute;top:-96px;bottom:-72px;left:0;right:0;overflow:hidden;z-index:0;background:var(--cream)}
+.wall-in{position:absolute;left:-360px;top:-420px;width:2900px;display:grid;grid-template-columns:repeat(10,268px);gap:22px;transform:rotate(-9deg);animation:wallDrift 60s linear infinite alternate}
+.wall-in img{width:268px;height:151px;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);background:#fff;display:block}
+.wall-in .w1{filter:blur(1.2px)}.wall-in .w3{filter:blur(2.5px);opacity:.8}.wall-in .w4{transform:scale(1.08)}
+@keyframes wallDrift{to{transform:rotate(-9deg) translate(-180px,60px)}}
+.wall-rail{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.wall-rail path{fill:none;stroke:var(--primary);stroke-width:4;stroke-dasharray:3 12;stroke-linecap:round}
+.wall-rail circle{fill:var(--primary)}
+.intro-card{position:relative;z-index:2;background:#fff;border-radius:40px;padding:56px 64px 60px;max-width:920px;box-shadow:0 30px 80px rgba(0,0,0,.22)}
+.intro-card h1{max-width:none!important}
+@media (prefers-reduced-motion:reduce){.wall-in{animation:none}}
+/* guardrail cluster on red pages */
+.question .rail{position:absolute;right:0;top:24px;bottom:24px;width:860px;z-index:1}
+.question h2,.question .sub,.question .steps-row,.question .jump,.question .count,.ask .answer{max-width:900px}
+.question h2{font-size:84px}
+.rail-line{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rail-line path{fill:none;stroke:#fff;stroke-width:4;stroke-dasharray:3 12;stroke-linecap:round;opacity:.9}
+.rail-line circle{fill:#fff}
+.rail-card{position:absolute!important;height:auto!important;width:500px;display:block}
+.rail-card .media{position:relative!important;border-radius:20px!important;aspect-ratio:16/9;box-shadow:0 24px 60px rgba(0,0,0,.28);background:#fff}
+.rail-card .media img{object-fit:cover}
+.rail-card:hover .media{border-radius:40px!important}
+.rail-card .media + .rail-cap{position:absolute;left:14px;bottom:14px;z-index:2}
+.rail-cap{display:inline-block;box-shadow:0 4px 14px rgba(0,0,0,.2);background:#fff;color:var(--ink);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:700}
+.rail-card.r0{left:80px;top:10px}.rail-card.r1{left:330px;top:300px;width:520px}.rail-card.r2{left:40px;top:600px;width:440px}
+.intro-line{color:#fff}
 .bleed .detail-btn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
 .hero .stack{display:none!important}
 .hero .frame-text{max-width:720px!important;position:relative;z-index:1}
@@ -475,103 +502,60 @@ const STORY = {
   "title": {
     "h": "18 years designing how people, products, services and technology work together",
     "lede": "A case study for the AI Design Lead role at Medibank.",
-    "collage": [
-      [
-        "intro-pub.jpg",
-        1520,
-        96,
-        420,
-        0,
-        4
-      ],
-      [
-        "intro-apcs.jpg",
-        1040,
-        120,
-        400,
-        0,
-        -5
-      ],
-      [
-        "intro-affinity.jpg",
-        1640,
-        640,
-        380,
-        0,
-        -3
-      ],
-      [
-        "intro-offsite.jpg",
-        1000,
-        740,
-        380,
-        0,
-        3
-      ],
-      [
-        "intro-colab.jpg",
-        1210,
-        250,
-        430,
-        1,
-        2
-      ],
-      [
-        "intro-methods.jpg",
-        1700,
-        250,
-        250,
-        1,
-        6
-      ],
-      [
-        "intro-cop.jpg",
-        1060,
-        520,
-        360,
-        1,
-        -2
-      ],
-      [
-        "intro-guidebook.jpg",
-        1330,
-        430,
-        270,
-        2,
-        -6
-      ],
-      [
-        "pub-dfsi-cover.jpg",
-        1610,
-        450,
-        270,
-        2,
-        5
-      ],
-      [
-        "cover-ai.jpg",
-        1110,
-        700,
-        360,
-        2,
-        3
-      ],
-      [
-        "intro-futures.jpg",
-        1440,
-        150,
-        330,
-        2,
-        -3
-      ],
-      [
-        "intro-guard.jpg",
-        1480,
-        700,
-        420,
-        2,
-        -3
-      ]
+    "wall": [
+      "pk-GR-01.webp",
+      "pk-WF-47.webp",
+      "pk-DG-01.webp",
+      "pk-NW-01.webp",
+      "pk-CP-43.webp",
+      "pk-OF-01.webp",
+      "pk-AL-01.webp",
+      "pk-MT-01.webp",
+      "colab-q1-photo.jpg",
+      "pk-WF-13.webp",
+      "pk-GR-08.webp",
+      "pk-DG-18.webp",
+      "pk-CP-21.webp",
+      "pk-NW-12.webp",
+      "pk-DO-22.webp",
+      "pk-WF-69.webp",
+      "futures-q1-photo.jpg",
+      "pk-OF-18.webp",
+      "pk-CP-17.webp",
+      "pk-GR-06.webp",
+      "pk-NW-20.webp",
+      "pk-DG-36.webp",
+      "pk-WF-54.webp",
+      "pk-MT-28.webp",
+      "pk-DO-03.webp",
+      "practice-q1-photo.jpg",
+      "pk-CP-29.webp",
+      "pk-AF-01.webp",
+      "pk-GR-13.webp",
+      "pk-NW-22.webp",
+      "pk-WF-32.webp",
+      "pk-DG-45.webp",
+      "pk-CP-64.webp",
+      "pk-OF-23.webp",
+      "colab-q4-photo.jpg",
+      "pk-WF-50.webp",
+      "pk-GR-09.webp",
+      "pk-DG-57.webp",
+      "pk-NW-14.webp",
+      "pk-CP-11.webp",
+      "pk-DO-41.webp",
+      "pk-WF-20.webp",
+      "pk-MT-32.webp",
+      "pk-GR-17.webp",
+      "pk-FL-01.webp",
+      "pk-AL-07.webp",
+      "pk-CP-47.webp",
+      "pk-OF-26.webp",
+      "pk-DG-12.webp",
+      "pk-NW-09.webp",
+      "pk-WF-62.webp",
+      "pk-CP-58.webp",
+      "pk-DO-11.webp"
     ]
   },
   "me": {
@@ -624,7 +608,21 @@ const STORY = {
       "this role"
     ],
     "answer": "AI is the new material for service design. It's fast becoming the interface to digital services, and it's very powerful. Investing now in managing its risk is what opens up the opportunity to use it well, and that's the work I'm most excited to do.",
-    "after": "The experience I think is relevant: one case study for each part of the brief."
+    "after": "The experience I think is relevant: one case study for each part of the brief.",
+    "visual": [
+      [
+        "pk-AL-01.webp",
+        "Enterprise AI Lab"
+      ],
+      [
+        "pk-WF-32.webp",
+        "WorkSafe of the Future: the non-human organisation"
+      ],
+      [
+        "pk-AL-02.webp",
+        "Falling behind: how we regulate AI, and use it"
+      ]
+    ]
   },
   "why": {
     "title": "Hold on to the outcome. Let the rest take shape behind it.",
@@ -649,8 +647,8 @@ const STORY = {
     ]
   },
   "map": {
-    "title": "Four case studies, from a much longer list",
-    "sub": "The experience I think is relevant: one case study for each part of the brief, drawn from 18 years across in-house, consultancy and agency.",
+    "title": "Four case studies",
+    "sub": "The experience I think is relevant: one case study for each part of the brief.",
     "clients": "Clients include Australia Post, Meta, World Vision, Optus, Coles, Flybuys, Seek, ME Bank, EnergyAustralia, MIFF, Melbourne Museum and Ford.",
     "back": [
       [
@@ -943,6 +941,20 @@ const QUESTIONS = [
     ],
     "projects": [
       "futures"
+    ],
+    "visual": [
+      [
+        "pk-WF-69.webp",
+        "Probable, plausible and possible futures"
+      ],
+      [
+        "pk-WF-47.webp",
+        "Four future worlds"
+      ],
+      [
+        "pk-WF-13.webp",
+        "Emerging themes"
+      ]
     ]
   },
   {
@@ -1066,6 +1078,20 @@ const QUESTIONS = [
     ],
     "projects": [
       "colab"
+    ],
+    "visual": [
+      [
+        "pk-NW-09.webp",
+        "Co-design, experience prototype"
+      ],
+      [
+        "pk-NW-12.webp",
+        "A unified language"
+      ],
+      [
+        "pk-NW-27.webp",
+        "How is it performing?"
+      ]
     ]
   },
   {
@@ -1182,6 +1208,20 @@ const QUESTIONS = [
     ],
     "projects": [
       "practice"
+    ],
+    "visual": [
+      [
+        "pk-DG-18.webp",
+        "The Design Practice Model"
+      ],
+      [
+        "pk-OF-18.webp",
+        "Centralising a design practice"
+      ],
+      [
+        "pk-CP-29.webp",
+        "Vision, future state, roadmap"
+      ]
     ]
   },
   {
@@ -1301,6 +1341,20 @@ const QUESTIONS = [
     ],
     "projects": [
       "ai"
+    ],
+    "visual": [
+      [
+        "pk-AF-01.webp",
+        "AI use case assessment workflow"
+      ],
+      [
+        "pk-AL-07.webp",
+        "High-level governance"
+      ],
+      [
+        "pk-DO-22.webp",
+        "AI workflow and risk management"
+      ]
     ]
   }
 ];
@@ -1428,7 +1482,7 @@ const REFLECT = {
 
 /* Speaker notes for non-frame slides. Frames and question slides carry .notes in QUESTIONS. */
 const NOTES = {
-  "intro": "Thank the panel. A quick hello, then straight into who I am.",
+  "intro": "Thank the panel. Light touch, said not written: I have done a lot of decks in my time. Then straight into who I am.",
   "published": "Close: don't just take my word for it. The work has been recognised, published, and presented.",
   "reflect": "[[Reflections still to write: one learned, one mistake, one do-differently per project.]]",
   "map": "Four case studies, one per part of the brief. Behind them sits a much longer list of work and clients; name a few: Australia Post, Meta, Optus, Coles.",
@@ -1465,13 +1519,19 @@ function card({src, title, text, kind, hint, tag="h4", cls="", fit="cover"}){
 }
 
 const slides = [];
+/* Guardrail-style cluster: pack pages joined by a dotted path with nodes, after the CX Guard Rails pack */
+const railVis = (items, light) => `<div class="rail${light?" light":""}" aria-hidden="false">
+  <svg class="rail-line" viewBox="0 0 860 860" preserveAspectRatio="none" aria-hidden="true"><path d="M60 40 C 60 160, 420 120, 430 250 S 120 420, 150 560 S 700 640, 760 820" /><circle cx="60" cy="40" r="11"/><circle cx="430" cy="250" r="11"/><circle cx="150" cy="560" r="11"/><circle cx="760" cy="820" r="11"/></svg>
+  ${items.map(([f,c],k)=>`<button class="case shot rail-card r${k}" data-full="${IMG}${f}" data-caption="${esc(c)}"><div class="media"><img src="${IMG}${f}" alt="${esc(c)}" data-kind="Pack page" data-hint=""></div><span class="rail-cap">${esc(c)}</span></button>`).join("")}
+</div>`;
 const add = (id, cls, label, sub, inner, meta={}) => slides.push({id, cls, label, sub, inner, ...meta});
 
 /* Title */
 add("intro","intro","Introduction","",`
-  <div class="collage" aria-hidden="true">${STORY.title.collage.map(([f,x,y,w,d,r],k)=>`<img class="cl d${d}" src="${IMG}${f}" alt="" style="left:${x}px;top:${y}px;width:${w}px;--r:${r}deg;--k:${k}">`).join("")}</div>
+  <div class="wall" aria-hidden="true"><div class="wall-in">${STORY.title.wall.concat(STORY.title.wall.slice(0,40)).map((f,k)=>`<img src="${IMG}${f}" alt="" class="w${k%5}" style="--k:${k}">`).join("")}</div><svg class="wall-rail" viewBox="0 0 1920 1080" preserveAspectRatio="none"><path d="M-20 980 C 380 900, 520 760, 760 820 S 1180 640, 1320 520 S 1640 260, 1960 180"/><circle cx="760" cy="820" r="14"/><circle cx="1320" cy="520" r="14"/></svg></div>
+  <div class="intro-card">
   <h1>${esc(STORY.title.h)}</h1>
-  <p class="intro-sub">${esc(STORY.title.lede)}</p>`);
+  <p class="intro-sub">${esc(STORY.title.lede)}</p></div>`);
 
 /* Who I am */
 add("me","me","Who I am","",`
@@ -1491,7 +1551,7 @@ add("ask","question ask","Why this role","",`
   <p class="count">${esc(STORY.ask.kicker)}</p>
   <h2>${STORY.ask.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
   <p class="answer">${esc(STORY.ask.answer)}</p>
-`);
+  ${railVis(STORY.ask.visual,true)}`);
 
 /* Project map as a Gantt: the four questions read as stages; each project's bar spans the stages it answers */
 const QSHORT = ["Strategy and visioning","Helping teams through ambiguity","Practice improvement","Guidance and standards"];
@@ -1508,8 +1568,7 @@ const gantt = p => {
   }).join("");
   return `<div class="g-track">${[0,1,2,3].map(i=>`<span class="g-col" style="left:${i*25}%"></span>`).join("")}${link}${segs}</div>`;
 };
-add("map","map","The case studies","From a much longer list",`
-  <div class="collage back" aria-hidden="true">${STORY.map.back.map(([f,x,y,w,r])=>`<img class="cl" src="${IMG}${f}" alt="" style="left:${x}px;top:${y}px;width:${w}px;--r:${r}deg">`).join("")}</div>
+add("map","map","The case studies","One per question",`
   <div class="map-in">
   <h2>${esc(STORY.map.title)}</h2>
   <p class="cs-sub">${esc(STORY.map.sub)}</p>
@@ -1519,7 +1578,6 @@ add("map","map","The case studies","From a much longer list",`
       <p class="cs-q">${esc(q.lines.join(" "))}</p>
       <div class="cs-img media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
       <h3>${esc(p.name)}</h3><p class="cs-org">${esc(p.org)}</p><p class="cs-t">${esc(p.tackle||"")}</p></a>`;}).join("")}</div>
-  <p class="cs-clients">${esc(STORY.map.clients)}</p>
   </div>`);
 
 let alt = false;
@@ -1531,7 +1589,8 @@ QUESTIONS.forEach((q,qi)=>{
     <h2>${q.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
     <p class="sub">${esc(q.sub)}</p>
     ${q.steps?`<ol class="steps-row">${q.steps.map(t=>`<li>${esc(t)}</li>`).join("")}</ol>`:""}
-    <div class="jump">${(q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).map(p=>`<a class="pill light" href="#${qid}-${p.id}">${esc(p.name)}</a>`).join("")}</div>`,
+    <div class="jump">${(q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).map(p=>`<a class="pill light" href="#${qid}-${p.id}">${esc(p.name)}</a>`).join("")}</div>
+    ${q.visual?railVis(q.visual,true):""}`,
     {q:qi, notes:q.notes||""});
 
   (q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).forEach(p=>{
