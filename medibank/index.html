@@ -184,6 +184,30 @@ a.case{cursor:pointer}
 .detail .todo{background:#3B2F12;color:#FFD98A}
 .frame .asks{margin-top:26px;font-family:var(--M);font-weight:900;font-size:20px;color:var(--primary);letter-spacing:-.01em}
 .frame .asks + .lede{margin-top:10px}
+
+/* Title */
+.intro h1{font-size:150px;max-width:12ch}
+.intro .lede{margin-top:40px;max-width:40ch;font-size:28px}
+/* Project map */
+.map h2{font-size:46px;letter-spacing:-.03em}
+.pmap{display:grid;grid-template-columns:1fr repeat(4,170px);column-gap:16px;row-gap:12px;margin-top:24px;align-items:center}
+.pm-q{font-size:16px;font-weight:600;line-height:1.25;text-decoration:none;color:var(--ink);text-align:center;align-self:end;padding-bottom:6px}
+.pm-q b{display:block;font-family:var(--M);font-weight:900;font-size:28px;color:var(--primary)}
+.pm-p{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center;background:var(--grey-soft);border-radius:28px 0 0 28px;padding:10px 18px 10px 10px;height:100px}
+.pm-img{height:80px;border-radius:20px;overflow:hidden;position:relative;background:#e8e8e8}
+.pm-img img{width:100%;height:100%;object-fit:cover;display:block}
+.pm-img .ph{font-size:12px;padding:6px}.pm-img .ph em,.pm-img .ph span{display:none}
+.pm-p h3{font-size:24px;letter-spacing:-.02em}
+.pm-org{font-size:15px;color:var(--ink-70);margin-top:2px}
+.pm-t{font-size:18px;margin-top:6px;line-height:1.35}
+.pm-c{display:flex;align-items:center;justify-content:center;height:100px;background:var(--grey-soft)}
+.pm-c i{width:34px;height:34px;border-radius:50%;border:4px solid var(--primary);display:block}
+.pm-c.lead i{background:var(--primary)}
+.pm-c.on:hover i{transform:scale(1.15)}
+.pm-key{margin-top:16px;font-size:16px;color:var(--ink-70);display:flex;gap:10px;align-items:center}
+.pm-key .k{width:18px;height:18px;border-radius:50%;border:3px solid var(--primary);display:inline-block;margin-left:14px}
+.pm-key .k.lead{background:var(--primary);margin-left:0}
+.matrix .off{background:transparent;border:2px dashed transparent;min-height:70px}
 /* ============ Reflection ============ */
 .reflect h2{font-size:104px;letter-spacing:-.035em;color:#fff;max-width:14ch}
 .reflect-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:36px;margin-top:72px}
@@ -271,7 +295,7 @@ dialog::backdrop{background:rgba(10,10,10,.78)}
     <div class="map-top">
       <div>
         <h2 id="map-title">Storyboard</h2>
-        <p class="hint">Four questions down, five projects across. Dashed frames still need content.</p>
+        <p class="hint">Four questions down, five projects across. Each question shows only the projects that answer it best.</p>
       </div>
       <button class="pill" id="mapclose">Close</button>
     </div>
@@ -299,36 +323,42 @@ dialog::backdrop{background:rgba(10,10,10,.78)}
    ========================================================= */
 const IMG = "images/";
 
+/* tackle: the problem each project was set up to tackle (shown on the project map) */
 const PROJECTS = [
   {
     "id": "colab",
     "name": "AP CoLab",
     "org": "Australia Post, with Craig Walker",
-    "hmw": "How might we bring services to life through collaboration with communities?"
+    "hmw": "How might we bring services to life through collaboration with communities?",
+    "tackle": "Bring new essential services to life with the communities they serve."
   },
   {
     "id": "guard",
     "name": "CX Guardrails",
     "org": "Australia Post, with Craig Walker",
-    "hmw": "How might we set the principles and experience for point-of-sale transformation across Australia's largest retail network?"
+    "hmw": "How might we set the principles and experience for point-of-sale transformation across Australia's largest retail network?",
+    "tackle": "Set the vision and priorities for Australia's largest point-of-sale transformation."
   },
   {
     "id": "futures",
     "name": "Futures Lab",
     "org": "WorkSafe Victoria",
-    "hmw": "How might we understand the threats and opportunities WorkSafe will face, and define new responses?"
+    "hmw": "How might we understand the threats and opportunities WorkSafe will face, and define new responses?",
+    "tackle": "Set up strategy for long-term success, beyond the three-year plan."
   },
   {
     "id": "practice",
     "name": "Design Practice",
     "org": "WorkSafe Victoria",
-    "hmw": "How might we start a central design practice inside a government delivery model?"
+    "hmw": "How might we start a central design practice inside a government delivery model?",
+    "tackle": "Build a design capability that could deliver reform."
   },
   {
     "id": "ai",
     "name": "AI Working Group",
     "org": "WorkSafe Victoria",
-    "hmw": "How might we let teams try AI safely, and invest in what works?"
+    "hmw": "How might we let teams try AI safely, and invest in what works?",
+    "tackle": "Bring AI into WorkSafe safely, and invest in what works."
   }
 ];
 const PUBLICATIONS = {
@@ -363,8 +393,9 @@ const PUBLICATIONS = {
   ]
 };
 
-/* Each section asks one question (lines). Each project's black bubble (said) answers it.
-   problem, solution and proof sit under the bubble. did[] is the detail layer (D key), following steps. */
+/* Each section asks one question (lines) and is answered by q.projects (lead first).
+   Each project's black bubble (said) answers it. problem, solution and proof sit under the bubble.
+   did[] is the detail layer (D key). Frames not listed in q.projects are kept here but not shown. */
 const QUESTIONS = [
   {
     "area": "Strategy and visioning",
@@ -389,16 +420,17 @@ const QUESTIONS = [
         "solution": "A pop-up co-design lab in Footscray, where we shaped that vision into a new service with the people it was for."
       },
       "guard": {
-        "said": "The technology was already bought. Our job was the why and the how: how every experience on it would deliver value.",
+        "said": "The Future of the Post Office strategy was the why. A vision for each priority use case was the what. Guardrails every build is checked against were the how.",
         "did": [
-          "Australia Post had bought the technology for Australia's largest point-of-sale rollout. The services it needed to deliver were still undesigned, and the backlog was enormous.",
-          "The CX Guardrails: how every experience on the new system should deliver value.",
-          "Evolved the Future of the Post Office strategy around the highest-priority use cases, and defined the best experience the new technology could deliver."
+          "The point-of-sale technology for Australia's largest retail network was bought. What it needed to deliver, and in what order, wasn't defined, and the backlog was enormous.",
+          "A vision for the post office of the future, broken into priority use cases, each with the best experience the new technology could deliver.",
+          "CX guardrails: the principles every experience was checked against, with business and technology requirements so Australia Post's own teams could build each use case.",
+          "[[Name the strategy streams, and the vision for one of them.]]"
         ],
-        "proof": "Outcome: the guardrails guided the build and national rollout of the new point-of-sale system.",
-        "notes": "Tech purchased, services undesigned, enormous backlog. The guardrails set how experiences deliver value, prioritised the first use cases, and outlined requirements so each could be tested for feasibility.",
-        "problem": "Australia's largest point-of-sale rollout. The technology was purchased, the services on it weren't designed, and the backlog was enormous.",
-        "solution": "CX Guardrails: the principles for how every experience delivers value, the first use cases to build, and what each one needed."
+        "proof": "Outcome: the use cases carried the vision for the new technology, and guided the build and national rollout.",
+        "notes": "Strategy first, technology second. Each priority use case carried its own vision for the experience, and the guardrails kept every build true to it.",
+        "problem": "Australia Post had bought the technology for its largest point-of-sale rollout, but the services on it weren't designed and the backlog was enormous.",
+        "solution": "We aligned the Future of the Post Office strategy to the highest-priority use cases, and set a vision for the experience each one should deliver."
       },
       "futures": {
         "said": "Look past the three-year plan. Four possible futures gave us the why. Four focus areas gave the executive the what.",
@@ -442,6 +474,11 @@ const QUESTIONS = [
       "Why",
       "What",
       "How"
+    ],
+    "projects": [
+      "guard",
+      "futures",
+      "ai"
     ]
   },
   {
@@ -523,6 +560,11 @@ const QUESTIONS = [
       "Make the vision real",
       "Design it with the people who will use it",
       "De-risk adoption"
+    ],
+    "projects": [
+      "colab",
+      "futures",
+      "practice"
     ]
   },
   {
@@ -598,6 +640,10 @@ const QUESTIONS = [
       "Build the capability",
       "Set the frameworks and systems",
       "Create ownership"
+    ],
+    "projects": [
+      "practice",
+      "colab"
     ]
   },
   {
@@ -674,6 +720,11 @@ const QUESTIONS = [
       "Build the mechanism",
       "Capture and inform change",
       "Let it run, and keep improving"
+    ],
+    "projects": [
+      "ai",
+      "practice",
+      "guard"
     ]
   }
 ];
@@ -794,7 +845,8 @@ const REFLECT = {
 const NOTES = {
   "intro": "Four questions, five projects. Pick the lead project per question.",
   "published": "Close: don't just take my word for it. The work has been recognised, published, and presented.",
-  "reflect": "[[Reflections still to write: one learned, one mistake, one do-differently per project.]]"
+  "reflect": "[[Reflections still to write: one learned, one mistake, one do-differently per project.]]",
+  "map": "Each project was set up to tackle a different problem. Not every project answers every question, so each question is answered by the projects that answer it best."
 };
 
 /* =========================================================
@@ -829,13 +881,21 @@ const add = (id, cls, label, sub, inner, meta={}) => slides.push({id, cls, label
 
 /* Title */
 add("intro","intro","Introduction","",`
-  <div class="top">
-    <h1>Four questions, five projects</h1>
-    <p class="lede">Four questions from Medibank. Five projects that answer them, from Australia Post to WorkSafe, at the point each one had to face it.</p>
+  <h1>Four questions, five projects</h1>
+  <p class="lede">Four questions from Medibank, each answered by the projects that answer it best. From Australia Post to WorkSafe.</p>`);
+
+/* Project map: what each project tackled, and which questions it answers */
+const QSHORT = ["Strategy and visioning","Helping teams through ambiguity","Practice improvement","Guidance and standards"];
+add("map","map","The projects","Mapped to the questions",`
+  <h2>Five projects, mapped to the questions they answer best</h2>
+  <div class="pmap">
+    <span></span>${QSHORT.map((t,i)=>`<a class="pm-q" href="#q${i+1}"><b>${i+1}</b>${esc(t)}</a>`).join("")}
+    ${PROJECTS.map(p=>`<div class="pm-p">
+        <div class="pm-img media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
+        <div><h3>${esc(p.name)}</h3><p class="pm-org">${esc(p.org)}</p><p class="pm-t">${esc(p.tackle||"")}</p></div>
+      </div>${QUESTIONS.map((q,qi)=>{const k=(q.projects||[]).indexOf(p.id); return k<0?`<span class="pm-c"></span>`:`<a class="pm-c on${k===0?" lead":""}" href="#q${qi+1}-${p.id}" aria-label="${esc(p.name)} answers question ${qi+1}"><i></i></a>`;}).join("")}`).join("")}
   </div>
-  <div class="cards">${PROJECTS.map(p=>`<a class="case" href="#q1-${p.id}">
-    <div class="media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)} cover" data-hint="Hero image"></div>
-    <div class="cap"><h3>${esc(p.name)}</h3><p class="org">${esc(p.org)}</p><p>${esc(p.hmw)}</p></div></a>`).join("")}</div>`);
+  <p class="pm-key"><i class="k lead"></i>Lead answer <i class="k"></i>Also answers</p>`);
 
 let alt = false;
 QUESTIONS.forEach((q,qi)=>{
@@ -846,10 +906,11 @@ QUESTIONS.forEach((q,qi)=>{
     <h2>${q.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
     <p class="sub">${esc(q.sub)}</p>
     ${q.steps?`<ol class="steps-row">${q.steps.map(t=>`<li>${esc(t)}</li>`).join("")}</ol>`:""}
-    <div class="jump">${PROJECTS.map(p=>`<a class="pill light" href="#${qid}-${p.id}">${esc(p.name)}</a>`).join("")}</div>`,
+    <div class="jump">${(q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).map(p=>`<a class="pill light" href="#${qid}-${p.id}">${esc(p.name)}</a>`).join("")}</div>`,
     {q:qi, notes:q.notes||""});
 
-  PROJECTS.forEach((p,pi)=>{
+  (q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).forEach(p=>{
+    const pi = PROJECTS.indexOf(p);
     const f = q.frames[p.id], hints = SHOT_HINTS[qi];
     const cap = SHOTS[`${qid}-${p.id}`] || ["",""];
     const shots = [
@@ -1003,11 +1064,12 @@ document.addEventListener("fullscreenchange", ()=>{ fsbtn.textContent = document
 /* Storyboard */
 matrix.innerHTML = `<span></span>` + PROJECTS.map(p=>`<span class="hd">${esc(p.name)}</span>`).join("") +
   QUESTIONS.map((q,qi)=>`<span class="rq">${esc(q.area)}</span>` + PROJECTS.map(p=>{
+    if(!(q.projects||[]).includes(p.id)) return `<span class="off"></span>`;
     const s = plain(q.frames[p.id].said);
     return `<button data-go="q${qi+1}-${p.id}" class="${isGap(q.frames[p.id].said)?"gap":""}">${esc(s.length>78?s.slice(0,76)+"…":s)}</button>`;
   }).join("")).join("");
 document.getElementById("mapextra").innerHTML =
-  [["intro","Title"],...QUESTIONS.map((q,i)=>[`q${i+1}`,`Question ${i+1}`]),["reflect","What I'd do differently"],["published","Don't just take my word for it"]]
+  [["intro","Title"],["map","Project map"],...QUESTIONS.map((q,i)=>[`q${i+1}`,`Question ${i+1}`]),["reflect","What I'd do differently"],["published","Don't just take my word for it"]]
   .map(([id,l])=>`<button class="pill" data-go="${id}">${l}</button>`).join("");
 const map = document.getElementById("map");
 const openMap = ()=>{ if(!map.open) map.showModal(); };
