@@ -274,7 +274,20 @@ a.case{cursor:pointer}
 .cs-line{font-family:var(--M);font-weight:900;font-size:28px;line-height:1.25;letter-spacing:-.02em;margin-top:28px;padding-top:24px;border-top:4px solid var(--primary)}
 .cs .cs-foot{margin-top:auto;padding-top:24px;font-weight:700}
 .reflect-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
-.why .cs-grid{margin-top:48px}.why .cs{min-height:560px}
+.why .cs-grid{margin-top:36px}.why .cs{padding:24px}.why .cs-n{font-size:34px}.why .cs-q{font-size:18px;min-height:0}.why .cs-line{font-size:22px;margin-top:16px;padding-top:16px}
+.why h2{font-size:58px;max-width:22ch;line-height:1.05}
+.why-k{color:var(--primary);font-weight:700;font-size:20px}
+.why-lede{font-size:24px;line-height:1.5;max-width:66ch;margin-top:20px;color:var(--ink-70)}
+.intro-line{font-size:26px;line-height:1.45;margin-top:28px;max-width:820px}
+.fd-text{position:relative;z-index:1;max-width:600px;display:flex;flex-direction:column;justify-content:center;height:100%}
+.fd-lab{font-family:var(--M);font-weight:900;font-size:22px;color:var(--primary);margin-top:22px}
+.fd h3{font-size:50px;line-height:1.05;letter-spacing:-.03em;margin-top:10px}
+.fd-body{font-size:22px;line-height:1.5;margin-top:22px}
+.fd-out{font-size:19px;line-height:1.45;margin-top:22px;padding-top:18px;border-top:3px solid var(--line)}
+.fd-out b{display:block;font-family:var(--M);font-weight:900;font-size:15px;color:var(--primary);margin-bottom:4px}
+.fd-img{position:absolute!important;top:24px;bottom:24px;right:0;left:740px;height:auto!important;width:auto!important}
+.fd-img .media{border-radius:40px 0 0 40px}
+.fd-img .media.fit-contain img{padding:28px}
 .cs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:40px}
 .cs{display:flex;flex-direction:column;background:var(--grey-soft);border-radius:32px;padding:28px;color:var(--ink);text-decoration:none;transition:transform .2s}
 .cs:hover{transform:translateY(-4px)}
@@ -586,7 +599,8 @@ const STORY = {
     "after": "The experience I think is relevant: one case study for each part of the brief."
   },
   "why": {
-    "title": "Four questions, in a line each",
+    "title": "Hold on to the outcome. Let the rest take shape behind it.",
+    "lede": "Through these projects, and others like them, I've learnt that it never plays out perfectly, and that's fine. Holding on to a clear, high-level direction, and letting the detail realise as it needs to behind it, is what drives success.",
     "rows": [
       [
         0,
@@ -823,7 +837,34 @@ const QUESTIONS = [
         "role": 0,
         "fit": "Setting direction starts with looking further than the plan. Futures Lab is where I did that for WorkSafe, and turned it into a strategy the executive backed.",
         "project": "WorkSafe's strategy looked three years ahead. The CEO's challenge was a scheme fit for the next 10, 20 and 30 years. WorkSafe of the Future mapped the next, near and far: five emerging themes from research and expert interviews, four future worlds, then focus areas and experiment briefs we tested with real users.",
-        "conclusion": "A future the executive could see gave them a reason to act now. It became the front end of WorkSafe's 2025 strategy and the Innovation Centre's portfolio, and it flagged AI, accountability and human oversight back in 2022."
+        "conclusion": "A future the executive could see gave them a reason to act now. It became the front end of WorkSafe's 2025 strategy and the Innovation Centre's portfolio, and it flagged AI, accountability and human oversight back in 2022.",
+        "intro": "WorkSafe of the Future: a speculative futures project across the next, near and far horizons, built with the executive.",
+        "shots": [
+          [
+            "futures-q1-photo.jpg",
+            "In the work",
+            "A Futures Lab session: the future economy and the future of work",
+            "cover"
+          ],
+          [
+            "cover-futures.jpg",
+            "The pack",
+            "WorkSafe of the Future",
+            "cover"
+          ]
+        ],
+        "ph": "The strategy only looked three years ahead.",
+        "pb": "The CEO's challenge was bigger: a scheme fit for the next 10, 20 and 30 years, in a changing economy. No one was looking at what the near and far future would ask of WorkSafe, or what that meant for decisions being made now.",
+        "pimg": [
+          "futures-q1-framework.jpg",
+          "From the pack: probable, plausible and possible futures, beyond the current strategy horizon"
+        ],
+        "sh": "Map the next, near and far. Then test it in the present.",
+        "sb": "Five emerging themes came from research and expert interviews, including CSIRO, the Grattan Institute and Telstra's former CTO. They became four future worlds, then focus areas and experiment briefs. We tested concepts like Workers Club and Jobify with real users, scaling them using the Eames' Powers of Ten.",
+        "simg": [
+          "futures-q2-framework.jpg",
+          "From the pack: the Innovation Lab, from weak signals to future solutions"
+        ]
       },
       "practice": {
         "said": "Reform was the why. A central design practice was the what. Designing the organisation, and winning the investment, was the how.",
@@ -886,7 +927,34 @@ const QUESTIONS = [
         "role": 3,
         "fit": "When no one knows the answer, I make it real early and design it with the people it's for. AP CoLab is the clearest example.",
         "project": "Australia Post had a vision for the post office of the future, but no evidence of which new services communities would use. Instead of a traditional project, we ran a design-led program from a pop-up lab in a Footscray shopfront: open days, workshops and live service prototypes. The Neighbourhood Welcome Service came out of it, helping new Australians feel welcome and connected.",
-        "conclusion": "Live prototypes settled what debate couldn't. We tracked the pilot week by week, so everyone could see what worked before it scaled. The work was published in Design for Social Innovation (2022)."
+        "conclusion": "Live prototypes settled what debate couldn't. We tracked the pilot week by week, so everyone could see what worked before it scaled. The work was published in Design for Social Innovation (2022).",
+        "intro": "The Co-Lab: a pop-up design lab in a Footscray shopfront, where we designed new essential services with the communities they were for.",
+        "shots": [
+          [
+            "colab-q1-photo.jpg",
+            "In the work",
+            "The Co-Lab shopfront, Footscray",
+            "cover"
+          ],
+          [
+            "colab-q3-photo.jpg",
+            "In the work",
+            "The co-design wall",
+            "cover"
+          ]
+        ],
+        "ph": "A vision, but no evidence of what communities would use.",
+        "pb": "Australia Post wanted new essential services that would build its brand, empower individuals and connect communities. A traditional project wouldn't tell us what people actually needed, or whether they'd use it.",
+        "pimg": [
+          "colab-q1-framework.jpg",
+          "From the pack: the ambition, across brand, individuals and communities"
+        ],
+        "sh": "A design-led program, run from a shopfront.",
+        "sb": "We set up a pop-up co-design lab in Footscray: open days, community workshops and live service prototypes with the people the service was for. We tracked the pilot week by week on a shared whiteboard, so the team and Australia Post could see what worked before it scaled.",
+        "simg": [
+          "colab-q2-photo.jpg",
+          "In the work: the weekly pilot tracker, week 16"
+        ]
       },
       "guard": {
         "said": "Pick where to start. Prioritise the first use cases, and test each one for feasibility before it's built.",
@@ -1012,7 +1080,34 @@ const QUESTIONS = [
         "role": 4,
         "fit": "A team delivers when it's built into how the organisation already delivers. That's how I set up WorkSafe's Enterprise Design practice.",
         "project": "WorkSafe was heading into historic scheme reform, with design specialists scattered and no shared way of working. I set up a central practice: defined the roles and leadership layer, hired the team, and built design into enterprise delivery with Technology, from front-end visions and discovery through to dual track delivery.",
-        "conclusion": "The business now agrees on the problem before it pays for the solution. That's brought alignment, better delivery, higher adoption and less risk on every investment. The team keeps growing, and its work was a Premier's Design Awards finalist."
+        "conclusion": "The business now agrees on the problem before it pays for the solution. That's brought alignment, better delivery, higher adoption and less risk on every investment. The team keeps growing, and its work was a Premier's Design Awards finalist.",
+        "intro": "WorkSafe's Enterprise Design practice: a central design capability, set up from scratch and built into enterprise delivery.",
+        "shots": [
+          [
+            "practice-q1-photo.jpg",
+            "In the work",
+            "The Enterprise Design team",
+            "cover"
+          ],
+          [
+            "practice-q3-framework.jpg",
+            "Delivered",
+            "Headstart, CompME and CompCON, Premier's Design Awards finalist",
+            "cover"
+          ]
+        ],
+        "ph": "Historic reform, and no shared way to deliver it.",
+        "pb": "WorkSafe was heading into scheme reform. Design specialists were scattered across the organisation, every program delivered differently, and adoption was left to change management at the end.",
+        "pimg": [
+          "practice-q1-framework.jpg",
+          "From the pack: centralising design alongside project management, business analysis, change and the EPMO"
+        ],
+        "sh": "A central practice, mapped to how WorkSafe delivers.",
+        "sb": "I defined the roles and leadership layer, hired the team, and mapped the design process to the enterprise delivery framework with Technology: discovery and front-end visions before investment, then dual track delivery. The guidelines and methods toolkit put it all in one place, for designers and the business.",
+        "simg": [
+          "practice-q4-framework.jpg",
+          "From the Design Practice Guidelines: the practice model, mapped to WorkSafe's delivery framework"
+        ]
       },
       "ai": {
         "said": "Give AI a delivery framework the business owns. Governance and risk, wrapped in a pathway from use case to investment.",
@@ -1109,7 +1204,34 @@ const QUESTIONS = [
         "role": 1,
         "fit": "A standard only works if the whole organisation uses it. For AI at WorkSafe, that meant making governance the way in, not a barrier.",
         "project": "AI features were arriving across WorkSafe's technology with no way to approve them, so not enabling AI had become a risk in itself. With risk and technology, I helped set up WorkSafe's first AI governance: governance and risk frameworks inside a delivery framework. Every use case needs a sponsor, a risk check and a desirability, viability and feasibility test, then AI Working Group endorsement.",
-        "conclusion": "One enterprise pathway filters use cases, de-risks investment and makes the safe path the easy path. It has already brought AI into multiple solutions across WorkSafe's technology, and the Director of Technology owns it, so it stays current."
+        "conclusion": "One enterprise pathway filters use cases, de-risks investment and makes the safe path the easy path. It has already brought AI into multiple solutions across WorkSafe's technology, and the Director of Technology owns it, so it stays current.",
+        "intro": "WorkSafe's first AI governance: a governance, risk and delivery framework for every AI use case across the organisation.",
+        "shots": [
+          [
+            "cover-ai.jpg",
+            "The pack",
+            "Enterprise AI Lab: the proposal",
+            "cover"
+          ],
+          [
+            "ai-q3-framework.jpg",
+            "Framework",
+            "High-level governance, with a program that starts and ends",
+            "contain"
+          ]
+        ],
+        "ph": "AI was arriving, with no safe way to switch it on.",
+        "pb": "AI features were landing in the products WorkSafe already uses, and teams across the business had ideas of their own. With no way to approve them, not enabling AI was becoming a risk in itself, in how we regulate it and how we use it.",
+        "pimg": [
+          "ai-q2-framework.jpg",
+          "From the pack: exploration and alignment, from problems to pilots"
+        ],
+        "sh": "Governance as the way in, for the whole organisation.",
+        "sb": "With risk and technology, I helped set up a governance framework and a risk mitigation framework, inside a delivery framework. Every use case needs a director-level sponsor, a risk check and a desirability, viability and feasibility test, then AI Working Group endorsement before portfolio prioritisation and the approved AI register.",
+        "simg": [
+          "ai-q4-framework.jpg",
+          "The AI use case submission and assessment workflow"
+        ]
       }
     },
     "notes": "Governance as an enabler. A governance framework and a risk mitigation framework, inside a delivery framework that filters use cases and de-risks investment. Without it, WorkSafe couldn't switch on the AI features arriving in its technology stack. Link to the role: standards, patterns and human oversight that evolve as the technology and regulation change.",
@@ -1358,7 +1480,7 @@ QUESTIONS.forEach((q,qi)=>{
     const pi = PROJECTS.indexOf(p);
     const f = q.frames[p.id], hints = SHOT_HINTS[qi];
     const cap = SHOTS[`${qid}-${p.id}`] || ["",""];
-    const shots = [
+    const shots = f.shots ? f.shots.map(([src,label,caption,fit])=>({src,label,caption,fit,hint:""})) : [
       {src:`${p.id}-q${qi+1}-photo.jpg`, label:cap[2]||"In the work", caption:cap[0], hint:"A real photo of the work or the service", fit:cap[4]||"cover"},
       {src:`${p.id}-q${qi+1}-framework.jpg`, label:cap[3]||"Framework", caption:cap[1], hint:"A framework or model from the work", fit:cap[5]||"contain"}
     ];
@@ -1370,7 +1492,7 @@ QUESTIONS.forEach((q,qi)=>{
           <p class="org">${esc(p.org)}${f.role!==undefined?`<span class="fit">Role fit: ${esc(ROLE[f.role])}</span>`:""}</p>
           <p class="asks">${esc(q.lines.join(" "))}</p>
           <p class="lede">${fmt(f.fit||f.said)}</p>
-          ${f.project?`<div class="ps story">
+          ${f.intro?`<p class="intro-line">${fmt(f.intro)}</p>`:f.project?`<div class="ps story">
             <p><b>The project</b>${fmt(f.project)}</p>
             <p class="concl"><b>What it shows</b>${fmt(f.conclusion)}</p>
           </div>`:`<div class="ps">
@@ -1389,19 +1511,37 @@ QUESTIONS.forEach((q,qi)=>{
           <span class="tag"><b>${sh.label}</b>${sh.caption?`<span>${fmt(sh.caption)}</span>`:""}</span>
         </button>`).join("")}</div>
       `, {q:qi, p:pi, notes:f.notes||"", detail:f.did.map((d,j)=>(q.steps&&j<q.steps.length?q.steps[j]+". ":"")+d)});
+    if(f.ph){
+      [["problem","The problem",f.ph,f.pb,f.pimg,""],["solution","The solution",f.sh,f.sb,f.simg,f.conclusion]].forEach(([k,lab,head,body,img,out])=>{
+        alt = !alt;
+        add(`${qid}-${p.id}-${k}`,`frame fd${alt?" alt":""}`,`Question ${qi+1}`,`${p.name}: ${lab.toLowerCase()}`,`
+          <div class="fd-text">
+            <p class="crumb"><b>Question ${qi+1}.</b>${esc(p.name)}</p>
+            <p class="fd-lab">${lab}</p>
+            <h3>${esc(head)}</h3>
+            <p class="fd-body">${fmt(body)}</p>
+            ${out?`<p class="fd-out"><b>What it shows</b>${fmt(out)}</p>`:""}
+          </div>
+          <button class="case shot fd-img" data-full="${esc(IMG+img[0])}" data-caption="${esc(img[1])}">
+            <div class="media fit-contain"><img src="${esc(IMG+img[0])}" alt="${esc(img[1])}" data-kind="Work" data-hint=""></div>
+            <span class="tag"><b>The work</b><span>${esc(img[1])}</span></span>
+          </button>`, {q:qi, p:pi, notes:""});
+      });
+    }
   });
 });
 
-add("reflect","ink reflect","Reflection","",`
+/* reflection merged into the close */ if(false) add("reflect","ink reflect","Reflection","",`
   <h2>${esc(REFLECT.title)}</h2>
   <div class="reflect-grid">${QUESTIONS.map(q=>PROJECTS.find(p=>p.id===q.projects[0])).map(p=>`<div><h3>${esc(p.name)}</h3><p>${fmt(REFLECT.items[p.id])}</p></div>`).join("")}</div>`);
 
 /* Why I make sense for this role: the close */
-add("why","why map","In summary","Four questions",`
+add("why","why map","What I've learnt","In summary",`
+  <p class="count why-k">What I've learnt</p>
   <h2>${esc(STORY.why.title)}</h2>
+  <p class="why-lede">${esc(STORY.why.lede)}</p>
   <div class="cs-grid">${STORY.why.rows.map(([qi,t])=>{const q=QUESTIONS[qi],p=PROJECTS.find(x=>x.id===q.projects[0]);return `<a class="cs" href="#q${qi+1}">
       <span class="cs-n">${qi+1}</span>
-      <p class="cs-area">${esc(q.area)}</p>
       <p class="cs-q">${esc(q.lines.join(" "))}</p>
       <p class="cs-line">${esc(t)}</p>
       <p class="cs-org cs-foot">${esc(p.name)}</p></a>`;}).join("")}</div>`);
