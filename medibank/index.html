@@ -622,7 +622,7 @@ const STORY = {
   },
   "map": {
     "title": "Four case studies, from a much longer list",
-    "sub": "One for each part of the brief, drawn from 18 years across in-house, consultancy and agency.",
+    "sub": "The experience I think is relevant: one case study for each part of the brief, drawn from 18 years across in-house, consultancy and agency.",
     "clients": "Clients include Australia Post, Meta, World Vision, Optus, Coles, Flybuys, Seek, ME Bank, EnergyAustralia, MIFF, Melbourne Museum and Ford.",
     "back": [
       [
@@ -1432,8 +1432,7 @@ add("ask","question ask","Why this role","",`
   <p class="count">${esc(STORY.ask.kicker)}</p>
   <h2>${STORY.ask.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
   <p class="answer">${esc(STORY.ask.answer)}</p>
-  <p class="sub">${esc(STORY.ask.after)}</p>
-  <ol class="steps-row">${QUESTIONS.map((q,i)=>`<li><a href="#q${i+1}">${esc(q.area)}<em>${esc(PROJECTS.find(p=>p.id===q.projects[0]).name)}</em></a></li>`).join("")}</ol>`);
+`);
 
 /* Project map as a Gantt: the four questions read as stages; each project's bar spans the stages it answers */
 const QSHORT = ["Strategy and visioning","Helping teams through ambiguity","Practice improvement","Guidance and standards"];
