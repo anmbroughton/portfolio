@@ -267,9 +267,10 @@ a.case{cursor:pointer}
 /* Why me */
 .why h2{font-size:64px;letter-spacing:-.035em}
 .why-grid{margin-top:28px;display:grid;gap:10px}
-.why-r{display:grid;grid-template-columns:360px 1fr 360px;gap:24px;align-items:center;background:var(--grey-soft);border-radius:20px;padding:16px 22px}
-.why-r b{font-family:var(--M);font-weight:900;font-size:20px;color:var(--primary)}
-.why-r p{font-size:20px;line-height:1.4}
+.why-r{display:grid;grid-template-columns:560px 1fr 220px;gap:32px;align-items:center;background:var(--grey-soft);border-radius:24px;padding:24px 28px;color:var(--ink);text-decoration:none}
+.why-r em{display:block;font-style:normal;font-size:16px;font-weight:700;color:var(--primary);margin-bottom:6px}
+.why-r b{display:block;font-family:var(--M);font-weight:900;font-size:26px;line-height:1.2;letter-spacing:-.02em}
+.why-r p{font-size:23px;line-height:1.4}
 .why-r span{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .why-r i{font-style:normal;font-size:14px;font-weight:600;background:#fff;border-radius:999px;padding:5px 12px}
 .why-close{margin-top:24px;font-size:26px;max-width:none}
@@ -457,47 +458,26 @@ const STORY = {
     "after": "The experience I think is relevant: one case study for each part of the brief."
   },
   "why": {
-    "title": "Why I make sense for this role",
+    "title": "Four questions, in a line each",
     "rows": [
       [
         0,
-        "I've written standards teams build to: a design process mapped to how the business delivers, and the minimum viable experience for core services.",
-        [
-          "Design Practice",
-          "CX Guardrails"
-        ]
+        "Set the why before the what. Understand the forces at play, then show people a future worth committing to."
       ],
       [
         1,
-        "I helped set up WorkSafe's first AI governance: a governance and risk framework, with a delivery pathway that filters use cases and de-risks investment.",
-        [
-          "AI Working Group"
-        ]
+        "Make the unreal, real. Test it with the people it's for, and let the evidence decide."
       ],
       [
         2,
-        "I've led precedent-setting work, from the vision for a national rollout to pilots inside a risk-averse regulator.",
-        [
-          "CX Guardrails",
-          "Futures Lab"
-        ]
+        "Design the people, process and technology together, and build in the pathways to grow."
       ],
       [
         3,
-        "I let evidence settle the argument: experience prototypes scaled with real users using the Eames' Powers of Ten.",
-        [
-          "Futures Lab"
-        ]
-      ],
-      [
-        4,
-        "I've set up a design practice from scratch, mapped it into delivery, and given it pathways to grow.",
-        [
-          "Design Practice"
-        ]
+        "Everything is an experience prototype. Make the right path the easy path, and keep it improving."
       ]
     ],
-    "close": "I've set the vision, made it real, built the capability and written the standard. Now I want to do it for how people and AI work together at Medibank.",
+    "close": "I'd love to bring this to how people and AI work together at Medibank. Thank you.",
     "hands": "Already building with AI: an AI-ready knowledge base of my own work, and AI Andrew, an agent on broughton.com.au."
   }
 };
@@ -1046,7 +1026,7 @@ const NOTES = {
   "map": "Four parts to the brief, one case study each. Each was set up to tackle a different problem.",
   "me": "Sixty seconds. Craft, lead, build, then a little about me outside work.",
   "ask": "Keep it genuine: why this role excites me, and the experience I think is relevant. Then into the case studies.",
-  "why": "Close on the role, not the projects. If asked about direct AI delivery: few people can genuinely claim that track record yet, because the field is too new. Point to the governance work and the hands-on building."
+  "why": "Read the four questions back, one line each. That is the summary. Then thank them. If asked about direct AI delivery: few people can genuinely claim that track record yet, because the field is too new. Point to the governance work and the hands-on building."
 };
 
 /* =========================================================
@@ -1190,9 +1170,9 @@ add("published","ink","Published and recognised","",`
 
 
 /* Why I make sense for this role: the close */
-add("why","why","Why me","The role",`
+add("why","why","In summary","Four questions",`
   <h2>${esc(STORY.why.title)}</h2>
-  <div class="why-grid">${STORY.why.rows.map(([r,t,ps])=>`<div class="why-r"><b>${esc(ROLE[r])}</b><p>${esc(t)}</p><span>${ps.map(x=>`<i>${esc(x)}</i>`).join("")}</span></div>`).join("")}</div>
+  <div class="why-grid">${STORY.why.rows.map(([qi,t])=>{const q=QUESTIONS[qi],p=PROJECTS.find(x=>x.id===q.projects[0]);return `<a class="why-r" href="#q${qi+1}"><div><em>${qi+1}. ${esc(q.area)}</em><b>${esc(q.lines.join(" "))}</b></div><p>${esc(t)}</p><span><i>${esc(p.name)}</i></span></a>`;}).join("")}</div>
   <p class="lede why-close">${esc(STORY.why.close)}</p>
   <p class="why-hands">${esc(STORY.why.hands)}</p>`);
 
