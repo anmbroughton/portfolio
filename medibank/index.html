@@ -112,7 +112,7 @@ a.case{cursor:pointer}
 .question h2 .ln:nth-child(2)>span{transition-delay:.08s}
 .question h2 .ln:nth-child(3)>span{transition-delay:.16s}
 .question h2 .ln:nth-child(4)>span{transition-delay:.24s}
-.question .sub{font-size:28px;margin-top:30px;max-width:40ch;position:relative;z-index:1}
+.question .sub{font-size:28px;margin-top:30px;max-width:56ch;position:relative;z-index:1}
 .jump{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;position:relative;z-index:1}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:16px 28px;font-weight:600;font-size:20px;cursor:pointer;text-decoration:none;transition:background .2s ease,color .2s ease}
 .pill:hover{background:var(--primary);color:#fff}
@@ -343,8 +343,8 @@ const PROJECTS = [
     "id": "futures",
     "name": "Futures Lab",
     "org": "WorkSafe Victoria",
-    "hmw": "How might we understand the threats and opportunities WorkSafe will face, and define new responses?",
-    "tackle": "Set up strategy for long-term success, beyond the three-year plan."
+    "hmw": "How might we understand the threats and opportunities WorkSafe will face next, near and far, and define new responses?",
+    "tackle": "Set up strategy for long-term success: the next three years, the near five, and beyond."
   },
   {
     "id": "practice",
@@ -433,16 +433,16 @@ const QUESTIONS = [
         "solution": "We aligned the Future of the Post Office strategy to the highest-priority use cases, and set a vision for the experience each one should deliver."
       },
       "futures": {
-        "said": "Look past the three-year plan. Four possible futures gave us the why. Four focus areas gave the executive the what.",
+        "said": "Look at the next, the near and the far. The threats and opportunities five years out and beyond gave the why. Focus areas for the next strategy gave the what.",
         "did": [
-          "The strategy looked three years ahead. The executive needed to see further, so whichever direction they chose would keep delivering value and managing risk.",
-          "Four focus areas: return to work in the modern economy, data in prevention, safety through robotics, and reducing conflict to prevent mental injury.",
-          "WorkSafe of the Future used speculative futures methods to ask what was possible, plausible and preferable, and built four future worlds, from corporate-led to community-led."
+          "The current strategy looked three years ahead. The CEO's challenge was bigger: build a scheme fit for the next 10, 20 and 30 years, in a modern economy.",
+          "Five emerging themes, from a literature review and expert interviews including CSIRO, the Grattan Institute and Telstra's former CTO: the changing Victorian community, changing work contracts, future industry, the non-human organisation, and pressure on the healthcare system.",
+          "Speculative futures across three horizons: next (the current strategy), near (around five years, post strategy) and far (beyond). Four future worlds and a set of provocations became four focus areas and experiment briefs."
         ],
-        "proof": "Outcome: the focus areas were endorsed and became the front end of WorkSafe's 2025 strategy.",
-        "notes": "Futures skills and design management: shaping strategy rather than responding to it. The Lab then took those opportunities into new products and services.",
-        "problem": "The strategy only looked three years ahead. The threats and opportunities beyond that weren't on the table.",
-        "solution": "Speculative futures work that showed the executive what was possible, plausible and preferable, and four focus areas worth backing."
+        "proof": "Outcome: the foundation for the Innovation Centre's portfolio and project briefs, and the front end of WorkSafe's 2025 strategy.",
+        "notes": "Next, near and far: three years, five years, and beyond. The non-human organisation theme flagged AI regulation, accountability and the need for human supervision back in 2022. That's a direct line to this role.",
+        "problem": "The current strategy covered the next three years. No one was looking at what the near and far future would ask of the scheme.",
+        "solution": "WorkSafe of the Future: a speculative futures project across the next, near and far horizons, building the bridge to the next strategy."
       },
       "practice": {
         "said": "Reform was the why. A central design practice was the what. Designing the organisation, and winning the investment, was the how.",
@@ -494,7 +494,7 @@ const QUESTIONS = [
       "colab": {
         "said": "Prototype it live in the community, and let the evidence settle it.",
         "did": [
-          "The lab ran open days, service safaris, community group workshops and live service prototyping from the shopfront.",
+          "Participatory design, run from the shopfront: open days, community workshops and live service prototypes, with the people the service was for.",
           "Co-design put the community in the room. Working this closely created space for unexpected, compelling leads.",
           "We tracked the pilot week by week on a shared whiteboard, so the team and Australia Post could see what was working before scaling.",
           "[[One moment where the team was stuck and the community changed the direction.]]"
@@ -502,7 +502,7 @@ const QUESTIONS = [
         "proof": "Outcome: the lab way of working drew interest from leadership across Australia Post.",
         "notes": "Participatory design in practice: the users and facilitators of the service shaped how it was built.",
         "problem": "A service that didn't exist yet, and no evidence of what communities would actually use.",
-        "solution": "Open days, service safaris and live prototypes run from the shopfront, with the pilot tracked week by week."
+        "solution": "Participatory design from the shopfront, with live prototypes and the pilot tracked week by week."
       },
       "guard": {
         "said": "Pick where to start. Prioritise the first use cases, and test each one for feasibility before it's built.",
@@ -519,7 +519,7 @@ const QUESTIONS = [
       "futures": {
         "said": "Prototype it, pilot it with real people, and only scale what works.",
         "did": [
-          "Each opportunity became a new product or service that was prototyped, piloted and, where it worked, scaled into the business.",
+          "The provocations from WorkSafe of the Future were prioritised by impact and fit with the strategy, then turned into experiment briefs. Each became a product or service that was prototyped, piloted and, where it worked, scaled into the business.",
           "Concepts were tested with the people they were for. Workers Club, a social recovery program so no one faces recovery alone, and Jobify, a personalised job search that gives injured workers more agency.",
           "Pilot leads held the vision while experiments ran, and the evidence fed executive decisions.",
           "[[How did you decide what to pilot and what to drop?]]"
@@ -572,21 +572,21 @@ const QUESTIONS = [
     "lines": [
       "How do we",
       "build a capability",
-      "people own,",
-      "and that pays off?"
+      "that delivers its value,",
+      "and keeps growing?"
     ],
-    "sub": "Define the capability, then the frameworks and systems that guide it, so people own it and the business realises its investment.",
+    "sub": "A capability is the people, process and technology behind a front or back of house outcome, like a new service or product. Design the roles across all three, so it delivers the value intended, with clear pathways to make it stronger.",
     "frames": {
       "colab": {
-        "said": "Give the new way of working its own principles and brand, until it's simply how the team works.",
+        "said": "Give a new way of working its own people, principles and tools, until it's how the team delivers new services.",
         "did": [
           "Challenged traditional project roles and widened the team's skill sets.",
           "Gave the lab its own principles, brand and microsite, and a new approach to project management and team dynamics.",
-          "Collaboration with local groups became ongoing, and the lab became how the Community team developed services."
+          "Made collaboration with local groups ongoing. The lab became how the Community team developed services, and drew interest from leadership across Australia Post."
         ],
         "proof": "Outcome: three new services (NWS, CDR, PIF) and interest from leadership across Australia Post.",
         "problem": "Traditional project roles and approaches were slowing how new services got made.",
-        "solution": "A lab way of working, with its own principles, brand and microsite, that became how the Community team worked."
+        "solution": "A lab with new roles, its own principles, brand and microsite, and a new approach to project management."
       },
       "guard": {
         "said": "Write the requirements from the experience, and let Australia Post's own teams build them.",
@@ -612,16 +612,16 @@ const QUESTIONS = [
         "solution": "A flat, networked team using design and futures methods, with pilot leads who own the problem."
       },
       "practice": {
-        "said": "Build it from scratch: roles, leaders and systems. Then bring the work in house.",
+        "said": "Design the roles across people, process and technology, then give the team clear pathways to grow.",
         "did": [
           "Defined the role types and where they fit in delivery, hired the team, built the leadership layer, then coached and trained people to work within the system.",
-          "Used the employee opinion survey and a capability map to find where to grow. Introduced dual track delivery and shared design standards across programs.",
-          "Brought design work in house, so the capability and its value stayed inside WorkSafe."
+          "Built design into enterprise delivery with Technology: dual track delivery and shared design standards across programs.",
+          "Used the employee opinion survey and a capability map to find where to grow next, and brought the work in house so the value stayed inside WorkSafe."
         ],
         "proof": "Outcome: $1.8M a year saved, 50% fewer program extensions, eNPS between +20 and +41, and a Victorian Premier's Design Awards finalist for Service Design.",
         "notes": "The greatest challenge in practice leadership, and what defines the team's success. It is also how the business realises its investment.",
-        "problem": "Design specialists were spread across the organisation, and WorkSafe wasn't realising the value of its investment in them.",
-        "solution": "We defined the role types, hired and grew the leaders, and built the systems the team works within."
+        "problem": "Design specialists were spread across the organisation, and WorkSafe wasn't getting the value it was paying for.",
+        "solution": "We defined the roles, built design into the delivery process alongside Technology, and created pathways for the team to grow."
       },
       "ai": {
         "said": "Put AI governance with the people who own the risk.",
@@ -635,11 +635,11 @@ const QUESTIONS = [
         "solution": "A governance and risk framework, built with risk and technology, and owned by the Director of Technology."
       }
     },
-    "notes": "Defining the capability, frameworks and systems that guide the team and create ownership. The biggest challenge in practice leadership, and what defines the team's success. It's also how the business realises its investment in the capability. Design management and future skills: realising the value of design across an organisation. Link to the role: enterprise enablement. Build AI design capability across product, design, research and delivery through coaching, guidance and tools.",
+    "notes": "Capability in the enterprise architecture sense: the people, process and technology that deliver a front or back of house outcome. Define the roles across all three, and the frameworks and systems that guide them. The biggest challenge in practice leadership, and what defines the team's success. It's also how the business realises its investment in the capability. Design management and future skills: realising the value of design across an organisation. Link to the role: enterprise enablement. Build AI design capability across product, design, research and delivery through coaching, guidance and tools.",
     "steps": [
-      "Build the capability",
-      "Set the frameworks and systems",
-      "Create ownership"
+      "People and roles",
+      "Process and technology",
+      "Pathways to grow"
     ],
     "projects": [
       "practice",
@@ -729,7 +729,7 @@ const QUESTIONS = [
   }
 ];
 
-/* Right-hand images: [photo caption, framework caption]. Files: images/<project>-q<n>-photo.jpg and -framework.jpg */
+/* Right-hand images: [top caption, bottom caption, optional top label, bottom label, top fit, bottom fit]. Files: images/<project>-q<n>-photo.jpg and -framework.jpg */
 const SHOTS = {
   "q1-colab": [
     "The Co-Lab shopfront, Footscray",
@@ -765,7 +765,7 @@ const SHOTS = {
   ],
   "q1-futures": [
     "[[Confirm: futures session]]",
-    "Four future worlds"
+    "Next, near and far: probable, plausible and possible futures"
   ],
   "q2-futures": [
     "Workers Club, a return to work concept",
@@ -788,12 +788,20 @@ const SHOTS = {
     "Divergent and convergent"
   ],
   "q3-practice": [
-    "Team workshop",
-    "Clarifying design roles"
+    "The myWorkSafe portal",
+    "Premier's Design Awards finalist work",
+    "Delivered",
+    "Delivered",
+    "cover",
+    "contain"
   ],
   "q4-practice": [
-    "Design Practice working session",
-    "The Design Practice Model"
+    "The Design Practice Guidelines",
+    "The Design Practice Model, from the Guidelines",
+    "Published",
+    "Framework",
+    "contain",
+    "contain"
   ],
   "q1-ai": [
     "",
@@ -914,8 +922,8 @@ QUESTIONS.forEach((q,qi)=>{
     const f = q.frames[p.id], hints = SHOT_HINTS[qi];
     const cap = SHOTS[`${qid}-${p.id}`] || ["",""];
     const shots = [
-      {src:`${p.id}-q${qi+1}-photo.jpg`, label:"In the work", caption:cap[0], hint:"A real photo of the work or the service", fit:"cover"},
-      {src:`${p.id}-q${qi+1}-framework.jpg`, label:"Framework", caption:cap[1], hint:"A framework or model from the work", fit:"contain"}
+      {src:`${p.id}-q${qi+1}-photo.jpg`, label:cap[2]||"In the work", caption:cap[0], hint:"A real photo of the work or the service", fit:cap[4]||"cover"},
+      {src:`${p.id}-q${qi+1}-framework.jpg`, label:cap[3]||"Framework", caption:cap[1], hint:"A framework or model from the work", fit:cap[5]||"contain"}
     ];
     alt = !alt;
     add(`${qid}-${p.id}`,`frame${alt?" alt":""}`,`Question ${qi+1}`,p.name,`
