@@ -186,7 +186,15 @@ a.case{cursor:pointer}
 .frame .asks + .lede{margin-top:10px}
 
 /* Title */
-.intro h1{font-size:112px;max-width:16ch}
+.intro h1{font-size:92px;max-width:11.5ch;position:relative;z-index:2}
+.intro .lede{position:relative;z-index:2}
+.collage{position:absolute;inset:-96px 0 0 0;pointer-events:none;z-index:1}
+.collage .cl{position:absolute;display:block;border-radius:14px;transform:translate(calc(var(--mx,0)*var(--p)),calc(var(--my,0)*var(--p))) rotate(var(--r));animation:drift calc(9s + var(--k)*.7s) ease-in-out infinite alternate;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.collage .d0{--p:-10px;filter:blur(5px) saturate(.8);opacity:.45;z-index:1}
+.collage .d1{--p:-22px;filter:blur(1.6px);opacity:.85;z-index:2;box-shadow:0 18px 40px rgba(0,0,0,.14)}
+.collage .d2{--p:-40px;z-index:3;box-shadow:0 30px 70px rgba(0,0,0,.28)}
+@keyframes drift{from{translate:0 -8px}to{translate:0 10px}}
+@media (prefers-reduced-motion:reduce){.collage .cl{animation:none;transition:none}}
 .intro .lede{margin-top:40px;max-width:40ch;font-size:28px}
 /* Project map */
 .map h2{font-size:46px;letter-spacing:-.03em}
@@ -244,6 +252,15 @@ a.case{cursor:pointer}
 .ask .answer{background:var(--ink);color:#fff;border-radius:28px;padding:26px 32px;font-size:27px;line-height:1.45;max-width:72ch;margin-top:28px;position:relative;z-index:1}
 .ask .sub{font-size:22px;margin-top:22px}
 .steps-row a{color:#fff;text-decoration:none}
+.cl-sub{font-size:24px;line-height:1.45;margin-top:18px;max-width:62ch;color:var(--ink-70)}
+.clients h2{font-size:64px;letter-spacing:-.035em}
+.cl-grid{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:24px;margin-top:36px}
+.cl-col{background:var(--grey-soft);border-radius:32px;padding:30px;display:flex;flex-direction:column}
+.cl-label{font-family:var(--M);font-weight:900;font-size:30px;color:var(--primary)}
+.cl-firms{font-size:16px;color:var(--ink-70);margin-top:4px}
+.cl-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px}
+.cl-list li{font-family:var(--M);font-weight:900;font-size:28px;letter-spacing:-.02em;line-height:1.15}
+.cl-work{margin-top:auto;padding-top:22px;font-size:17px;line-height:1.45}
 .steps-row em{font-style:normal;font-weight:400;opacity:.82;margin-left:10px}
 .cs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:40px}
 .cs{display:flex;flex-direction:column;background:var(--grey-soft);border-radius:32px;padding:28px;color:var(--ink);text-decoration:none;transition:transform .2s}
@@ -403,12 +420,110 @@ const ROLE = [
 const STORY = {
   "title": {
     "h": "18 years designing how people and technology work together",
-    "lede": "Andrew Broughton. Product, service, strategic and brand design, in-house, agency and consultancy. A case study for the AI Design Lead role at Medibank."
+    "lede": "Andrew Broughton. Product, service, strategic and brand design, in-house, agency and consultancy. A case study for the AI Design Lead role at Medibank.",
+    "collage": [
+      [
+        "intro-pub.jpg",
+        1520,
+        96,
+        420,
+        0,
+        4
+      ],
+      [
+        "intro-apcs.jpg",
+        1040,
+        120,
+        400,
+        0,
+        -5
+      ],
+      [
+        "intro-affinity.jpg",
+        1640,
+        640,
+        380,
+        0,
+        -3
+      ],
+      [
+        "intro-offsite.jpg",
+        1000,
+        740,
+        380,
+        0,
+        3
+      ],
+      [
+        "intro-colab.jpg",
+        1210,
+        250,
+        430,
+        1,
+        2
+      ],
+      [
+        "intro-methods.jpg",
+        1700,
+        250,
+        250,
+        1,
+        6
+      ],
+      [
+        "intro-nws.jpg",
+        1430,
+        770,
+        420,
+        1,
+        -4
+      ],
+      [
+        "intro-cop.jpg",
+        1060,
+        520,
+        360,
+        1,
+        -2
+      ],
+      [
+        "intro-guidebook.jpg",
+        1330,
+        430,
+        270,
+        2,
+        -6
+      ],
+      [
+        "pub-dfsi-cover.jpg",
+        1610,
+        450,
+        270,
+        2,
+        5
+      ],
+      [
+        "cover-ai.jpg",
+        1110,
+        700,
+        360,
+        2,
+        3
+      ],
+      [
+        "intro-futures.jpg",
+        1440,
+        150,
+        330,
+        2,
+        -3
+      ]
+    ]
   },
   "me": {
     "name": "Andrew Broughton",
     "role": "Practice Lead, Enterprise Design, WorkSafe Victoria",
-    "line": "I design how organisations change: the strategy, the service, and the standards that keep it working. Making the unreal, real.",
+    "line": "I'm a creative professional who helps organisations define and deliver strategies, services, products and experiences. I build and nurture the capabilities that make the unreal, real.",
     "arc": [
       [
         "Since 2007",
@@ -454,7 +569,7 @@ const STORY = {
       "excited about",
       "this role"
     ],
-    "answer": "The hard part of AI isn't the technology. It's how people and AI work together, and getting that right somewhere trust really matters. This role brings together the work I've enjoyed most: setting a direction, testing it with real people, building the capability, and writing the standards. Most recently, that's included helping WorkSafe find a safe way to bring AI in.",
+    "answer": "AI is the new material for service design. It's fast becoming the interface to digital services, and it's very powerful. Investing now in managing its risk is what opens up the opportunity to use it well, and that's the work I'm most excited to do.",
     "after": "The experience I think is relevant: one case study for each part of the brief."
   },
   "why": {
@@ -462,23 +577,68 @@ const STORY = {
     "rows": [
       [
         0,
-        "Set the why before the what. Understand the forces at play, then show people a future worth committing to."
+        "Look beyond the plan. Understand the forces at play, then show people a future worth acting on now."
       ],
       [
         1,
-        "Make the unreal, real. Test it with the people it's for, and let the evidence decide."
+        "Make the unreal, real. Design it with the people it's for, and let the evidence decide."
       ],
       [
         2,
-        "Design the people, process and technology together, and build in the pathways to grow."
+        "Build the practice into how the business already delivers, then grow the people in it."
       ],
       [
         3,
-        "Everything is an experience prototype. Make the right path the easy path, and keep it improving."
+        "Make the safe path the easy path. Put the guardrails where teams already work, and keep them current."
       ]
     ],
     "close": "I'd love to bring this to how people and AI work together at Medibank. Thank you.",
     "hands": "Already building with AI: an AI-ready knowledge base of my own work, and AI Andrew, an agent on broughton.com.au."
+  },
+  "clients": {
+    "title": "Four case studies, from a much longer list",
+    "sub": "The case studies are the closest fit for this brief. They sit on 18 years of work across in-house, consultancy and agency.",
+    "cols": [
+      {
+        "label": "In-house",
+        "firms": "Leading design functions",
+        "clients": [
+          "WorkSafe Victoria",
+          "ME Bank"
+        ],
+        "work": "Enterprise Design practice, Innovation Centre, Futures Lab, AI Working Group, and the ME Bank design team."
+      },
+      {
+        "label": "Consultancy",
+        "firms": "Craig Walker",
+        "clients": [
+          "Australia Post",
+          "Meta",
+          "World Vision",
+          "Affinity"
+        ],
+        "work": "CX Guardrails, Community Strategy, the Neighbourhood Welcome Service, youth harm minimisation workshops, inclusive digital banking strategy."
+      },
+      {
+        "label": "Agency",
+        "firms": "Big Red Group, Whippet, Mecca MediaLight, Next Digital",
+        "clients": [
+          "Optus",
+          "Coles",
+          "Flybuys",
+          "Seek",
+          "Amplifon",
+          "EnergyAustralia",
+          "MIFF",
+          "Melbourne Museum",
+          "Scienceworks",
+          "VCA",
+          "University of Melbourne",
+          "Ford"
+        ],
+        "work": "Personalisation strategies for Flybuys and Optus, an online channel strategy for Coles Financial Services, and permanent displays for Melbourne Museum and Scienceworks."
+      }
+    ]
   }
 };
 
@@ -597,7 +757,8 @@ const QUESTIONS = [
         "did": [
           "The current strategy looked three years ahead. The CEO's challenge was bigger: build a scheme fit for the next 10, 20 and 30 years, in a modern economy.",
           "Five emerging themes, from a literature review and expert interviews including CSIRO, the Grattan Institute and Telstra's former CTO: the changing Victorian community, changing work contracts, future industry, the non-human organisation, and pressure on the healthcare system.",
-          "Speculative futures across three horizons: next (the current strategy), near (around five years, post strategy) and far (beyond). Four future worlds and a set of provocations became four focus areas and experiment briefs."
+          "Speculative futures across three horizons: next (the current strategy), near (around five years, post strategy) and far (beyond). Four future worlds and a set of provocations became four focus areas and experiment briefs.",
+          "Then we tested it in the present: experience prototypes scaled with real users using the Eames' Powers of Ten. Four concepts were piloted, and one moved into business as usual."
         ],
         "proof": "Outcome: the foundation for the Innovation Centre's portfolio and project briefs, and the front end of WorkSafe's 2025 strategy.",
         "notes": "Next, near and far: three years, five years, and beyond. The non-human organisation theme flagged AI regulation, accountability and the need for human supervision back in 2022. That's a direct line to this role.",
@@ -638,7 +799,7 @@ const QUESTIONS = [
       "How"
     ],
     "projects": [
-      "guard"
+      "futures"
     ]
   },
   {
@@ -726,18 +887,18 @@ const QUESTIONS = [
       "De-risk adoption"
     ],
     "projects": [
-      "futures"
+      "colab"
     ]
   },
   {
     "area": "Practice improvement",
     "lines": [
       "How do you",
-      "build the capability",
-      "to deliver it,",
-      "and make it stick?"
+      "build a team",
+      "that delivers,",
+      "and keeps getting better?"
     ],
-    "sub": "A capability is the people, process and technology behind a front or back of house outcome, like a new service or product. Design the roles across all three, so it delivers the value intended, with clear pathways to make it stronger.",
+    "sub": "Set up the roles, build them into how the organisation already delivers, and grow the people in them.",
     "frames": {
       "colab": {
         "said": "Make the program design-led. The lab gave the Community team a new way to deliver, and it delivered three new services.",
@@ -778,10 +939,9 @@ const QUESTIONS = [
       "practice": {
         "said": "Design the practice, not just the work. A central practice, built into how WorkSafe delivers, aligned the business and de-risked every investment along the way.",
         "did": [
-          "Set it up: defined the role types and where they fit in delivery, hired the team, built the leadership layer, then coached people to work within the system.",
-          "How it works: front-end visions and discovery before investment, then dual track delivery with Technology, so the business agrees on the problem before paying for the solution.",
-          "Adoption by design: meeting user needs early, so adoption isn't left to change management alone.",
-          "Keep growing: the employee opinion survey (eNPS +20 to +41) and a capability map show where to invest in the team next."
+          "Defined the role types and where they fit in delivery, hired the team, built the leadership layer, and coached people to work within the system.",
+          "Front-end visions and discovery before investment, then dual track delivery with Technology, so the business agrees on the problem before paying for the solution, and adoption isn't left to change management alone.",
+          "The employee opinion survey (eNPS +20 to +41) and a capability map show where to invest in the team next."
         ],
         "proof": "Outcome: business alignment on what gets built and why, more efficient and effective delivery, higher adoption, and investment de-risked at every stage. Victorian Premier's Design Awards finalist, Service Design.",
         "notes": "The greatest challenge in practice leadership. Its value isn't the cost line, it's alignment, better delivery, adoption, and lower risk on every investment.",
@@ -801,11 +961,11 @@ const QUESTIONS = [
         "solution": "A governance framework and a risk mitigation framework, wrapped in a delivery framework, owned by the Director of Technology."
       }
     },
-    "notes": "Capability in the enterprise architecture sense: the people, process and technology that deliver a front or back of house outcome. Define the roles across all three, and the frameworks and systems that guide them. The biggest challenge in practice leadership, and what defines the team's success. It's also how the business realises its investment in the capability. Design management and future skills: realising the value of design across an organisation. Link to the role: enterprise enablement. Build AI design capability across product, design, research and delivery through coaching, guidance and tools.",
+    "notes": "This is about delivery capability: a design practice that turns up in programs and lands outcomes. Set up the roles and leadership, build design into the delivery framework alongside Technology, then grow the people through coaching, the employee survey and a capability map. Link to the role: building AI design capability across product, design, research and delivery.",
     "steps": [
-      "People and roles",
-      "Process and technology",
-      "Pathways to grow"
+      "Set it up",
+      "Build it into delivery",
+      "Grow it"
     ],
     "projects": [
       "practice"
@@ -815,11 +975,11 @@ const QUESTIONS = [
     "area": "Guidance and standards",
     "lines": [
       "How do you",
-      "set a standard",
-      "people follow,",
-      "and keep it current?"
+      "let teams use AI",
+      "safely, and keep",
+      "the standard current?"
     ],
-    "sub": "Everything is an experience prototype. Make the right path the easy path, and build in the mechanisms that keep it improving.",
+    "sub": "Put the guardrails in the path teams already take: one test for every idea, one forum to endorse it, and one register to track it.",
     "frames": {
       "colab": {
         "said": "Give it one language, write it down, and publish it so others can carry it on.",
@@ -886,11 +1046,11 @@ const QUESTIONS = [
         "role": 1
       }
     },
-    "notes": "When you deliver something, a framework, a service or a capability, you keep enabling and iterating it. Across all of these I've built mechanisms to capture, identify and inform change: a governance forum and its terms of reference, a CX team that monitors and improves a service, a community of practice cadence, user-centred design inside agile squads. Collaboration and connection to purpose at every level, from governance to the individual. I do this by helping teams clarify problems and define and own the solutions. It takes patience and trust, which is the core skill of a leader. Everything is an experience prototype. Link to the role: the framework has to evolve as the technology and regulation change. Evidence from customers, employees and live solutions feeds the standards.",
+    "notes": "Governance as an enabler. A governance framework and a risk mitigation framework, inside a delivery framework that filters use cases and de-risks investment. Without it, WorkSafe couldn't switch on the AI features arriving in its technology stack. Link to the role: standards, patterns and human oversight that evolve as the technology and regulation change.",
     "steps": [
-      "Build the mechanism",
-      "Capture and inform change",
-      "Let it run, and keep improving"
+      "One test for every idea",
+      "One forum to endorse it",
+      "Keep it current"
     ],
     "projects": [
       "ai"
@@ -1024,7 +1184,7 @@ const NOTES = {
   "published": "Close: don't just take my word for it. The work has been recognised, published, and presented.",
   "reflect": "[[Reflections still to write: one learned, one mistake, one do-differently per project.]]",
   "map": "Four parts to the brief, one case study each. Each was set up to tackle a different problem.",
-  "me": "Sixty seconds. Craft, lead, build, then a little about me outside work.",
+  "me": "Sixty seconds. Craft, lead, build, then why AI excites me: the new material for service design. Then a little about me outside work.",
   "ask": "Keep it genuine: why this role excites me, and the experience I think is relevant. Then into the case studies.",
   "why": "Read the four questions back, one line each. That is the summary. Then thank them. If asked about direct AI delivery: few people can genuinely claim that track record yet, because the field is too new. Point to the governance work and the hands-on building."
 };
@@ -1061,6 +1221,7 @@ const add = (id, cls, label, sub, inner, meta={}) => slides.push({id, cls, label
 
 /* Title */
 add("intro","intro","Introduction","",`
+  <div class="collage" aria-hidden="true">${STORY.title.collage.map(([f,x,y,w,d,r],k)=>`<img class="cl d${d}" src="${IMG}${f}" alt="" style="left:${x}px;top:${y}px;width:${w}px;--r:${r}deg;--k:${k}">`).join("")}</div>
   <h1>${esc(STORY.title.h)}</h1>
   <p class="lede">${esc(STORY.title.lede)}</p>`);
 
@@ -1076,6 +1237,13 @@ add("me","me","Who I am","",`
   <div class="stack one"><button class="case shot" data-full="${IMG}${STORY.me.photo}" data-caption="${esc(STORY.me.caption)}">
     <div class="media fit-cover"><img src="${IMG}${STORY.me.photo}" alt="${esc(STORY.me.caption)}" data-kind="Photo" data-hint=""></div>
     <span class="tag"><b>On stage</b><span>${esc(STORY.me.caption)}</span></span></button></div>`);
+
+/* Breadth: clients across in-house, consultancy and agency */
+add("clients","clients","Who I've worked with","",`
+  <h2>${esc(STORY.clients.title)}</h2>
+  <p class="cl-sub">${esc(STORY.clients.sub)}</p>
+  <div class="cl-grid">${STORY.clients.cols.map(c=>`<div class="cl-col"><p class="cl-label">${esc(c.label)}</p><p class="cl-firms">${esc(c.firms)}</p>
+    <ul class="cl-list">${c.clients.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="cl-work"><b>Selected work.</b> ${esc(c.work)}</p></div>`).join("")}</div>`);
 
 /* The question behind the brief, answered first */
 add("ask","question ask","Why this role","",`
@@ -1178,6 +1346,7 @@ add("why","why","In summary","Four questions",`
 
 slides.forEach(sl=>{ if(!sl.notes && NOTES[sl.id]) sl.notes = NOTES[sl.id]; });
 const total = slides.length;
+document.addEventListener("pointermove",e=>{const c=document.querySelector("#slide-intro .collage");if(!c)return;c.style.setProperty("--mx",(e.clientX/innerWidth-.5).toFixed(3));c.style.setProperty("--my",(e.clientY/innerHeight-.5).toFixed(3));},{passive:true});
 const pad = n => String(n).padStart(2,"0");
 const stage = document.getElementById("stage");
 stage.innerHTML = slides.map((s,i)=>`
