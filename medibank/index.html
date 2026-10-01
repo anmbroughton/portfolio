@@ -239,10 +239,24 @@ a.case{cursor:pointer}
 .stats span{font-size:15px;line-height:1.35;display:block;margin-top:4px}
 .stack.one{grid-template-rows:1fr}
 /* The question */
-.ask h2{font-size:100px}
-.ask .answer{background:var(--ink);color:#fff;border-radius:28px;padding:26px 32px;font-size:27px;line-height:1.45;max-width:58ch;margin-top:34px;position:relative;z-index:1}
+.ask h2{font-size:84px}
+.ask .steps-row{display:grid;grid-template-columns:repeat(2,max-content);gap:12px 14px;margin-top:22px}
+.ask .answer{background:var(--ink);color:#fff;border-radius:28px;padding:26px 32px;font-size:27px;line-height:1.45;max-width:72ch;margin-top:28px;position:relative;z-index:1}
 .ask .sub{font-size:22px;margin-top:22px}
 .steps-row a{color:#fff;text-decoration:none}
+.steps-row em{font-style:normal;font-weight:400;opacity:.82;margin-left:10px}
+.cs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:40px}
+.cs{display:flex;flex-direction:column;background:var(--grey-soft);border-radius:32px;padding:28px;color:var(--ink);text-decoration:none;transition:transform .2s}
+.cs:hover{transform:translateY(-4px)}
+.cs-n{font-family:var(--M);font-weight:900;font-size:44px;color:var(--primary);line-height:1}
+.cs-area{font-size:18px;font-weight:700;margin-top:10px;color:var(--primary)}
+.cs-q{font-size:22px;line-height:1.3;margin-top:8px;min-height:3.9em}
+.cs-img{height:240px;border-radius:22px;overflow:hidden;position:relative;background:#e8e8e8;margin-top:18px}
+.cs-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-img .ph{font-size:14px}.cs-img .ph em,.cs-img .ph span{display:none}
+.cs h3{font-size:30px;letter-spacing:-.02em;margin-top:20px}
+.cs-org{font-size:16px;color:var(--ink-70);margin-top:4px}
+.cs-t{font-size:19px;line-height:1.4;margin-top:12px}
 /* Question slides: role line */
 .question h2{font-size:100px}
 .q-role{position:relative;z-index:1;margin-top:18px;font-size:20px;font-weight:600;background:rgba(0,0,0,.16);display:inline-block;padding:10px 18px;border-radius:14px;max-width:70ch}
@@ -387,8 +401,8 @@ const ROLE = [
 /* The narrative wrapper: title, who I am, the question behind the brief, why I make sense */
 const STORY = {
   "title": {
-    "h": "Setting the standard for how people and AI work together",
-    "lede": "Andrew Broughton. A case study for the AI Design Lead role at Medibank. Four questions, five projects, one answer."
+    "h": "18 years designing how people and technology work together",
+    "lede": "Andrew Broughton. Product, service, strategic and brand design, in-house, agency and consultancy. A case study for the AI Design Lead role at Medibank."
   },
   "me": {
     "name": "Andrew Broughton",
@@ -396,52 +410,51 @@ const STORY = {
     "line": "I design how organisations change: the strategy, the service, and the standards that keep it working. Making the unreal, real.",
     "arc": [
       [
-        "2007 to 2015",
+        "Since 2007",
         "Craft",
-        "Digital and creative for MIFF, Melbourne Museum and Ford."
+        "Product, service, strategic, brand and creative design, across arts and culture, retail, finance, telco, government and tech."
       ],
       [
-        "2015 to 2020",
+        "Since 2015",
         "Lead",
-        "Design teams for ME Bank, Optus and Flybuys. Consulting at Craig Walker for Australia Post and Meta."
+        "In-house, agency and consultancy. Managing and growing design teams, and leading consulting for clients like Australia Post and Meta."
       ],
       [
-        "2020 to now",
+        "Since 2020",
         "Build",
-        "WorkSafe's Futures Lab, Innovation Centre and Enterprise Design practice, and its first AI governance."
+        "Innovation portfolios, and defining and starting design capabilities, from WorkSafe's Futures Lab to its Enterprise Design practice."
       ]
     ],
     "stats": [
       [
-        "18+",
-        "years in design and innovation"
+        "Dad",
+        "of two boys, outnumbered on snacks and screen time"
       ],
       [
-        "From scratch",
-        "WorkSafe's central design practice"
+        "Explorer",
+        "of Australia's deserts, 7,000 km at a time in our Troopy"
       ],
       [
-        "Published",
-        "Design for Social Innovation, 2022"
+        "Collector",
+        "of synthesizers, with techno released on local and international labels"
       ],
       [
-        "Finalist",
-        "Victorian Premier's Design Awards, Service Design"
+        "Geelong",
+        "based, and happy to commute"
       ]
     ],
     "photo": "pub-outlook.jpg",
     "caption": "Speaking at The Outlook, design leadership"
   },
   "ask": {
-    "kicker": "The question behind the brief",
+    "kicker": "Why this role",
     "lines": [
-      "Can I set the standard",
-      "for how people and AI",
-      "work together",
-      "at Medibank?"
+      "Why I'm",
+      "excited about",
+      "this role"
     ],
-    "answer": "Yes. It takes four things: a direction people commit to, progress when no one knows the answer, a capability that delivers, and a standard people follow. I've done all four in a regulated organisation, including bringing AI in safely.",
-    "after": "Medibank asked about these four capabilities. The rest of this case study answers each one with the projects that prove it."
+    "answer": "The hard part of AI isn't the technology. It's how people and AI work together, and getting that right somewhere trust really matters. This role brings together the work I've enjoyed most: setting a direction, testing it with real people, building the capability, and writing the standards. Most recently, that's included helping WorkSafe find a safe way to bring AI in.",
+    "after": "The experience I think is relevant: one case study for each part of the brief."
   },
   "why": {
     "title": "Why I make sense for this role",
@@ -463,9 +476,9 @@ const STORY = {
       ],
       [
         2,
-        "I've run design-led programs from a blank page to a live service.",
+        "I've led precedent-setting work, from the vision for a national rollout to pilots inside a risk-averse regulator.",
         [
-          "AP CoLab",
+          "CX Guardrails",
           "Futures Lab"
         ]
       ],
@@ -473,7 +486,6 @@ const STORY = {
         3,
         "I let evidence settle the argument: experience prototypes scaled with real users using the Eames' Powers of Ten.",
         [
-          "AP CoLab",
           "Futures Lab"
         ]
       ],
@@ -646,11 +658,8 @@ const QUESTIONS = [
       "How"
     ],
     "projects": [
-      "guard",
-      "futures",
-      "ai"
-    ],
-    "role": "In the role: owning the human-AI experience framework, and bringing a point of view on where AI is heading."
+      "guard"
+    ]
   },
   {
     "area": "Helping teams through ambiguity",
@@ -689,7 +698,7 @@ const QUESTIONS = [
         "solution": "A prioritised set of first use cases, each with high-level requirements so it could be tested for feasibility."
       },
       "futures": {
-        "said": "Test the future in the present. Using the Eames' Powers of Ten, we scaled experience prototypes with real users, one order of magnitude at a time, until the evidence was strong enough to land.",
+        "said": "Test the future in the present. Grow experience prototypes with real users by powers of ten, and let the evidence decide what scales.",
         "did": [
           "The provocations from WorkSafe of the Future were prioritised by impact and fit with the strategy, then turned into experiment briefs.",
           "Powers of Ten borrows from Charles and Ray Eames' film for IBM, which zooms out by a factor of ten at each step. We scaled experience prototypes the same way: start small with real users, then grow by ten each time, so the risk only grew as fast as the evidence.",
@@ -737,10 +746,8 @@ const QUESTIONS = [
       "De-risk adoption"
     ],
     "projects": [
-      "futures",
-      "colab"
-    ],
-    "role": "In the role: leading precedent-setting AI initiatives, and turning research and evidence into decisions."
+      "futures"
+    ]
   },
   {
     "area": "Practice improvement",
@@ -821,10 +828,8 @@ const QUESTIONS = [
       "Pathways to grow"
     ],
     "projects": [
-      "practice",
-      "colab"
-    ],
-    "role": "In the role: building AI design capability across product, design, research and delivery."
+      "practice"
+    ]
   },
   {
     "area": "Guidance and standards",
@@ -908,11 +913,8 @@ const QUESTIONS = [
       "Let it run, and keep improving"
     ],
     "projects": [
-      "ai",
-      "practice",
-      "guard"
-    ],
-    "role": "In the role: standards, patterns and human oversight that evolve as the technology and regulation change."
+      "ai"
+    ]
   }
 ];
 
@@ -1038,12 +1040,12 @@ const REFLECT = {
 
 /* Speaker notes for non-frame slides. Frames and question slides carry .notes in QUESTIONS. */
 const NOTES = {
-  "intro": "Open with the role, not with me. The whole deck answers one question.",
+  "intro": "Thank the panel. A quick hello, then straight into who I am.",
   "published": "Close: don't just take my word for it. The work has been recognised, published, and presented.",
   "reflect": "[[Reflections still to write: one learned, one mistake, one do-differently per project.]]",
-  "map": "Five projects, each set up to tackle a different problem. Each question is answered by the projects that prove it best, and each one ties to part of the role.",
-  "me": "Sixty seconds. Craft, lead, build. The thread: design as a way to change organisations, now applied to how people and AI work together.",
-  "ask": "Answer first. Everything after this is the evidence.",
+  "map": "Four parts to the brief, one case study each. Each was set up to tackle a different problem.",
+  "me": "Sixty seconds. Craft, lead, build, then a little about me outside work.",
+  "ask": "Keep it genuine: why this role excites me, and the experience I think is relevant. Then into the case studies.",
   "why": "Close on the role, not the projects. If asked about direct AI delivery: few people can genuinely claim that track record yet, because the field is too new. Point to the governance work and the hands-on building."
 };
 
@@ -1096,12 +1098,12 @@ add("me","me","Who I am","",`
     <span class="tag"><b>On stage</b><span>${esc(STORY.me.caption)}</span></span></button></div>`);
 
 /* The question behind the brief, answered first */
-add("ask","question ask","The question","Answered first",`
+add("ask","question ask","Why this role","",`
   <p class="count">${esc(STORY.ask.kicker)}</p>
   <h2>${STORY.ask.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
   <p class="answer">${esc(STORY.ask.answer)}</p>
   <p class="sub">${esc(STORY.ask.after)}</p>
-  <ol class="steps-row">${QUESTIONS.map((q,i)=>`<li><a href="#q${i+1}">${esc(q.area)}</a></li>`).join("")}</ol>`);
+  <ol class="steps-row">${QUESTIONS.map((q,i)=>`<li><a href="#q${i+1}">${esc(q.area)}<em>${esc(PROJECTS.find(p=>p.id===q.projects[0]).name)}</em></a></li>`).join("")}</ol>`);
 
 /* Project map as a Gantt: the four questions read as stages; each project's bar spans the stages it answers */
 const QSHORT = ["Strategy and visioning","Helping teams through ambiguity","Practice improvement","Guidance and standards"];
@@ -1118,17 +1120,14 @@ const gantt = p => {
   }).join("");
   return `<div class="g-track">${[0,1,2,3].map(i=>`<span class="g-col" style="left:${i*25}%"></span>`).join("")}${link}${segs}</div>`;
 };
-add("map","map","The projects","Mapped to the questions",`
-  <h2>Five projects, mapped to the questions they answer best</h2>
-  <div class="gantt">
-    <span></span>
-    <div class="g-head">${QSHORT.map((t,i)=>`<a class="g-q" href="#q${i+1}"><b>${i+1}</b>${esc(t)}<em>${esc(GROLE[i])}</em></a>`).join("")}</div>
-    ${PROJECTS.map(p=>`<div class="pm-p">
-        <div class="pm-img media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
-        <div><h3>${esc(p.name)}</h3><p class="pm-org">${esc(p.org)}</p><p class="pm-t">${esc(p.tackle||"")}</p></div>
-      </div>${gantt(p)}`).join("")}
-  </div>
-  <p class="pm-key"><i class="k lead"></i>Lead answer <i class="k"></i>Also answers</p>`);
+add("map","map","The case studies","One per question",`
+  <h2>Four questions, one case study each</h2>
+  <div class="cs-grid">${QUESTIONS.map((q,i)=>{const p=PROJECTS.find(x=>x.id===q.projects[0]);return `<a class="cs" href="#q${i+1}">
+      <span class="cs-n">${i+1}</span>
+      <p class="cs-area">${esc(q.area)}</p>
+      <p class="cs-q">${esc(q.lines.join(" "))}</p>
+      <div class="cs-img media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
+      <h3>${esc(p.name)}</h3><p class="cs-org">${esc(p.org)}</p><p class="cs-t">${esc(p.tackle||"")}</p></a>`;}).join("")}</div>`);
 
 let alt = false;
 QUESTIONS.forEach((q,qi)=>{
@@ -1138,7 +1137,6 @@ QUESTIONS.forEach((q,qi)=>{
     <p class="count">Question ${qi+1} of 4. ${esc(q.area)}</p>
     <h2>${q.lines.map(l=>`<span class="ln"><span>${esc(l)}</span></span>`).join("")}</h2>
     <p class="sub">${esc(q.sub)}</p>
-    ${q.role?`<p class="q-role">${esc(q.role)}</p>`:""}
     ${q.steps?`<ol class="steps-row">${q.steps.map(t=>`<li>${esc(t)}</li>`).join("")}</ol>`:""}
     <div class="jump">${(q.projects||PROJECTS.map(p=>p.id)).map(id=>PROJECTS.find(p=>p.id===id)).map(p=>`<a class="pill light" href="#${qid}-${p.id}">${esc(p.name)}</a>`).join("")}</div>`,
     {q:qi, notes:q.notes||""});
@@ -1180,7 +1178,7 @@ QUESTIONS.forEach((q,qi)=>{
 
 add("reflect","ink reflect","Reflection","",`
   <h2>${esc(REFLECT.title)}</h2>
-  <div class="reflect-grid">${PROJECTS.map(p=>`<div><h3>${esc(p.name)}</h3><p>${fmt(REFLECT.items[p.id])}</p></div>`).join("")}</div>`);
+  <div class="reflect-grid">${QUESTIONS.map(q=>PROJECTS.find(p=>p.id===q.projects[0])).map(p=>`<div><h3>${esc(p.name)}</h3><p>${fmt(REFLECT.items[p.id])}</p></div>`).join("")}</div>`);
 
 /* Published */
 add("published","ink","Published and recognised","",`
