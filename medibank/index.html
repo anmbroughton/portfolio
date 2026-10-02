@@ -315,7 +315,7 @@ a.case{cursor:pointer}
 .rail-card .media + .rail-cap{position:absolute;left:14px;bottom:14px;z-index:2}
 .rail-cap{display:inline-block;box-shadow:0 4px 14px rgba(0,0,0,.2);background:#fff;color:var(--ink);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:700}
 .rail-card.r0{left:80px;top:10px}.rail-card.r1{left:330px;top:300px;width:520px}.rail-card.r2{left:40px;top:600px;width:440px}
-.intro-line{color:#fff}
+.intro-line{color:var(--ink)}
 .bleed .detail-btn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
 .hero .stack{display:none!important}
 .hero .frame-text{max-width:720px!important;position:relative;z-index:1}
@@ -439,6 +439,39 @@ dialog::backdrop{background:rgba(10,10,10,.78)}
   .controls,.progress{display:none}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+
+/* ---- Layout finesse: more air on question and red pages ---- */
+.question .s-body{padding:64px 96px}
+.question .count{font-size:20px}
+.question h2,.question.ask h2{font-size:68px!important;line-height:1.04;margin-top:18px;max-width:880px}
+.question .sub{font-size:24px;line-height:1.45;margin-top:28px;max-width:780px}
+.question .steps-row{margin-top:32px;max-width:860px}
+.question .steps-row li{font-size:19px;padding:8px 20px 8px 8px}
+.question .jump{display:none}
+.question .ghost{display:none}
+.ask .answer{font-size:24px;max-width:820px;margin-top:32px}
+.question .rail{right:96px;top:64px;bottom:64px;width:720px}
+.rail-card{width:400px}
+.rail-card.r0{left:40px;top:0;width:400px}
+.rail-card.r1{left:300px;top:calc(50% - 115px);width:420px}
+.rail-card.r2{left:0;bottom:0;top:auto;width:380px}
+.rail-cap{font-size:14px;padding:5px 12px}
+
+/* problem / solution: wider gutter between text and image */
+.fd-text{max-width:600px}
+.fd-img{left:820px!important}
+.fd h3{font-size:46px}
+.fd-body{font-size:21px;line-height:1.55;margin-top:26px}
+.fd-out{margin-top:28px;padding-top:22px}
+/* answer slides: breathing room */
+.hero .frame-text{max-width:680px!important}
+.hero .frame-text .lede{margin-top:20px}
+.intro-line{font-size:23px;margin-top:30px;color:var(--ink-70)}
+.hero-img{left:880px!important}
+/* who I am */
+.me .arc{margin-top:40px;gap:32px}
+.me .stats{margin-top:40px;gap:28px}
+.me .stats b{font-size:34px}
 </style>
 </head>
 <body>
