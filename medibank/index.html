@@ -645,16 +645,16 @@ const STORY = {
     "after": "The experience I think is relevant: one case study for each part of the brief.",
     "visual": [
       [
-        "pk-AL-01.webp",
-        "Enterprise AI Lab"
-      ],
-      [
-        "pk-WF-32.webp",
+        "hr-WF-32.jpg",
         "WorkSafe of the Future: the non-human organisation"
       ],
       [
-        "pk-AL-02.webp",
-        "Falling behind: how we regulate AI, and use it"
+        "hr-WF-34.jpg",
+        "Artificial intelligence: near and far futures"
+      ],
+      [
+        "hr-DO-22.jpg",
+        "AI workflow and risk management"
       ]
     ]
   },
@@ -926,14 +926,14 @@ const QUESTIONS = [
         "ph": "The strategy only looked three years ahead.",
         "pb": "The CEO's challenge was bigger: a scheme fit for the next 10, 20 and 30 years, in a changing economy. No one was looking at what the near and far future would ask of WorkSafe, or what that meant for decisions being made now.",
         "pimg": [
-          "futures-fl11.jpg",
-          "From the pack: the Innovation Lab operational plan, from strategy to design to outputs"
+          "hr-WF-13.jpg",
+          "From the pack: relevant trends and emerging themes"
         ],
         "sh": "Map the next, near and far. Then test it in the present.",
         "sb": "Five emerging themes came from research and expert interviews, including CSIRO, the Grattan Institute and Telstra's former CTO. They became four future worlds, then focus areas and experiment briefs. We tested concepts like Workers Club and Jobify with real users, scaling them using the Eames' Powers of Ten.",
         "simg": [
-          "futures-q2-framework.jpg",
-          "From the pack: the Innovation Lab, from weak signals to future solutions"
+          "hr-FL-08.jpg",
+          "From the pack: four focus areas, from return to work to mental injury"
         ],
         "hero": [
           "futures-q1-photo.jpg",
@@ -1035,14 +1035,14 @@ const QUESTIONS = [
         "ph": "A vision, but no evidence of what communities would use.",
         "pb": "Australia Post wanted new essential services that would build its brand, empower individuals and connect communities. A traditional project wouldn't tell us what people actually needed, or whether they'd use it.",
         "pimg": [
-          "colab-q1-framework.jpg",
-          "From the pack: the ambition, across brand, individuals and communities"
+          "hr-NW-25.jpg",
+          "From the case study: Welcome Spaces with local businesses"
         ],
         "sh": "A design-led program, run from a shopfront.",
         "sb": "We set up a pop-up co-design lab in Footscray: open days, community workshops and live service prototypes with the people the service was for. We tracked the pilot week by week on a shared whiteboard, so the team and Australia Post could see what worked before it scaled.",
         "simg": [
-          "colab-q2-photo.jpg",
-          "In the work: the weekly pilot tracker, week 16"
+          "hr-NW-07.jpg",
+          "From the case study: how we did it, out of the lab"
         ],
         "hero": [
           "colab-q4-photo.jpg",
@@ -1115,16 +1115,16 @@ const QUESTIONS = [
     ],
     "visual": [
       [
-        "pk-NW-09.webp",
-        "Co-design, experience prototype"
-      ],
-      [
-        "pk-NW-12.webp",
+        "hr-NW-12.jpg",
         "A unified language"
       ],
       [
-        "pk-NW-27.webp",
-        "How is it performing?"
+        "hr-NW-17.jpg",
+        "A campaign across the neighbourhood"
+      ],
+      [
+        "hr-NW-26.jpg",
+        "Community Connectors"
       ]
     ]
   },
@@ -1207,8 +1207,8 @@ const QUESTIONS = [
         "ph": "Historic reform, and no shared way to deliver it.",
         "pb": "WorkSafe was heading into scheme reform. Design specialists were scattered across the organisation, every program delivered differently, and adoption was left to change management at the end.",
         "pimg": [
-          "practice-q1-framework.jpg",
-          "From the pack: centralising design alongside project management, business analysis, change and the EPMO"
+          "hr-DG-33.jpg",
+          "From the Guidelines: supporting healthcare providers"
         ],
         "sh": "A central practice, mapped to how WorkSafe delivers.",
         "sb": "I defined the roles and leadership layer, hired the team, and mapped the design process to the enterprise delivery framework with Technology: discovery and front-end visions before investment, then dual track delivery. The guidelines and methods toolkit put it all in one place, for designers and the business.",
@@ -1217,9 +1217,10 @@ const QUESTIONS = [
           "From the Design Practice Guidelines: the practice model, mapped to WorkSafe's delivery framework"
         ],
         "hero": [
-          "practice-q2-photo.jpg",
-          "Co-design in the room with the business",
-          "In the work"
+          "hr-DO-24.jpg",
+          "Technology Delivery: 9 experience designers and a design lead",
+          "In the work",
+          "contain"
         ]
       },
       "ai": {
@@ -1245,16 +1246,16 @@ const QUESTIONS = [
     ],
     "visual": [
       [
-        "pk-DG-18.webp",
-        "The Design Practice Model"
+        "hr-DG-19.jpg",
+        "Human-centred design is a philosophy"
       ],
       [
-        "pk-OF-18.webp",
-        "Centralising a design practice"
+        "hr-DG-12.jpg",
+        "Benefits of HCD"
       ],
       [
-        "pk-CP-29.webp",
-        "Vision, future state, roadmap"
+        "hr-DG-30.jpg",
+        "Identify and initiate"
       ]
     ]
   },
@@ -1360,8 +1361,8 @@ const QUESTIONS = [
           "The AI use case submission and assessment workflow"
         ],
         "hero": [
-          "cover-ai.jpg",
-          "Enterprise AI Lab: the proposal",
+          "hr-AL-02.jpg",
+          "Falling behind: how we regulate AI, and how we use it",
           "The pack",
           "contain"
         ]
@@ -1610,7 +1611,7 @@ add("map","map","The case studies","One per question",`
       <span class="cs-n">${i+1}</span>
       <p class="cs-area">${esc(q.area)}</p>
       <p class="cs-q">${esc(q.lines.join(" "))}</p>
-      <div class="cs-img media"><img src="${IMG}cover-${p.id}.jpg" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
+      <div class="cs-img media${p.id==="ai"?" fit-contain":""}"><img src="${IMG}${p.id==="ai"?"hr-AL-02.jpg":"cover-"+p.id+".jpg"}" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
       <h3>${esc(p.name)}</h3><p class="cs-org">${esc(p.org)}</p><p class="cs-t">${esc(p.tackle||"")}</p></a>`;}).join("")}</div>
   </div>`);
 
