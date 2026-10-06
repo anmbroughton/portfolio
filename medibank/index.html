@@ -323,7 +323,7 @@ a.case{cursor:pointer}
 .hero-img{left:880px!important}
 .close-img{left:1000px!important}
 .close-in{max-width:860px}
-.close-img .media img{object-position:right center}
+.close-img .media img{object-position:center 34%}
 .bleed-tag{position:absolute;right:96px;bottom:24px;z-index:2;display:inline-flex;gap:12px;align-items:baseline;background:var(--primary);color:#fff;border-radius:999px;padding:10px 20px;font-size:17px;pointer-events:none}
 .bleed-tag b{font-family:var(--M);font-weight:900;font-size:15px}
 .close .bleed-bg::after{background:linear-gradient(90deg,rgba(10,10,10,.8) 0%,rgba(10,10,10,.45) 38%,rgba(10,10,10,0) 60%)}
@@ -774,8 +774,8 @@ const STORY = {
   "close": {
     "h": "Thank you.",
     "sub": "Questions?",
-    "photo": "close-photo.jpg",
-    "caption": "A wall of concept sketches",
+    "photo": "close-photo-8218.jpg",
+    "caption": "Mt Dare, on the edge of the Simpson Desert",
     "links": [
       "broughton.com.au",
       "linkedin.com/in/anmbroughton"
@@ -1704,7 +1704,7 @@ add("why","why map","What I've learnt","In summary",`
 add("close","close","Thank you","Questions",`
   <button class="case shot fd-img hero-img close-img" data-full="${IMG}${STORY.close.photo}" data-caption="${esc(STORY.close.caption)}">
     <div class="media"><img src="${IMG}${STORY.close.photo}" alt="${esc(STORY.close.caption)}" data-kind="Photo" data-hint=""></div>
-    <span class="tag"><b>In the work</b><span>${esc(STORY.close.caption)}</span></span></button>
+    <span class="tag"><b>Outside work</b><span>${esc(STORY.close.caption)}</span></span></button>
   <div class="close-in"><h2>${esc(STORY.close.h)}</h2><p class="close-q">${esc(STORY.close.sub)}</p>
   <p class="close-links">${STORY.close.links.map(l=>`<span>${esc(l)}</span>`).join("")}</p></div>
 `);
