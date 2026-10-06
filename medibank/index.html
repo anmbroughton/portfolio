@@ -645,16 +645,16 @@ const STORY = {
     "after": "The experience I think is relevant: one case study for each part of the brief.",
     "visual": [
       [
-        "hr-WF-32.jpg",
-        "WorkSafe of the Future: the non-human organisation"
+        "hr-WS-48.jpg",
+        "Life inCorporated: corporate power calls the shots"
       ],
       [
-        "hr-WF-34.jpg",
-        "Artificial intelligence: near and far futures"
+        "hr-WS-50.jpg",
+        "Civic Gov: government by algorithm"
       ],
       [
-        "hr-DO-22.jpg",
-        "AI workflow and risk management"
+        "hr-WS-52.jpg",
+        "Social Collective: local living powered by the people"
       ]
     ]
   },
@@ -926,14 +926,14 @@ const QUESTIONS = [
         "ph": "The strategy only looked three years ahead.",
         "pb": "The CEO's challenge was bigger: a scheme fit for the next 10, 20 and 30 years, in a changing economy. No one was looking at what the near and far future would ask of WorkSafe, or what that meant for decisions being made now.",
         "pimg": [
-          "hr-WF-13.jpg",
+          "hr-WS-11.jpg",
           "From the pack: relevant trends and emerging themes"
         ],
         "sh": "Map the next, near and far. Then test it in the present.",
         "sb": "Five emerging themes came from research and expert interviews, including CSIRO, the Grattan Institute and Telstra's former CTO. They became four future worlds, then focus areas and experiment briefs. We tested concepts like Workers Club and Jobify with real users, scaling them using the Eames' Powers of Ten.",
         "simg": [
-          "hr-FL-08.jpg",
-          "From the pack: four focus areas, from return to work to mental injury"
+          "hr-WS-60.jpg",
+          "From the pack: how we prioritised the threats and opportunities"
         ],
         "hero": [
           "futures-q1-photo.jpg",
@@ -978,16 +978,16 @@ const QUESTIONS = [
     ],
     "visual": [
       [
-        "pk-WF-69.webp",
-        "Probable, plausible and possible futures"
+        "hr-WS-05.jpg",
+        "Thinking ten years ahead"
       ],
       [
-        "pk-WF-47.webp",
-        "Four future worlds"
+        "hr-WS-30.jpg",
+        "The non-human organisation"
       ],
       [
-        "pk-WF-13.webp",
-        "Emerging themes"
+        "hr-WS-63.jpg",
+        "Acceleration of safety via robotics"
       ]
     ]
   },
@@ -1217,10 +1217,10 @@ const QUESTIONS = [
           "From the Design Practice Guidelines: the practice model, mapped to WorkSafe's delivery framework"
         ],
         "hero": [
-          "hr-DO-24.jpg",
-          "Technology Delivery: 9 experience designers and a design lead",
+          "practice-photo-1482.jpg",
+          "The Enterprise Design team, WorkSafe Victoria",
           "In the work",
-          "contain"
+          "cover"
         ]
       },
       "ai": {
@@ -1611,7 +1611,7 @@ add("map","map","The case studies","One per question",`
       <span class="cs-n">${i+1}</span>
       <p class="cs-area">${esc(q.area)}</p>
       <p class="cs-q">${esc(q.lines.join(" "))}</p>
-      <div class="cs-img media${p.id==="ai"?" fit-contain":""}"><img src="${IMG}${p.id==="ai"?"hr-AL-02.jpg":"cover-"+p.id+".jpg"}" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
+      <div class="cs-img media${p.id==="ai"?" fit-contain":""}"><img src="${IMG}${({ai:"hr-AL-02.jpg",futures:"hr-CP-43.jpg"})[p.id]||"cover-"+p.id+".jpg"}" alt="" data-kind="${esc(p.name)}" data-hint=""></div>
       <h3>${esc(p.name)}</h3><p class="cs-org">${esc(p.org)}</p><p class="cs-t">${esc(p.tackle||"")}</p></a>`;}).join("")}</div>
   </div>`);
 
