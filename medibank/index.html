@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <title>Andrew Broughton, Medibank case study</title>
 <style>
 /* Type and tokens match broughton.com.au/styles.css.
@@ -1887,6 +1888,36 @@ if(chan) chan.onmessage = e => { const m = e.data||{}; if(m.type==="go") show(m.
 addEventListener("hashchange", ()=>go(location.hash.slice(1)));
 const start = slides.findIndex(s=>"#"+s.id===location.hash);
 show(start>0 ? start : 0, false);
+</script>
+
+<!-- Closed for viewing: overlay sits over the deck; remove this block to reopen -->
+<style>
+#closed{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:var(--L,"Helvetica Neue",Arial,sans-serif)}
+#closed .card{max-width:560px;width:100%;background:#F6F2E9;color:#0A0A0A;border-radius:40px;padding:48px 44px 44px;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+#closed .k{font-family:var(--M,"Arial Black",Arial,sans-serif);font-weight:900;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#E63946;margin:0}
+#closed h1{font-family:var(--M,"Arial Black",Arial,sans-serif);font-weight:900;font-size:clamp(30px,6vw,44px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0}
+#closed p.b{font-size:19px;line-height:1.55;margin:20px 0 0}
+#closed .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+#closed .links a{text-decoration:none;font-weight:600;font-size:16px;padding:12px 20px;border-radius:999px;background:#0A0A0A;color:#fff}
+#closed .links a.alt{background:#fff;color:#0A0A0A}
+#closed .links a:hover{background:#E63946;color:#fff}
+#closed .sig{margin:30px 0 0;font-family:var(--M,"Arial Black",Arial,sans-serif);font-weight:900;font-size:16px}
+@media (max-width:480px){#closed .card{padding:36px 26px 30px;border-radius:28px}#closed p.b{font-size:17px}}
+</style>
+<div id="closed" role="dialog" aria-modal="true" aria-labelledby="closed-t">
+  <div class="card">
+    <p class="k">Closed for viewing</p>
+    <h1 id="closed-t">Sorry, this one's been put away.</h1>
+    <p class="b">This presentation is closed for viewing. If you'd like to catch up and chat about anything I talked through, please reach out. Always happy to chat :)</p>
+    <div class="links"><a href="https://www.linkedin.com/in/anmbroughton" rel="noopener">Message me on LinkedIn</a><a class="alt" href="/">Visit broughton.com.au</a></div>
+    <p class="sig">Andrew Broughton</p>
+  </div>
+</div>
+<script>
+(function(){const o=document.getElementById("closed");
+[...document.body.children].forEach(el=>{if(el!==o&&el.tagName!=="SCRIPT"&&el.tagName!=="STYLE"){el.inert=true;el.setAttribute("aria-hidden","true");}});
+["keydown","keyup","wheel","touchstart","touchmove"].forEach(t=>addEventListener(t,e=>{if(!o.contains(e.target)){e.stopImmediatePropagation();if(e.cancelable&&t!=="touchstart")e.preventDefault();}},{capture:true,passive:false}));
+document.documentElement.style.overflow="hidden";})();
 </script>
 </body>
 </html>
